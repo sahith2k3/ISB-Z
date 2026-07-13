@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Recess"
+version = "1.0.0"
+id = "artifacts/recess"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19263
+
+[services.development]
+run = "pnpm --filter @workspace/recess run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/recess", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/recess/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19263"
+BASE_PATH = "/"

@@ -1,0 +1,1 @@
+- [Orval path+query param collision](orval-collisions.md) — mixing a path param with a query param in one OpenAPI operation causes a guaranteed Orval TS2308 name collision; split into path-only operations instead.
