@@ -62,8 +62,8 @@
   --popover-foreground: 20 20% 15%;
   --popover-border: 30 15% 90%;
 
-  /* Terracotta */
-  --primary: 15 76% 50%;
+  /* Deep Navy */
+  --primary: 220 70% 32%;
   --primary-foreground: 0 0% 100%;
 
   /* Deep Green for Free / Available */
@@ -83,7 +83,7 @@
   --destructive-foreground: 0 0% 100%;
 
   --input: 30 15% 85%;
-  --ring: 15 76% 50%;
+  --ring: 220 70% 32%;
 
   --app-font-sans: 'Plus Jakarta Sans', sans-serif;
   --app-font-display: 'Bricolage Grotesque', sans-serif;
@@ -105,7 +105,7 @@
   --popover-foreground: 40 33% 96%;
   --popover-border: 20 10% 25%;
 
-  --primary: 15 76% 60%;
+  --primary: 220 65% 55%;
   --primary-foreground: 0 0% 100%;
   
   --free: 150 50% 45%;
@@ -124,7 +124,7 @@
   --destructive-foreground: 0 0% 100%;
 
   --input: 20 10% 25%;
-  --ring: 15 76% 60%;
+  --ring: 220 65% 55%;
 }
 
 @layer base {
