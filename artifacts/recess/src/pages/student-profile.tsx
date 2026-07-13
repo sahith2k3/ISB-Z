@@ -19,6 +19,14 @@ import { formatTime } from "@/lib/utils";
 import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+function formatDuration(totalMinutes: number): string {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  if (hours === 0) return `${minutes} min${minutes === 1 ? "" : "s"}`;
+  if (minutes === 0) return `${hours} hr${hours === 1 ? "" : "s"}`;
+  return `${hours} hr${hours === 1 ? "" : "s"} ${minutes} min${minutes === 1 ? "" : "s"}`;
+}
+
 export default function StudentProfile() {
   const { id } = useParams<{ id: string }>();
   const studentId = parseInt(id || "0", 10);
@@ -184,10 +192,10 @@ export default function StudentProfile() {
                       });
                       const [nowH, nowM] = nowKolkata.split(':').map(Number);
                       const [nextH, nextM] = status.nextSession!.startTime.split(':').map(Number);
-                      const diffMinutes = (nextH * 60 + nextM) - (nowH * 60 + nowM);
-                      return Math.max(1, diffMinutes);
+                      const diffMinutes = Math.max(1, (nextH * 60 + nextM) - (nowH * 60 + nowM));
+                      return formatDuration(diffMinutes);
                     })()
-                  } mins
+                  }
                 </p>
                 <div className="flex items-center gap-2 text-sm opacity-90 bg-black/20 w-fit px-3 py-1 rounded-full">
                   <Clock className="h-4 w-4" /> Next class at {formatTime(status.nextSession.startTime)}
