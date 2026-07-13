@@ -45,7 +45,7 @@ export default function Onboarding() {
             >
               <div className="mb-10 text-center">
                 <h1 className="text-4xl font-display font-bold text-primary mb-3">
-                  ISB-Z
+                  ISBusy
                 </h1>
                 <p className="text-muted-foreground text-lg">
                   Who's free for chai right now?

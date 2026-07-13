@@ -39,7 +39,7 @@ export default function Home() {
       {/* Header */}
       <header className="px-6 py-6 pb-4 shrink-0 flex items-center justify-between sticky top-0 bg-background/80 backdrop-blur z-10">
         <div>
-          <h1 className="text-2xl font-display font-bold text-primary">ISB-Z</h1>
+          <h1 className="text-2xl font-display font-bold text-primary">ISBusy</h1>
           {me && (
             <p className="text-sm font-medium text-muted-foreground flex items-center capitalize">
               <MapPin className="h-3.5 w-3.5 mr-1" />
