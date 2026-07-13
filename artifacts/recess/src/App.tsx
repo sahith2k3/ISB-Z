@@ -4,6 +4,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { useLocalStudent } from '@/hooks/use-local-student';
+import { InstallPrompt } from '@/components/install-prompt';
 
 import Home from '@/pages/home';
 import Onboarding from '@/pages/onboarding';
@@ -36,6 +37,7 @@ function App() {
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <AppRouter />
         </WouterRouter>
+        <InstallPrompt />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
