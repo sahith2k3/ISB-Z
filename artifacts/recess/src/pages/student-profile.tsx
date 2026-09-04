@@ -12,14 +12,16 @@ import {
 } from "@workspace/api-client-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Avatar } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
 import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const schedulePreviewDate = "2026-09-07";
+const schedulePreviewDates = [
+  { date: "2026-09-07", label: "September 7, 2026" },
+  { date: "2026-09-08", label: "September 8, 2026" },
+];
 
 function formatDuration(totalMinutes: number): string {
   const hours = Math.floor(totalMinutes / 60);
@@ -40,11 +42,21 @@ export default function StudentProfile() {
 
   const { data: student, isLoading: studentLoading } = useGetStudent(studentId);
   const { data: status, isLoading: statusLoading } = useGetStudentStatus(studentId);
-  const { data: schedule, isLoading: scheduleLoading } = useGetStudentScheduleForDate(
+  const { data: sep7Schedule, isLoading: sep7ScheduleLoading } = useGetStudentScheduleForDate(
     studentId,
-    schedulePreviewDate,
+    schedulePreviewDates[0].date,
+  );
+  const { data: sep8Schedule, isLoading: sep8ScheduleLoading } = useGetStudentScheduleForDate(
+    studentId,
+    schedulePreviewDates[1].date,
   );
   const { data: friends } = useListFriends(meId!);
+
+  const scheduleLoading = sep7ScheduleLoading || sep8ScheduleLoading;
+  const schedulesByDate = [
+    { ...schedulePreviewDates[0], schedule: sep7Schedule ?? [] },
+    { ...schedulePreviewDates[1], schedule: sep8Schedule ?? [] },
+  ];
 
   const isFriend = friends?.some((f) => f.student.id === studentId);
 
@@ -218,63 +230,50 @@ export default function StudentProfile() {
 
         {/* Term 4 Preview Schedule */}
         <div>
-          <div className="flex items-baseline justify-between gap-4 mb-4">
-            <h2 className="text-xl font-display font-bold">Term 4 Schedule</h2>
-            <span className="text-sm text-muted-foreground whitespace-nowrap">
-              Sep 7, 2026
-            </span>
-          </div>
+          <h2 className="text-xl font-display font-bold mb-5">Term 4 Schedule</h2>
           {scheduleLoading ? (
             <div className="space-y-3">
               <Skeleton className="h-20 w-full rounded-xl" />
               <Skeleton className="h-20 w-full rounded-xl" />
             </div>
-          ) : schedule?.length === 0 ? (
-            <div className="p-6 text-center border-2 border-dashed rounded-2xl bg-card">
-              <p className="text-muted-foreground">
-                No classes on the preview date.
-              </p>
-            </div>
           ) : (
-            <div className="space-y-3 relative before:absolute before:inset-y-0 before:left-4 before:w-0.5 before:bg-border">
-              {schedule?.map((session, i) => {
-                const nowKolkata = new Date().toLocaleTimeString('en-US', {
-                  hour12: false,
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  timeZone: 'Asia/Kolkata',
-                });
-                const isPast = status && !status.isInClass && status.currentSession?.startTime !== session.startTime
-                  && session.endTime < nowKolkata;
-                const isCurrent = status?.isInClass && status.currentSession?.startTime === session.startTime;
-                
-                return (
-                  <div key={i} className={`relative flex gap-4 ${isPast ? "opacity-50" : ""}`}>
-                    <div className="w-8 shrink-0 flex justify-center z-10 pt-2">
-                      <div className={`h-2.5 w-2.5 rounded-full ring-4 ring-background ${
-                        isCurrent ? "bg-destructive" : "bg-primary"
-                      }`} />
+            <div className="space-y-8">
+              {schedulesByDate.map(({ date, label, schedule }) => (
+                <section key={date}>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                    {label}
+                  </h3>
+                  {schedule.length === 0 ? (
+                    <div className="p-5 text-center border-2 border-dashed rounded-2xl bg-card">
+                      <p className="text-muted-foreground">No classes scheduled.</p>
                     </div>
-                    <div className={`flex-1 rounded-2xl p-4 border bg-card ${
-                      isCurrent ? "border-destructive/30 shadow-sm" : "border-card-border"
-                    }`}>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="text-sm font-semibold text-primary">
-                          {formatTime(session.startTime)} - {formatTime(session.endTime)}
-                        </span>
-                        {isCurrent && <Badge variant="destructive" className="h-5 text-[10px]">Now</Badge>}
-                      </div>
-                      <h4 className="font-bold text-lg leading-tight mb-1">{session.courseName}</h4>
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <span>{session.courseCode}</span>
-                        <span className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3" /> {session.room || "TBA"}
-                        </span>
-                      </div>
+                  ) : (
+                    <div className="space-y-3 relative before:absolute before:inset-y-0 before:left-4 before:w-0.5 before:bg-border">
+                      {schedule.map((session, i) => (
+                        <div key={`${date}-${session.courseCode}-${session.startTime}-${i}`} className="relative flex gap-4">
+                          <div className="w-8 shrink-0 flex justify-center z-10 pt-2">
+                            <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary" />
+                          </div>
+                          <div className="flex-1 rounded-2xl p-4 border bg-card border-card-border">
+                            <div className="flex justify-between items-start mb-1">
+                              <span className="text-sm font-semibold text-primary">
+                                {formatTime(session.startTime)} - {formatTime(session.endTime)}
+                              </span>
+                            </div>
+                            <h4 className="font-bold text-lg leading-tight mb-1">{session.courseName}</h4>
+                            <div className="flex items-center justify-between text-sm text-muted-foreground">
+                              <span>{session.courseCode}</span>
+                              <span className="flex items-center gap-1">
+                                <MapPin className="h-3 w-3" /> {session.room || "TBA"}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                );
-              })}
+                  )}
+                </section>
+              ))}
             </div>
           )}
         </div>
