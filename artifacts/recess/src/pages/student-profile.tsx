@@ -4,7 +4,7 @@ import { useLocalStudent } from "@/hooks/use-local-student";
 import {
   useGetStudent,
   useGetStudentStatus,
-  useGetStudentSchedule,
+  useGetStudentScheduleForDate,
   useListFriends,
   useAddFriend,
   useRemoveFriend,
@@ -18,6 +18,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
 import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+const schedulePreviewDate = "2026-09-07";
 
 function formatDuration(totalMinutes: number): string {
   const hours = Math.floor(totalMinutes / 60);
@@ -38,7 +40,10 @@ export default function StudentProfile() {
 
   const { data: student, isLoading: studentLoading } = useGetStudent(studentId);
   const { data: status, isLoading: statusLoading } = useGetStudentStatus(studentId);
-  const { data: schedule, isLoading: scheduleLoading } = useGetStudentSchedule(studentId);
+  const { data: schedule, isLoading: scheduleLoading } = useGetStudentScheduleForDate(
+    studentId,
+    schedulePreviewDate,
+  );
   const { data: friends } = useListFriends(meId!);
 
   const isFriend = friends?.some((f) => f.student.id === studentId);
@@ -211,9 +216,14 @@ export default function StudentProfile() {
           </div>
         ) : null}
 
-        {/* Today's Schedule */}
+        {/* Term 4 Preview Schedule */}
         <div>
-          <h2 className="text-xl font-display font-bold mb-4">Today's Schedule</h2>
+          <div className="flex items-baseline justify-between gap-4 mb-4">
+            <h2 className="text-xl font-display font-bold">Term 4 Schedule</h2>
+            <span className="text-sm text-muted-foreground whitespace-nowrap">
+              Sep 7, 2026
+            </span>
+          </div>
           {scheduleLoading ? (
             <div className="space-y-3">
               <Skeleton className="h-20 w-full rounded-xl" />
@@ -221,7 +231,9 @@ export default function StudentProfile() {
             </div>
           ) : schedule?.length === 0 ? (
             <div className="p-6 text-center border-2 border-dashed rounded-2xl bg-card">
-              <p className="text-muted-foreground">No classes today.</p>
+              <p className="text-muted-foreground">
+                No classes on the preview date.
+              </p>
             </div>
           ) : (
             <div className="space-y-3 relative before:absolute before:inset-y-0 before:left-4 before:w-0.5 before:bg-border">
