@@ -83,6 +83,16 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <button
             type="button"
+            onClick={() => setScheduleOpen(true)}
+            aria-label="Open my schedule"
+            data-testid="button-open-schedule"
+            className="flex h-10 items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <CalendarDays className="h-4 w-4" />
+            <span>My schedule</span>
+          </button>
+          <button
+            type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Search students"
             data-testid="button-open-search"
@@ -229,26 +239,6 @@ export default function Home() {
           </div>
         )}
       </main>
-
-      {/* Schedule edge handle */}
-      <AnimatePresence>
-        {!scheduleOpen && studentId && (
-          <motion.button
-            type="button"
-            initial={{ opacity: 0, x: 8 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 8 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setScheduleOpen(true)}
-            aria-label="Open my schedule"
-            data-testid="button-open-schedule"
-            className="group fixed right-0 top-1/2 z-20 flex -translate-y-1/2 items-center gap-2 rounded-l-2xl border border-r-0 border-primary/15 bg-card/80 px-2 py-4 text-primary/55 shadow-sm backdrop-blur transition-all hover:bg-card hover:px-3 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <CalendarDays className="h-4 w-4" />
-            <span className="hidden text-[10px] font-bold uppercase tracking-[0.16em] [writing-mode:vertical-rl] sm:block">Schedule</span>
-          </motion.button>
-        )}
-      </AnimatePresence>
 
       {/* Global Search Overlay */}
       <AnimatePresence>
