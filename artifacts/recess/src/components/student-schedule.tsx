@@ -2,7 +2,8 @@ import {
   useGetStudentScheduleWorkingDays,
   type ScheduleDay,
 } from "@workspace/api-client-react";
-import { CalendarDays, MapPin } from "lucide-react";
+import { CalendarDays, ChevronLeft, MapPin, RefreshCw } from "lucide-react";
+import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
 
@@ -29,7 +30,7 @@ function formatScheduleDate(date: string): string {
 
 function DaySchedule({ day, isToday }: { day: ScheduleDay; isToday: boolean }) {
   return (
-    <section>
+    <section data-testid={`schedule-day-${day.date}`}>
       <div className="flex items-center gap-2 mb-3">
         <CalendarDays className="h-4 w-4 text-primary" />
         <div>
@@ -47,9 +48,9 @@ function DaySchedule({ day, isToday }: { day: ScheduleDay; isToday: boolean }) {
             className="relative flex gap-4"
           >
             <div className="w-8 shrink-0 flex justify-center z-10 pt-2">
-              <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary" />
+              <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary transition-transform duration-200 group-hover:scale-125" />
             </div>
-            <div className="flex-1 rounded-2xl p-4 border bg-card border-card-border">
+            <div className="group flex-1 rounded-2xl p-4 border bg-card border-card-border transition-colors duration-200 hover:border-primary/40">
               <span className="text-sm font-semibold text-primary">
                 {formatTime(session.startTime)} - {formatTime(session.endTime)}
               </span>
@@ -75,28 +76,64 @@ function DaySchedule({ day, isToday }: { day: ScheduleDay; isToday: boolean }) {
 export function StudentSchedule({
   studentId,
   title = "Term 4 Schedule",
+  onClose,
 }: {
   studentId: number;
   title?: string;
+  onClose?: () => void;
 }) {
   const {
     data: days,
     isLoading,
     isError,
+    refetch,
   } = useGetStudentScheduleWorkingDays(studentId);
   const today = todayInKolkata();
 
   return (
-    <section className="mb-10">
-      <h2 className="text-xl font-display font-bold mb-5">{title}</h2>
+    <section className="mx-auto w-full max-w-3xl">
+      <div className="mb-7 flex items-start justify-between gap-4">
+        <div>
+          <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-primary/70">
+            Your week, at a glance
+          </p>
+          <h2 className="text-2xl font-display font-bold text-foreground sm:text-3xl" data-testid="text-schedule-title">
+            {title}
+          </h2>
+        </div>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close schedule"
+            data-testid="button-close-schedule"
+            className="group mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-card-border bg-card text-muted-foreground transition-all hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <ChevronLeft className="h-5 w-5 transition-transform duration-200 group-hover:-translate-x-0.5" />
+          </button>
+        )}
+      </div>
       {isLoading ? (
         <div className="space-y-3">
           <Skeleton className="h-24 w-full rounded-2xl" />
           <Skeleton className="h-24 w-full rounded-2xl" />
         </div>
       ) : isError ? (
-        <div className="p-5 text-center border-2 border-dashed rounded-2xl bg-card">
-          <p className="text-muted-foreground">Schedule could not be loaded.</p>
+        <div className="rounded-3xl border-2 border-dashed border-primary/15 bg-card p-8 text-center" data-testid="schedule-error">
+          <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-primary">
+            <CalendarDays className="h-5 w-5" />
+          </div>
+          <p className="font-semibold text-foreground">Schedule could not be loaded.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Give it another try in a moment.</p>
+          <button
+            type="button"
+            onClick={() => refetch()}
+            data-testid="button-retry-schedule"
+            className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <RefreshCw className="h-3.5 w-3.5" />
+            Retry
+          </button>
         </div>
       ) : days && days.length > 0 ? (
         <div className="space-y-8">
@@ -105,8 +142,10 @@ export function StudentSchedule({
           ))}
         </div>
       ) : (
-        <div className="p-5 text-center border-2 border-dashed rounded-2xl bg-card">
-          <p className="text-muted-foreground">No upcoming classes scheduled.</p>
+        <div className="rounded-3xl border-2 border-dashed border-primary/15 bg-card p-8 text-center" data-testid="schedule-empty">
+          <CalendarDays className="mx-auto mb-3 h-7 w-7 text-primary/70" />
+          <p className="font-semibold text-foreground">No upcoming classes scheduled.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Looks like a lighter week ahead.</p>
         </div>
       )}
     </section>
