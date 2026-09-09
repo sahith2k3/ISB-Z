@@ -32,7 +32,6 @@ export interface StudentSummary {
 export type Student = StudentSummary & {
   studyGroup: string;
 };
-
 export interface ClassSession {
   courseCode: string;
   courseName: string;
@@ -44,6 +43,11 @@ export interface ClassSession {
   endTime: string;
   /** @nullable */
   room: string | null;
+}
+
+export interface ScheduleDay {
+  date: string;
+  sessions: ClassSession[];
 }
 
 export interface StudentStatus {
@@ -66,7 +70,7 @@ export interface FriendInput {
 }
 
 export type ListStudentsParams = {
-campus?: Campus;
+  campus?: Campus;
 /**
  * Case-insensitive match against student name or email
  */

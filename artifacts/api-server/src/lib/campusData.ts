@@ -27,6 +27,11 @@ export interface ClassSession {
   room: string | null;
 }
 
+export interface ScheduleDay {
+  date: string;
+  sessions: ClassSession[];
+}
+
 interface Course {
   code: string;
   name: string;
@@ -155,6 +160,20 @@ export function getScheduleForDate(
 ): ClassSession[] {
   const sessions = sessionsByStudent.get(studentId) ?? [];
   return sessions.filter((s) => s.date === date);
+}
+
+export function getWorkingDaySchedules(studentId: number): ScheduleDay[] {
+  const { date: today } = nowInKolkata();
+  const sessions = sessionsByStudent.get(studentId) ?? [];
+  const dates = [...new Set(sessions.map((session) => session.date))]
+    .filter((date) => date >= today)
+    .sort()
+    .slice(0, 2);
+
+  return dates.map((date) => ({
+    date,
+    sessions: sessions.filter((session) => session.date === date),
+  }));
 }
 
 /** Asia/Kolkata "today" in YYYY-MM-DD form, and current HH:MM, independent of server timezone. */

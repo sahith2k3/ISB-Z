@@ -26,6 +26,7 @@ import type {
   FriendInput,
   HealthStatus,
   ListStudentsParams,
+  ScheduleDay,
   Student,
   StudentStatus,
   StudentSummary
@@ -522,6 +523,83 @@ export function useGetStudentScheduleForDate<TData = Awaited<ReturnType<typeof g
  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
 
   const queryOptions = getGetStudentScheduleForDateQueryOptions(id,date,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetStudentScheduleWorkingDaysUrl = (id: number,) => {
+
+
+
+
+  return `/api/students/${id}/schedule/working-days`
+}
+
+/**
+ * @summary Get today or the next two available class days for a student
+ */
+export const getStudentScheduleWorkingDays = async (id: number, options?: RequestInit): Promise<ScheduleDay[]> => {
+
+  return customFetch<ScheduleDay[]>(getGetStudentScheduleWorkingDaysUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetStudentScheduleWorkingDaysQueryKey = (id: number,) => {
+    return [
+    `/api/students/${id}/schedule/working-days`
+    ] as const;
+    }
+
+
+export const getGetStudentScheduleWorkingDaysQueryOptions = <TData = Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>, TError = ErrorType<Error>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetStudentScheduleWorkingDaysQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>> = ({ signal }) => getStudentScheduleWorkingDays(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetStudentScheduleWorkingDaysQueryResult = NonNullable<Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>>
+export type GetStudentScheduleWorkingDaysQueryError = ErrorType<Error>
+
+
+/**
+ * @summary Get today or the next two available class days for a student
+ */
+
+export function useGetStudentScheduleWorkingDays<TData = Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>, TError = ErrorType<Error>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getStudentScheduleWorkingDays>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetStudentScheduleWorkingDaysQueryOptions(id,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

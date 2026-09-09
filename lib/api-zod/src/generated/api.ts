@@ -140,6 +140,28 @@ export const GetStudentScheduleForDateResponse = zod.array(GetStudentScheduleFor
 
 
 /**
+ * @summary Get today or the next two available class days for a student
+ */
+export const GetStudentScheduleWorkingDaysParams = zod.object({
+  "id": zod.coerce.number()
+})
+
+export const GetStudentScheduleWorkingDaysResponseItem = zod.object({
+  "date": zod.coerce.date(),
+  "sessions": zod.array(zod.object({
+  "courseCode": zod.string(),
+  "courseName": zod.string(),
+  "section": zod.string(),
+  "date": zod.coerce.date(),
+  "startTime": zod.string().describe('24-hour HH:MM in Asia\/Kolkata time'),
+  "endTime": zod.string().describe('24-hour HH:MM in Asia\/Kolkata time'),
+  "room": zod.string().nullable()
+}))
+})
+export const GetStudentScheduleWorkingDaysResponse = zod.array(GetStudentScheduleWorkingDaysResponseItem)
+
+
+/**
  * @summary List a student's friends with live status
  */
 export const ListFriendsParams = zod.object({

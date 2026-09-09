@@ -13,6 +13,7 @@ export * from './friendEntry';
 export * from './friendInput';
 export * from './healthStatus';
 export * from './listStudentsParams';
+export * from './scheduleDay';
 export * from './student';
 export * from './studentStatus';
 export * from './studentSummary';

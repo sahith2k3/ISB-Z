@@ -15,6 +15,7 @@ import {
   getStudentById,
   searchStudents,
   getScheduleForDate,
+  getWorkingDaySchedules,
   getLiveStatus,
   toStudentSummary,
   nowInKolkata,
@@ -87,6 +88,22 @@ router.get("/students/:id/schedule", (req, res): void => {
   const { date } = nowInKolkata();
   const schedule = getScheduleForDate(student.id, date);
   res.json(GetStudentScheduleResponse.parse(schedule));
+});
+
+router.get("/students/:id/schedule/working-days", (req, res): void => {
+  const params = GetStudentParams.safeParse(req.params);
+  if (!params.success) {
+    res.status(400).json({ error: params.error.message });
+    return;
+  }
+
+  const student = getStudentById(params.data.id);
+  if (!student) {
+    res.status(404).json({ error: "Student not found" });
+    return;
+  }
+
+  res.json(getWorkingDaySchedules(student.id));
 });
 
 router.get("/students/:id/schedule/:date", (req, res): void => {

@@ -170,6 +170,32 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /students/{id}/schedule/working-days:
+    get:
+      operationId: getStudentScheduleWorkingDays
+      tags: [students]
+      summary: Get today or the next two available class days for a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: The current or next available class day and the following available class day
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ScheduleDay"
+        "404":
+          description: Student not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /students/{id}/friends:
     get:
       operationId: listFriends
@@ -317,6 +343,17 @@ components:
           description: 24-hour HH:MM in Asia/Kolkata time
         room:
           type: ["string", "null"]
+    ScheduleDay:
+      type: object
+      required: [date, sessions]
+      properties:
+        date:
+          type: string
+          format: date
+        sessions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ClassSession"
     StudentStatus:
       type: object
       required: [student, isInClass, currentSession, nextSession]

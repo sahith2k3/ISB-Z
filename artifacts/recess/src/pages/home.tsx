@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { formatTime } from "@/lib/utils";
 import { Search, MapPin, Users, LogOut, Clock, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { StudentSchedule } from "@/components/student-schedule";
 
 export default function Home() {
   const { studentId, logout } = useLocalStudent();
@@ -65,6 +66,7 @@ export default function Home() {
 
       {/* Friends List */}
       <main className="flex-1 overflow-y-auto px-6 pb-20">
+        {studentId && <StudentSchedule studentId={studentId} title="My Schedule" />}
         {friendsLoading ? (
           <div className="space-y-4 mt-4">
             {[1, 2, 3].map((i) => (
