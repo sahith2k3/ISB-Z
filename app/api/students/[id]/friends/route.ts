@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { eq, and } from "drizzle-orm";
-import { db, friendshipsTable } from "@/db";
+import { db, friendshipsTable, friendshipAuditLogsTable } from "@/db";
 import { getStudentById, getLiveStatus, toStudentSummary } from "@/lib/campus-data";
+import { SAHITH_STUDENT_ID } from "@/lib/local-friends";
 
 export async function GET(
   _request: NextRequest,
@@ -42,6 +43,11 @@ export async function GET(
       });
 
     return NextResponse.json(entries);
+  }
+
+  // Only Sahith is allowed to fetch/import friendships directly from the server DB without providing local ids
+  if (ownerId !== SAHITH_STUDENT_ID) {
+    return NextResponse.json([]);
   }
 
   try {
@@ -131,6 +137,13 @@ export async function POST(
     if (existing.length === 0) {
       await db.insert(friendshipsTable).values({ ownerId, friendId });
     }
+
+    // Record friendship activity in audit logs for analytics
+    await db.insert(friendshipAuditLogsTable).values({
+      ownerId,
+      friendId,
+      action: "add",
+    });
 
     const status = getLiveStatus(friend.id);
     return NextResponse.json(

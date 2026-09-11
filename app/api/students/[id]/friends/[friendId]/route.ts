@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { eq, and } from "drizzle-orm";
-import { db, friendshipsTable } from "@/db";
+import { db, friendshipsTable, friendshipAuditLogsTable } from "@/db";
 
 export async function DELETE(
   _request: NextRequest,
@@ -24,6 +24,13 @@ export async function DELETE(
         ),
       )
       .returning();
+
+    // Log removal in audit table for analytics
+    await db.insert(friendshipAuditLogsTable).values({
+      ownerId,
+      friendId,
+      action: "remove",
+    });
 
     if (deleted.length === 0) {
       return NextResponse.json({ error: "Friendship not found" }, { status: 404 });

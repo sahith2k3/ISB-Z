@@ -1,4 +1,4 @@
-import { pgTable, serial, integer, timestamp, unique } from "drizzle-orm/pg-core";
+import { pgTable, serial, integer, timestamp, unique, varchar } from "drizzle-orm/pg-core";
 
 // Friendships are one-directional: ownerId "follows" friendId (no mutual accept step).
 // Both ids reference student PGIDs from the static campus roster data.
@@ -35,3 +35,17 @@ export const profileViewsTable = pgTable(
 
 export type ProfileView = typeof profileViewsTable.$inferSelect;
 export type InsertProfileView = typeof profileViewsTable.$inferInsert;
+
+// Friendship audit logs for analytics: records every add / remove action
+export const friendshipAuditLogsTable = pgTable("friendship_audit_logs", {
+  id: serial("id").primaryKey(),
+  ownerId: integer("owner_id").notNull(),
+  friendId: integer("friend_id").notNull(),
+  action: varchar("action", { length: 16 }).notNull(), // 'add' | 'remove'
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type FriendshipAuditLog = typeof friendshipAuditLogsTable.$inferSelect;
+export type InsertFriendshipAuditLog = typeof friendshipAuditLogsTable.$inferInsert;

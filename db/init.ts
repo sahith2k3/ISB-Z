@@ -57,6 +57,14 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
         last_viewed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
         CONSTRAINT profile_views_viewer_viewed_unique UNIQUE (viewer_id, viewed_id)
       );
+
+      CREATE TABLE IF NOT EXISTS friendship_audit_logs (
+        id SERIAL PRIMARY KEY,
+        owner_id INTEGER NOT NULL,
+        friend_id INTEGER NOT NULL,
+        action VARCHAR(16) NOT NULL,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+      );
     `);
 
     // 2. Insert records
