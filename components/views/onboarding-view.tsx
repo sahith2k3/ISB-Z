@@ -43,12 +43,17 @@ export function OnboardingView() {
               exit={{ opacity: 0, x: -20 }}
               className="flex-1 flex flex-col justify-center max-w-sm mx-auto w-full"
             >
-              <div className="mb-10 text-center">
-                <h1 className="text-4xl font-display font-bold text-primary mb-3">
+              <div className="mb-10 text-center flex flex-col items-center">
+                <img
+                  src="/icon-192.png"
+                  alt="ISBusy Logo"
+                  className="w-20 h-20 rounded-2xl shadow-md mb-4"
+                />
+                <h1 className="text-4xl font-display font-bold text-primary mb-2">
                   ISBusy
                 </h1>
                 <p className="text-muted-foreground text-lg">
-                  Who&apos;s free for chai right now?
+                  Who&apos;s free right now?
                 </p>
               </div>
 

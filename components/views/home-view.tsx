@@ -82,25 +82,29 @@ export function HomeView() {
     <div className="relative flex h-[100dvh] flex-col overflow-hidden bg-background">
       {/* Header */}
       <header className="sticky top-0 z-10 flex shrink-0 items-center justify-between bg-background/85 px-6 pb-5 pt-7 backdrop-blur-md">
-        <div className="min-w-0">
-          <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
-            Campus, in sync
-          </p>
-          <h1
-            className="text-3xl font-display font-bold leading-none text-primary"
-            data-testid="text-app-name"
-          >
-            ISBusy
-          </h1>
-          {me && (
-            <p
-              className="mt-2 flex items-center text-sm font-medium capitalize text-muted-foreground"
-              data-testid="text-campus"
+        <div className="flex items-center gap-3 min-w-0">
+          <img
+            src="/icon-192.png"
+            alt="ISBusy Logo"
+            className="w-10 h-10 rounded-xl shadow-sm shrink-0"
+          />
+          <div className="min-w-0">
+            <h1
+              className="text-2xl font-display font-bold leading-none text-primary"
+              data-testid="text-app-name"
             >
-              <MapPin className="h-3.5 w-3.5 mr-1" />
-              {me.campus}
-            </p>
-          )}
+              ISBusy
+            </h1>
+            {me && (
+              <p
+                className="mt-1 flex items-center text-xs font-medium capitalize text-muted-foreground"
+                data-testid="text-campus"
+              >
+                <MapPin className="h-3 w-3 mr-1" />
+                {me.campus}
+              </p>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-3">
           <button
