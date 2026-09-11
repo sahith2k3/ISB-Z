@@ -18,6 +18,7 @@ import { formatTime } from "@/lib/utils";
 import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { StudentSchedule } from "@/components/student-schedule";
+import { BottomNav } from "@/components/bottom-nav";
 
 function formatDuration(totalMinutes: number): string {
   const hours = Math.floor(totalMinutes / 60);
@@ -150,7 +151,7 @@ export default function StudentProfilePage({
         )}
       </header>
 
-      <main className="px-6 pb-12">
+      <main className="px-6 pb-32">
         {/* Profile Header */}
         <div className="flex items-center gap-5 mb-8 mt-2">
           <Avatar name={student.name} className="h-24 w-24 text-2xl" />
