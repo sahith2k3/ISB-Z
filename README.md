@@ -1,6 +1,6 @@
 # ISBusy ☕
 
-> **Who's free for chai right now?**
+> **Who's free for tea right now?**
 > A modern campus companion for ISB students to check live schedules and see which classmates are currently free or in class.
 
 ---
