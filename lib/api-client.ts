@@ -9,6 +9,11 @@ import type {
   ScheduleDay,
   Campus,
 } from "./types";
+import {
+  getLocalFriendIds,
+  addLocalFriendId,
+  removeLocalFriendId,
+} from "./local-friends";
 
 async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init);
@@ -48,10 +53,18 @@ export function useGetStudentStatus(studentId: number | null | undefined) {
 }
 
 export function useListFriends(studentId: number | null | undefined) {
+  const validId = typeof studentId === "number" && !isNaN(studentId) && studentId > 0;
+  const friendIds = validId ? getLocalFriendIds(studentId) : [];
+
   return useQuery({
-    queryKey: getListFriendsQueryKey(studentId || 0),
-    queryFn: () => fetchJson<FriendEntry[]>(`/api/students/${studentId}/friends`),
-    enabled: typeof studentId === "number" && !isNaN(studentId) && studentId > 0,
+    queryKey: [...getListFriendsQueryKey(studentId || 0), friendIds.join(",")],
+    queryFn: async () => {
+      if (friendIds.length === 0) return [];
+      return fetchJson<FriendEntry[]>(
+        `/api/students/${studentId}/friends?ids=${friendIds.join(",")}`,
+      );
+    },
+    enabled: validId,
     refetchInterval: 60 * 1000,
   });
 }
@@ -101,11 +114,19 @@ export function useAddFriend() {
 
   return useMutation({
     mutationFn: async ({ id, friendId }: { id: number; friendId: number }) => {
-      return fetchJson<FriendEntry>(`/api/students/${id}/friends`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ friendId }),
-      });
+      // 1. Immediately update localStorage for 0ms UI responsiveness
+      addLocalFriendId(id, friendId);
+
+      // 2. Asynchronously sync/log friendship into PostgreSQL database
+      try {
+        await fetchJson<FriendEntry>(`/api/students/${id}/friends`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ friendId }),
+        });
+      } catch (err) {
+        console.warn("Background DB friendship log warning:", err);
+      }
     },
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: getListFriendsQueryKey(variables.id) });
@@ -118,12 +139,33 @@ export function useRemoveFriend() {
 
   return useMutation({
     mutationFn: async ({ id, friendId }: { id: number; friendId: number }) => {
-      return fetchJson<void>(`/api/students/${id}/friends/${friendId}`, {
-        method: "DELETE",
-      });
+      // 1. Immediately update localStorage
+      removeLocalFriendId(id, friendId);
+
+      // 2. Asynchronously sync/log removal into PostgreSQL database
+      try {
+        await fetchJson<void>(`/api/students/${id}/friends/${friendId}`, {
+          method: "DELETE",
+        });
+      } catch (err) {
+        console.warn("Background DB friendship removal log warning:", err);
+      }
     },
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: getListFriendsQueryKey(variables.id) });
+    },
+  });
+}
+
+export function useLogProfileView() {
+  return useMutation({
+    mutationFn: async ({ viewedId, viewerId }: { viewedId: number; viewerId: number }) => {
+      if (!viewerId || !viewedId || viewerId === viewedId) return;
+      return fetchJson<{ success: boolean; viewCount?: number }>(`/api/students/${viewedId}/view`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ viewerId }),
+      });
     },
   });
 }

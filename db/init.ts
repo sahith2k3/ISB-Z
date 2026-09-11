@@ -39,7 +39,7 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
   try {
     client = await pool.connect();
 
-    // 1. Create table with unique constraint
+    // 1. Create tables with unique constraints
     await client.query(`
       CREATE TABLE IF NOT EXISTS friendships (
         id SERIAL PRIMARY KEY,
@@ -47,6 +47,15 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
         friend_id INTEGER NOT NULL,
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
         CONSTRAINT friendships_owner_friend_unique UNIQUE (owner_id, friend_id)
+      );
+
+      CREATE TABLE IF NOT EXISTS profile_views (
+        id SERIAL PRIMARY KEY,
+        viewer_id INTEGER NOT NULL,
+        viewed_id INTEGER NOT NULL,
+        view_count INTEGER NOT NULL DEFAULT 1,
+        last_viewed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+        CONSTRAINT profile_views_viewer_viewed_unique UNIQUE (viewer_id, viewed_id)
       );
     `);
 

@@ -19,6 +19,31 @@ export async function GET(
     return NextResponse.json({ error: "Student not found" }, { status: 404 });
   }
 
+  const idsParam = _request.nextUrl.searchParams.get("ids");
+  if (idsParam !== null) {
+    const friendIds = idsParam
+      ? idsParam
+          .split(",")
+          .map((s) => parseInt(s.trim(), 10))
+          .filter((n) => !isNaN(n) && n > 0)
+      : [];
+
+    const entries = friendIds
+      .map((fid) => {
+        const friend = getStudentById(fid);
+        if (!friend) return null;
+        const status = getLiveStatus(friend.id);
+        return { student: toStudentSummary(friend), ...status };
+      })
+      .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
+      .sort((a, b) => {
+        if (a.isInClass !== b.isInClass) return a.isInClass ? 1 : -1;
+        return a.student.name.localeCompare(b.student.name);
+      });
+
+    return NextResponse.json(entries);
+  }
+
   try {
     const rows = await db
       .select()
@@ -103,11 +128,9 @@ export async function POST(
         ),
       );
 
-    if (existing.length > 0) {
-      return NextResponse.json({ error: "Already friends" }, { status: 400 });
+    if (existing.length === 0) {
+      await db.insert(friendshipsTable).values({ ownerId, friendId });
     }
-
-    await db.insert(friendshipsTable).values({ ownerId, friendId });
 
     const status = getLiveStatus(friend.id);
     return NextResponse.json(

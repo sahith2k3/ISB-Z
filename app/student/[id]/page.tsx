@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useMemo } from "react";
+import { use, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import {
@@ -9,6 +9,7 @@ import {
   useListFriends,
   useAddFriend,
   useRemoveFriend,
+  useLogProfileView,
 } from "@/lib/api-client";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -49,6 +50,13 @@ export default function StudentProfilePage({
 
   const addFriendMutation = useAddFriend();
   const removeFriendMutation = useRemoveFriend();
+  const logViewMutation = useLogProfileView();
+
+  useEffect(() => {
+    if (meId && studentId && meId !== studentId) {
+      logViewMutation.mutate({ viewedId: studentId, viewerId: meId });
+    }
+  }, [meId, studentId]);
 
   const handleToggleFriend = async () => {
     if (!meId) return;
