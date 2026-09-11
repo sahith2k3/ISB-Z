@@ -244,6 +244,7 @@ export default function StudentProfilePage({
 
         <StudentSchedule studentId={studentId} />
       </main>
+      <BottomNav />
     </div>
   );
 }

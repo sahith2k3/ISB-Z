@@ -15,17 +15,15 @@ import {
   LogOut,
   Clock,
   X,
-  CalendarDays,
   ArrowUpRight,
   RefreshCw,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { StudentSchedule } from "@/components/student-schedule";
+import { BottomNav } from "@/components/bottom-nav";
 
 export function HomeView() {
   const { studentId, logout } = useLocalStudent();
   const [searchOpen, setSearchOpen] = useState(false);
-  const [scheduleOpen, setScheduleOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
@@ -61,19 +59,18 @@ export function HomeView() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         if (searchOpen) setSearchOpen(false);
-        if (scheduleOpen) setScheduleOpen(false);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [scheduleOpen, searchOpen]);
+  }, [searchOpen]);
 
   useEffect(() => {
-    document.body.style.overflow = scheduleOpen || searchOpen ? "hidden" : "";
+    document.body.style.overflow = searchOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [scheduleOpen, searchOpen]);
+  }, [searchOpen]);
 
   const freeCount = friends?.filter((friend) => !friend.isInClass).length ?? 0;
   const classCount = friends?.filter((friend) => friend.isInClass).length ?? 0;
@@ -109,16 +106,6 @@ export function HomeView() {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => setScheduleOpen(true)}
-            aria-label="Open my schedule"
-            data-testid="button-open-schedule"
-            className="flex h-10 items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <CalendarDays className="h-4 w-4" />
-            <span>My schedule</span>
-          </button>
-          <button
-            type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Search students"
             data-testid="button-open-search"
@@ -139,7 +126,7 @@ export function HomeView() {
       </header>
 
       {/* Friends List */}
-      <main className="flex-1 overflow-y-auto px-6 pb-24">
+      <main className="flex-1 overflow-y-auto px-6 pb-32">
         <div className="mb-6 flex items-end justify-between gap-4 pt-1">
           <div>
             <p className="mb-1 text-sm font-medium text-muted-foreground">
@@ -406,59 +393,7 @@ export function HomeView() {
         )}
       </AnimatePresence>
 
-      {/* Full-screen schedule pane */}
-      <AnimatePresence>
-        {scheduleOpen && studentId && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            role="dialog"
-            aria-modal="true"
-            aria-label="My schedule"
-            className="fixed inset-0 z-40 overflow-y-auto bg-background"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 18 }}
-              transition={{ type: "spring", damping: 27, stiffness: 230 }}
-              className="min-h-[100dvh] px-6 pb-12 pt-7 sm:px-10 sm:pt-10"
-            >
-              <div className="mx-auto mb-8 flex max-w-3xl items-center justify-between border-b border-primary/10 pb-5">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-                    <CalendarDays className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">
-                      Private view
-                    </p>
-                    <p className="text-sm font-semibold text-muted-foreground">
-                      Just your classes
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setScheduleOpen(false)}
-                  aria-label="Close schedule"
-                  data-testid="button-close-schedule-pane"
-                  className="rounded-full px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                >
-                  Done
-                </button>
-              </div>
-              <StudentSchedule
-                studentId={studentId}
-                title="My Schedule"
-                onClose={() => setScheduleOpen(false)}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <BottomNav />
     </div>
   );
 }

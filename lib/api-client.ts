@@ -8,7 +8,18 @@ import type {
   FriendEntry,
   ScheduleDay,
   Campus,
+  ClassSession,
 } from "./types";
+
+export type {
+  Student,
+  StudentSummary,
+  StudentStatus,
+  FriendEntry,
+  ScheduleDay,
+  Campus,
+  ClassSession,
+};
 import {
   getLocalFriendIds,
   addLocalFriendId,
@@ -100,9 +111,36 @@ export function useListStudents(
   });
 }
 
+export const getGetStudentScheduleForDateQueryKey = (id: number, date: string) =>
+  ["studentScheduleForDate", id, date] as const;
+
+export const getGetStudentScheduleForDateQueryOptions = (
+  id: number,
+  date: string,
+  options?: { query?: { queryKey?: any; staleTime?: number } },
+) => ({
+  queryKey: options?.query?.queryKey ?? getGetStudentScheduleForDateQueryKey(id, date),
+  queryFn: () => fetchJson<ClassSession[]>(`/api/students/${id}/schedule/${date}`),
+  enabled: typeof id === "number" && !isNaN(id) && id > 0 && !!date,
+  staleTime: options?.query?.staleTime,
+});
+
+export const getGetStudentScheduleWorkingDaysQueryKey = (id: number) =>
+  ["studentScheduleWorkingDays", id] as const;
+
+export const getGetStudentScheduleWorkingDaysQueryOptions = (
+  id: number,
+  options?: { query?: { queryKey?: any; staleTime?: number } },
+) => ({
+  queryKey: options?.query?.queryKey ?? getGetStudentScheduleWorkingDaysQueryKey(id),
+  queryFn: () => fetchJson<ScheduleDay[]>(`/api/students/${id}/schedule/working-days`),
+  enabled: typeof id === "number" && !isNaN(id) && id > 0,
+  staleTime: options?.query?.staleTime,
+});
+
 export function useGetStudentScheduleWorkingDays(studentId: number | null | undefined) {
   return useQuery({
-    queryKey: ["studentScheduleWorkingDays", studentId],
+    queryKey: getGetStudentScheduleWorkingDaysQueryKey(studentId || 0),
     queryFn: () =>
       fetchJson<ScheduleDay[]>(`/api/students/${studentId}/schedule/working-days`),
     enabled: typeof studentId === "number" && !isNaN(studentId) && studentId > 0,
