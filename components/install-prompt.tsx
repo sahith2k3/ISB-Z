@@ -1,13 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Share, SquarePlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
 
 export function InstallPrompt() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { visible, canPromptNatively, showIosInstructions, promptInstall, dismiss } =
     useInstallPrompt();
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <AnimatePresence>

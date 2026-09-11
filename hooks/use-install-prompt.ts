@@ -1,52 +1,63 @@
-import { useEffect, useState, useCallback } from 'react';
+"use client";
 
-const DISMISSED_KEY = 'isbusy_install_dismissed';
+import { useEffect, useState, useCallback } from "react";
+
+const DISMISSED_KEY = "isbusy_install_dismissed";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
 function isStandalone() {
+  if (typeof window === "undefined") return false;
   return (
-    window.matchMedia('(display-mode: standalone)').matches ||
+    window.matchMedia("(display-mode: standalone)").matches ||
     // iOS Safari's non-standard flag for "launched from home screen"
-    (window.navigator as { standalone?: boolean }).standalone === true
+    (window.navigator as { standalone?: boolean })?.standalone === true
   );
 }
 
 function isIos() {
+  if (typeof window === "undefined" || !window.navigator) return false;
   return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
 }
 
-/**
- * Surfaces a "you can install this app" prompt.
- * - On Chromium browsers, captures the native beforeinstallprompt event so we
- *   can trigger the real install flow from our own banner UI.
- * - On iOS Safari, there is no such event; we instead show manual
- *   "Share > Add to Home Screen" instructions.
- * - Never shows if already installed/standalone, or if the user dismissed it.
- */
 export function useInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [dismissed, setDismissed] = useState(() => localStorage.getItem(DISMISSED_KEY) === '1');
-  const [standalone] = useState(isStandalone);
-  const ios = isIos();
+  const [dismissed, setDismissed] = useState(true);
+  const [standalone, setStandalone] = useState(true);
+  const [ios, setIos] = useState(false);
+
+  // Initialize browser-only state after hydration
+  useEffect(() => {
+    try {
+      setDismissed(localStorage.getItem(DISMISSED_KEY) === "1");
+    } catch {
+      setDismissed(false);
+    }
+    setStandalone(isStandalone());
+    setIos(isIos());
+  }, []);
 
   useEffect(() => {
-    if (standalone) return;
+    if (standalone || typeof window === "undefined") return;
 
     const handler = (event: Event) => {
       event.preventDefault();
       setDeferredPrompt(event as BeforeInstallPromptEvent);
     };
 
-    window.addEventListener('beforeinstallprompt', handler);
-    return () => window.removeEventListener('beforeinstallprompt', handler);
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
   }, [standalone]);
 
   const dismiss = useCallback(() => {
-    localStorage.setItem(DISMISSED_KEY, '1');
+    try {
+      localStorage.setItem(DISMISSED_KEY, "1");
+    } catch {
+      // ignore in environments without localStorage
+    }
     setDismissed(true);
   }, []);
 
@@ -55,7 +66,7 @@ export function useInstallPrompt() {
     await deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     setDeferredPrompt(null);
-    if (outcome === 'accepted' || outcome === 'dismissed') {
+    if (outcome === "accepted" || outcome === "dismissed") {
       dismiss();
     }
   }, [deferredPrompt, dismiss]);

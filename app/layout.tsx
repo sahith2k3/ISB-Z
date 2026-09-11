@@ -36,10 +36,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      </head>
       <body className="min-h-[100dvh] bg-background antialiased selection:bg-primary/20 selection:text-primary">
         <Providers>
           <div className="min-h-[100dvh] max-w-md mx-auto bg-background shadow-xl shadow-black/5 relative overflow-hidden flex flex-col">
