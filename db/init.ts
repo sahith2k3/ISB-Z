@@ -1,4 +1,4 @@
-﻿import pg from "pg";
+import pg from "pg";
 import { SEED_FRIENDSHIPS } from "./seed-data";
 
 const { Pool } = pg;
@@ -98,4 +98,4 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
     await pool.end();
   }
 }
-# Database initialized and verified with Neon Postgres integration
+// Database initialized and verified with Neon Postgres integration
