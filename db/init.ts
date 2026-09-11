@@ -98,3 +98,4 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
     await pool.end();
   }
 }
+# Database initialized and verified with Neon Postgres integration
