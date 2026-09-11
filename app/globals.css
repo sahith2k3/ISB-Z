@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 96%;
+    --foreground: 20 20% 15%;
+    --border: 30 15% 85%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 20 20% 15%;
+    --card-border: 30 15% 90%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 20% 15%;
+    --popover-border: 30 15% 90%;
+
+    --primary: 220 70% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --free: 150 45% 35%;
+    --free-foreground: 0 0% 100%;
+
+    --secondary: 30 20% 90%;
+    --secondary-foreground: 20 20% 15%;
+
+    --muted: 30 15% 90%;
+    --muted-foreground: 20 10% 45%;
+
+    --accent: 40 30% 90%;
+    --accent-foreground: 20 20% 15%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --input: 30 15% 85%;
+    --ring: 220 70% 32%;
+
+    --radius: 1rem;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-display: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .dark {
+    --background: 20 20% 12%;
+    --foreground: 40 33% 96%;
+    --border: 20 10% 20%;
+    
+    --card: 20 15% 15%;
+    --card-foreground: 40 33% 96%;
+    --card-border: 20 10% 25%;
+
+    --popover: 20 15% 15%;
+    --popover-foreground: 40 33% 96%;
+    --popover-border: 20 10% 25%;
+
+    --primary: 220 65% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    --free: 150 50% 45%;
+    --free-foreground: 0 0% 100%;
+
+    --secondary: 20 10% 25%;
+    --secondary-foreground: 40 33% 96%;
+
+    --muted: 20 10% 20%;
+    --muted-foreground: 40 20% 70%;
+
+    --accent: 20 10% 25%;
+    --accent-foreground: 40 33% 96%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --input: 20 10% 25%;
+    --ring: 220 65% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
