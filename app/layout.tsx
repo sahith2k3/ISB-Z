@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "ISBusy — Who's free right now?",
@@ -44,6 +45,7 @@ export default function RootLayout({
           </div>
         </Providers>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
