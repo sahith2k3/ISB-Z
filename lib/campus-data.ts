@@ -215,3 +215,27 @@ export function toStudentSummary(s: Student): StudentSummary {
     section: s.section,
   };
 }
+
+export interface StudentEnrolledCourse {
+  courseCode: string;
+  courseName: string;
+  section: string;
+  venue: string;
+  campus: Campus;
+  faculty: string;
+}
+
+export function getStudentEnrollments(studentId: number): StudentEnrolledCourse[] {
+  const list = enrollmentsByStudent.get(studentId) ?? [];
+  return list.map((e) => {
+    const c = courseByCode.get(e.courseCode);
+    return {
+      courseCode: e.courseCode,
+      courseName: c?.name ?? e.courseCode,
+      section: e.section,
+      venue: c?.venue ?? "TBA",
+      campus: c?.campus ?? "mohali",
+      faculty: c?.faculty ?? "",
+    };
+  }).sort((a, b) => a.courseCode.localeCompare(b.courseCode));
+}

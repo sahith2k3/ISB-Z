@@ -54,6 +54,26 @@ export function useGetStudent(studentId: number | null | undefined) {
   });
 }
 
+export interface StudentEnrolledCourse {
+  courseCode: string;
+  courseName: string;
+  section: string;
+  venue: string;
+  campus: Campus;
+  faculty: string;
+}
+
+export function useGetStudentCourses(studentId: number | null | undefined) {
+  return useQuery({
+    queryKey: ["studentCourses", studentId],
+    queryFn: () =>
+      fetchJson<{ student: Student; courses: StudentEnrolledCourse[] }>(
+        `/api/students/${studentId}/courses`,
+      ),
+    enabled: typeof studentId === "number" && !isNaN(studentId) && studentId > 0,
+  });
+}
+
 export function useGetStudentStatus(studentId: number | null | undefined) {
   return useQuery({
     queryKey: ["studentStatus", studentId],
