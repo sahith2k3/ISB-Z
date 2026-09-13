@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { Input } from "@/components/ui/input";
 import { useListStudents } from "@/lib/api-client";
-import { Search, MapPin, CheckCircle2, ChevronLeft } from "lucide-react";
+import { Search, MapPin, CheckCircle2, ChevronLeft, Armchair } from "lucide-react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Avatar } from "@/components/ui/avatar";
 import type { Campus } from "@/lib/types";
@@ -79,6 +80,16 @@ export function OnboardingView() {
                     Mohali
                   </span>
                 </button>
+
+                <div className="pt-2">
+                  <Link
+                    href="/seating"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-card/60 hover:bg-card border border-card-border hover:border-primary/50 text-sm font-medium text-foreground transition-all shadow-sm group"
+                  >
+                    <Armchair className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
+                    <span>View Seating Arrangements without sign up &rarr;</span>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ) : (

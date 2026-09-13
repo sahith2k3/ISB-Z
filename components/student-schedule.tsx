@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { useGetStudentScheduleWorkingDays } from "@/lib/api-client";
-import type { ScheduleDay } from "@/lib/types";
-import { CalendarDays, ChevronLeft, MapPin, RefreshCw } from "lucide-react";
+import type { ClassSession, ScheduleDay } from "@/lib/types";
+import { Armchair, CalendarDays, ChevronLeft, MapPin, RefreshCw } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
+import { SeatingModal } from "@/components/seating-modal";
 
 function todayInKolkata(): string {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -27,7 +29,15 @@ function formatScheduleDate(date: string): string {
   }).format(new Date(`${date}T00:00:00+05:30`));
 }
 
-function DaySchedule({ day, isToday }: { day: ScheduleDay; isToday: boolean }) {
+function DaySchedule({
+  day,
+  isToday,
+  onOpenSeating,
+}: {
+  day: ScheduleDay;
+  isToday: boolean;
+  onOpenSeating?: (session: ClassSession) => void;
+}) {
   return (
     <section data-testid={`schedule-day-${day.date}`}>
       <div className="flex items-center gap-2 mb-3">
@@ -50,10 +60,21 @@ function DaySchedule({ day, isToday }: { day: ScheduleDay; isToday: boolean }) {
               <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary transition-transform duration-200 group-hover:scale-125" />
             </div>
             <div className="group flex-1 rounded-2xl p-4 border bg-card border-card-border transition-colors duration-200 hover:border-primary/40">
-              <span className="text-sm font-semibold text-primary">
-                {formatTime(session.startTime)} - {formatTime(session.endTime)}
-              </span>
-              <h4 className="font-bold text-lg leading-tight mt-1 mb-1">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-sm font-semibold text-primary">
+                  {formatTime(session.startTime)} - {formatTime(session.endTime)}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onOpenSeating?.(session)}
+                  title={`View ${session.courseCode} Section ${session.section} seating chart`}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-secondary/90 hover:bg-primary hover:text-primary-foreground text-foreground border border-border/60 transition-all active:scale-95"
+                >
+                  <Armchair className="h-3.5 w-3.5 text-primary group-hover:text-inherit" />
+                  <span>Seating</span>
+                </button>
+              </div>
+              <h4 className="font-bold text-lg leading-tight mt-1.5 mb-1">
                 {session.courseName}
               </h4>
               <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground">
@@ -88,6 +109,7 @@ export function StudentSchedule({
     refetch,
   } = useGetStudentScheduleWorkingDays(studentId);
   const today = todayInKolkata();
+  const [seatingSession, setSeatingSession] = useState<ClassSession | null>(null);
 
   return (
     <section className="mx-auto w-full max-w-3xl">
@@ -137,7 +159,12 @@ export function StudentSchedule({
       ) : days && days.length > 0 ? (
         <div className="space-y-8">
           {days.map((day) => (
-            <DaySchedule key={day.date} day={day} isToday={day.date === today} />
+            <DaySchedule
+              key={day.date}
+              day={day}
+              isToday={day.date === today}
+              onOpenSeating={setSeatingSession}
+            />
           ))}
         </div>
       ) : (
@@ -146,6 +173,16 @@ export function StudentSchedule({
           <p className="font-semibold text-foreground">No upcoming classes scheduled.</p>
           <p className="mt-1 text-sm text-muted-foreground">Looks like a lighter week ahead.</p>
         </div>
+      )}
+
+      {seatingSession && (
+        <SeatingModal
+          isOpen={!!seatingSession}
+          onClose={() => setSeatingSession(null)}
+          courseCode={seatingSession.courseCode}
+          section={seatingSession.section}
+          courseName={seatingSession.courseName}
+        />
       )}
     </section>
   );
