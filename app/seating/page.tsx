@@ -1,26 +1,20 @@
 "use client";
 
-import { useEffect, useState, useMemo, useRef } from "react";
-import Link from "next/link";
+import { useEffect, useState, useMemo } from "react";
 import {
   Armchair,
-  Search,
   MapPin,
   ExternalLink,
   ZoomIn,
   ZoomOut,
   Sparkles,
   Layers,
-  Upload,
   AlertCircle,
-  X,
-  CheckCircle2,
-  Image as ImageIcon,
 } from "lucide-react";
 import { BottomNav } from "@/components/bottom-nav";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent } from "@/lib/api-client";
-import { CAMPUS_SECTIONS, parseSeatingFilename, type SeatingChartInfo } from "@/lib/seating";
+import { CAMPUS_SECTIONS, type SeatingChartInfo } from "@/lib/seating";
 import { Badge } from "@/components/ui/badge";
 import sessionsData from "@/data/sessions.json";
 import coursesData from "@/data/courses.json";
@@ -45,15 +39,6 @@ export default function SeatingPage() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-
-  // Upload modal state
-  const [isUploadOpen, setIsUploadOpen] = useState(false);
-  const [uploadCourseCode, setUploadCourseCode] = useState("");
-  const [uploadSection, setUploadSection] = useState("A");
-  const [uploadPreview, setUploadPreview] = useState<string | null>(null);
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadStatus, setUploadStatus] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Sync user's campus and section if logged in
   useEffect(() => {
@@ -156,113 +141,22 @@ export default function SeatingPage() {
 
   const handleMouseUp = () => setIsDragging(false);
 
-  // Open upload modal with optional prefill
-  const handleOpenUpload = (prefillCourse?: string, prefillSection?: string) => {
-    setUploadCourseCode(prefillCourse || (sectionCourses[0]?.courseCode ?? ""));
-    setUploadSection(prefillSection || selectedSection);
-    setUploadPreview(null);
-    setUploadStatus(null);
-    setIsUploadOpen(true);
-  };
-
-  // Handle file selection
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    // Try auto-detecting course and section from filename
-    const parsed = parseSeatingFilename(file.name);
-    if (parsed) {
-      setUploadCourseCode(parsed.courseCode);
-      setUploadSection(parsed.section);
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      setUploadPreview(reader.result as string);
-    };
-    reader.readAsDataURL(file);
-  };
-
-  // Submit uploaded chart
-  const handleSaveUpload = async () => {
-    if (!uploadPreview || !uploadCourseCode || !uploadSection) {
-      setUploadStatus("Please choose an image, course code, and section.");
-      return;
-    }
-
-    setIsUploading(true);
-    setUploadStatus("Uploading seating arrangement...");
-
-    try {
-      const res = await fetch("/api/seating", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          courseCode: uploadCourseCode.toUpperCase().trim(),
-          section: uploadSection.toUpperCase().trim(),
-          campus: selectedCampus,
-          imageUrl: uploadPreview,
-        }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || "Upload failed");
-      }
-
-      setUploadStatus("Seating arrangement saved successfully!");
-      fetchCharts();
-
-      // Set as active chart
-      setActiveChart({
-        filename: `${uploadCourseCode}_${uploadSection}`,
-        url: uploadPreview,
-        courseCode: uploadCourseCode.toUpperCase().trim(),
-        section: uploadSection.toUpperCase().trim(),
-        campus: selectedCampus,
-      });
-
-      setTimeout(() => {
-        setIsUploadOpen(false);
-        setUploadStatus(null);
-        setUploadPreview(null);
-      }, 1000);
-    } catch (err: any) {
-      console.error(err);
-      setUploadStatus(`Error: ${err?.message || "Failed to upload"}`);
-    } finally {
-      setIsUploading(false);
-    }
-  };
-
   return (
     <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 pb-32 pt-5">
       {/* Header */}
       <header className="mb-5 w-full min-w-0">
-        <div className="flex items-center justify-between gap-2 mb-1.5">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-              <Armchair className="h-5 w-5" />
-            </div>
-            <div className="min-w-0">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 truncate">
-                Classroom layouts
-              </p>
-              <h1 className="text-2xl font-display font-bold text-foreground leading-tight">
-                Seating Charts
-              </h1>
-            </div>
+        <div className="flex items-center gap-2.5 min-w-0 mb-1.5">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
+            <Armchair className="h-5 w-5" />
           </div>
-
-          <button
-            type="button"
-            onClick={() => handleOpenUpload()}
-            className="flex shrink-0 items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary hover:bg-primary/20 transition-colors shadow-sm"
-          >
-            <Upload className="h-3.5 w-3.5" />
-            <span>Upload</span>
-          </button>
+          <div className="min-w-0">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 truncate">
+              Classroom layouts
+            </p>
+            <h1 className="text-2xl font-display font-bold text-foreground leading-tight">
+              Seating Charts
+            </h1>
+          </div>
         </div>
         <p className="text-xs text-muted-foreground leading-normal break-words">
           Find your seat for upcoming classes across Hyderabad and Mohali.
@@ -404,23 +298,15 @@ export default function SeatingPage() {
 
             {imgError ? (
               <div className="flex flex-col items-center justify-center p-6 text-center text-muted-foreground z-10 max-w-xs">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600 mb-2.5">
-                  <AlertCircle className="h-6 w-6" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted/60 text-muted-foreground mb-2.5">
+                  <Armchair className="h-6 w-6" />
                 </div>
                 <p className="font-semibold text-foreground text-sm">
-                  Photo not found yet
+                  Seating Layout Pending
                 </p>
-                <p className="text-xs text-muted-foreground mt-1 mb-3">
-                  No seating photo has been uploaded for {activeChart.courseCode} Section {activeChart.section}.
+                <p className="text-xs text-muted-foreground mt-1">
+                  The layout for {activeChart.courseCode} Section {activeChart.section} will be available soon.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => handleOpenUpload(activeChart.courseCode, activeChart.section)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold shadow-sm hover:bg-primary/90 transition-all active:scale-95"
-                >
-                  <Upload className="h-3.5 w-3.5" />
-                  <span>Upload this photo</span>
-                </button>
               </div>
             ) : (
               <div
@@ -471,7 +357,7 @@ export default function SeatingPage() {
 
         {sectionCourses.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-border bg-card/50 p-6 text-center text-muted-foreground text-sm">
-            No courses found for Section {selectedSection}.
+            No courses scheduled for Section {selectedSection}.
           </div>
         ) : (
           <div className="space-y-2.5 w-full">
@@ -497,7 +383,7 @@ export default function SeatingPage() {
                       </Badge>
                       {matchingChart && (
                         <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 text-[10px] py-0">
-                          Photo ready
+                          Seating ready
                         </Badge>
                       )}
                     </div>
@@ -510,20 +396,15 @@ export default function SeatingPage() {
                     <button
                       type="button"
                       onClick={() => setActiveChart(matchingChart)}
-                      className="flex shrink-0 whitespace-nowrap items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-all active:scale-95"
+                      className="flex shrink-0 whitespace-nowrap items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-all active:scale-95"
                     >
                       <Armchair className="h-3.5 w-3.5" />
                       <span>View</span>
                     </button>
                   ) : (
-                    <button
-                      type="button"
-                      onClick={() => handleOpenUpload(course.courseCode, selectedSection)}
-                      className="flex shrink-0 whitespace-nowrap items-center gap-1 rounded-full border border-dashed border-primary/40 bg-primary/5 hover:bg-primary/10 text-primary px-3 py-1.5 text-xs font-semibold transition-all active:scale-95"
-                    >
-                      <Upload className="h-3.5 w-3.5" />
-                      <span>Upload</span>
-                    </button>
+                    <Badge variant="outline" className="text-[10px] py-1 text-muted-foreground">
+                      Coming soon
+                    </Badge>
                   )}
                 </div>
               );
@@ -537,7 +418,7 @@ export default function SeatingPage() {
         <section className="mt-8 pt-6 border-t border-border/70 w-full min-w-0">
           <h3 className="font-display font-bold text-sm text-foreground mb-3 flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-primary" />
-            <span>All Ready Seating Charts ({availableCharts.length})</span>
+            <span>All Seating Charts ({availableCharts.length})</span>
           </h3>
           <div className="grid grid-cols-2 gap-2">
             {availableCharts.map((chart) => (
@@ -561,174 +442,6 @@ export default function SeatingPage() {
             ))}
           </div>
         </section>
-      )}
-
-      {/* Empty State Help Card & Upload CTA */}
-      <div className="mt-8 rounded-3xl border border-dashed border-primary/25 bg-primary/5 p-5 text-center w-full min-w-0">
-        <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-          <Upload className="h-5 w-5" />
-        </div>
-        <h4 className="font-display font-bold text-base mb-1">
-          Have Seating Photos?
-        </h4>
-        <p className="text-xs text-muted-foreground leading-relaxed mb-4 max-w-xs mx-auto">
-          Tap below to upload seating arrangement images directly from your phone or laptop.
-        </p>
-        <button
-          type="button"
-          onClick={() => handleOpenUpload()}
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-xs font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-all active:scale-95"
-        >
-          <Upload className="h-3.5 w-3.5" />
-          <span>Upload Seating Photo</span>
-        </button>
-      </div>
-
-      {/* In-App Upload Modal */}
-      {isUploadOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="relative w-full max-w-md rounded-3xl border border-border bg-card p-5 shadow-2xl overflow-hidden max-h-[90dvh] flex flex-col">
-            <div className="flex items-center justify-between pb-3 border-b border-border mb-4">
-              <div className="flex items-center gap-2">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Upload className="h-4 w-4" />
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-base">Upload Seating Chart</h3>
-                  <p className="text-[11px] text-muted-foreground">Save photo to live timetable</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsUploadOpen(false)}
-                className="rounded-full p-1.5 text-muted-foreground hover:bg-secondary hover:text-foreground"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div className="space-y-3.5 overflow-y-auto pr-0.5">
-              {/* File input */}
-              <div>
-                <label className="block text-xs font-semibold mb-1.5 text-foreground">
-                  Select Seating Photo
-                </label>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="hidden"
-                />
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="w-full flex flex-col items-center justify-center p-4 border-2 border-dashed border-border hover:border-primary/60 rounded-2xl bg-secondary/30 hover:bg-secondary/60 transition-colors"
-                >
-                  <ImageIcon className="h-8 w-8 text-muted-foreground mb-1.5" />
-                  <span className="text-xs font-semibold text-foreground">
-                    {uploadPreview ? "Change Selected Photo" : "Tap to pick from gallery / files"}
-                  </span>
-                  <span className="text-[10px] text-muted-foreground mt-0.5">
-                    Supports JPG, JPEG, PNG
-                  </span>
-                </button>
-              </div>
-
-              {/* Photo Preview */}
-              {uploadPreview && (
-                <div className="relative rounded-xl overflow-hidden border border-border bg-neutral-900 flex items-center justify-center h-40">
-                  <img
-                    src={uploadPreview}
-                    alt="Preview"
-                    className="max-h-full max-w-full object-contain"
-                  />
-                  <span className="absolute bottom-1 right-2 text-[10px] bg-black/70 text-white px-2 py-0.5 rounded-full">
-                    Preview
-                  </span>
-                </div>
-              )}
-
-              {/* Course Selection */}
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="block text-xs font-semibold mb-1 text-foreground">
-                    Course Code
-                  </label>
-                  <input
-                    type="text"
-                    value={uploadCourseCode}
-                    onChange={(e) => setUploadCourseCode(e.target.value.toUpperCase())}
-                    placeholder="e.g. GSMT, LSCM"
-                    className="w-full h-10 px-3 rounded-xl border border-input bg-background text-sm font-semibold uppercase"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold mb-1 text-foreground">
-                    Section
-                  </label>
-                  <select
-                    value={uploadSection}
-                    onChange={(e) => setUploadSection(e.target.value.toUpperCase())}
-                    className="w-full h-10 px-3 rounded-xl border border-input bg-background text-sm font-semibold"
-                  >
-                    {["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"].map((sec) => (
-                      <option key={sec} value={sec}>
-                        Section {sec}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {uploadStatus && (
-                <p
-                  className={`text-xs text-center font-medium ${
-                    uploadStatus.includes("success")
-                      ? "text-emerald-500"
-                      : uploadStatus.includes("Error")
-                      ? "text-destructive"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {uploadStatus}
-                </p>
-              )}
-            </div>
-
-            <div className="mt-4 pt-3 border-t border-border flex gap-2">
-              <button
-                type="button"
-                onClick={() => setIsUploadOpen(false)}
-                className="flex-1 py-2.5 rounded-xl border border-border text-xs font-semibold text-muted-foreground hover:bg-secondary"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                disabled={!uploadPreview || isUploading}
-                onClick={handleSaveUpload}
-                className="flex-1 py-2.5 rounded-xl bg-primary text-primary-foreground text-xs font-semibold shadow-sm hover:bg-primary/90 disabled:opacity-50 transition-all flex items-center justify-center gap-1.5"
-              >
-                {isUploading ? (
-                  <>
-                    <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
-                    <span>Saving...</span>
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle2 className="h-3.5 w-3.5" />
-                    <span>Save Photo</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
       )}
 
       <BottomNav />

@@ -14,7 +14,8 @@
 /drizzle
 
 # attached raw spreadsheets
-/attached_assets
+/attached_assets/*
+!/attached_assets/*.jpg
 
 # misc
 .DS_Store

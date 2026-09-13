@@ -236,17 +236,17 @@ export function SeatingModal({
                 <AlertCircle className="h-7 w-7" />
               </div>
               <h4 className="font-display font-bold text-lg mb-1">
-                Seating chart not uploaded
+                Seating chart pending
               </h4>
               <p className="text-sm text-muted-foreground mb-6">
-                No seating photo was found for <strong>{courseCode} · Section {section}</strong> yet.
+                The seating arrangement for <strong>{courseCode} · Section {section}</strong> has not been published yet.
               </p>
               <Link
                 href="/seating"
                 onClick={onClose}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all shadow-sm"
               >
-                Browse & Upload Seating Charts
+                Browse All Seating Charts
               </Link>
             </div>
           ) : (
