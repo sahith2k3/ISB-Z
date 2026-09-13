@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
@@ -20,8 +20,8 @@ import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent } from "@/lib/api-client";
 import { CAMPUS_SECTIONS, type SeatingChartInfo } from "@/lib/seating";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import sessionsData from "@/data/sessions.json";
+import coursesData from "@/data/courses.json";
 
 export default function SeatingPage() {
   const { studentId, campus: localCampus } = useLocalStudent();
@@ -84,15 +84,20 @@ export default function SeatingPage() {
     setActiveChart(null);
   };
 
-  // Build full list of courses for the selected section from sessionsData
+  // Build full list of courses for the selected section from sessionsData & coursesData
   const sectionCourses = useMemo(() => {
+    const courseMap = new Map<string, string>();
+    for (const c of coursesData as Array<{ code: string; name: string }>) {
+      courseMap.set(c.code, c.name);
+    }
+
     const map = new Map<string, { courseCode: string; courseName: string }>();
-    for (const s of sessionsData) {
+    for (const s of sessionsData as Array<{ courseCode: string; section: string }>) {
       if (s.section.toUpperCase() === selectedSection.toUpperCase()) {
         if (!map.has(s.courseCode)) {
           map.set(s.courseCode, {
             courseCode: s.courseCode,
-            courseName: s.courseName || s.courseCode,
+            courseName: courseMap.get(s.courseCode) || s.courseCode,
           });
         }
       }

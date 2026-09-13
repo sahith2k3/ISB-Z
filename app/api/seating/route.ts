@@ -1,8 +1,8 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { parseSeatingFilename, getCampusForSection, type SeatingChartInfo } from "@/lib/seating";
-import sessionsData from "@/data/sessions.json";
+import coursesData from "@/data/courses.json";
 
 export const dynamic = "force-dynamic";
 
@@ -17,11 +17,11 @@ export async function GET() {
     const files = fs.readdirSync(seatingDir);
     const charts: SeatingChartInfo[] = [];
 
-    // Map course codes to course names from sessions data
+    // Map course codes to course names from courses data
     const courseNames = new Map<string, string>();
-    for (const session of sessionsData) {
-      if (session.courseCode && session.courseName && !courseNames.has(session.courseCode)) {
-        courseNames.set(session.courseCode, session.courseName);
+    for (const course of coursesData as Array<{ code: string; name: string }>) {
+      if (course.code && course.name && !courseNames.has(course.code)) {
+        courseNames.set(course.code, course.name);
       }
     }
 
