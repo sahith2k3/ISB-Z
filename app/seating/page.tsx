@@ -210,7 +210,7 @@ export default function SeatingPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setIsSearchFocused(true)}
-            placeholder="Search student name (e.g. Sahith, Aadarsh)..."
+            placeholder="Search student name..."
             className="h-11 w-full rounded-2xl border border-input bg-card pl-9 pr-9 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all shadow-sm"
           />
           {searchQuery && (
