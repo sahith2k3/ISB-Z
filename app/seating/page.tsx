@@ -20,6 +20,7 @@ import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent } from "@/lib/api-client";
 import { CAMPUS_SECTIONS, type SeatingChartInfo } from "@/lib/seating";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import sessionsData from "@/data/sessions.json";
 import coursesData from "@/data/courses.json";
 
