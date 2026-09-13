@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState, useRef } from "react";
 import { X, ZoomIn, ZoomOut, RotateCcw, ExternalLink, Armchair, AlertCircle } from "lucide-react";
@@ -236,17 +236,17 @@ export function SeatingModal({
                 <AlertCircle className="h-7 w-7" />
               </div>
               <h4 className="font-display font-bold text-lg mb-1">
-                Seating chart not found
+                Seating chart not uploaded
               </h4>
               <p className="text-sm text-muted-foreground mb-6">
-                No seating photo was found matching <strong>{courseCode}_{section}.jpg</strong> in the repository yet.
+                No seating photo was found for <strong>{courseCode} · Section {section}</strong> yet.
               </p>
               <Link
                 href="/seating"
                 onClick={onClose}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all shadow-sm"
               >
-                Browse All Seating Charts
+                Browse & Upload Seating Charts
               </Link>
             </div>
           ) : (
@@ -260,6 +260,10 @@ export function SeatingModal({
               <img
                 src={resolvedUrl}
                 alt={`Seating arrangement for ${courseCode} Section ${section}`}
+                onError={() => {
+                  setHasError(true);
+                  setIsLoading(false);
+                }}
                 className="max-w-full max-h-[72dvh] object-contain rounded-xl shadow-md pointer-events-none"
               />
             </div>

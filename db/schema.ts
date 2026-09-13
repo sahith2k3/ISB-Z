@@ -1,4 +1,4 @@
-import { pgTable, serial, integer, timestamp, unique, varchar } from "drizzle-orm/pg-core";
+import { pgTable, serial, integer, timestamp, unique, varchar, text } from "drizzle-orm/pg-core";
 
 // Friendships are one-directional: ownerId "follows" friendId (no mutual accept step).
 // Both ids reference student PGIDs from the static campus roster data.
@@ -49,3 +49,23 @@ export const friendshipAuditLogsTable = pgTable("friendship_audit_logs", {
 
 export type FriendshipAuditLog = typeof friendshipAuditLogsTable.$inferSelect;
 export type InsertFriendshipAuditLog = typeof friendshipAuditLogsTable.$inferInsert;
+
+// Classroom seating charts: persists user uploaded or scanned seating arrangements
+export const seatingChartsTable = pgTable(
+  "seating_charts",
+  {
+    id: serial("id").primaryKey(),
+    courseCode: varchar("course_code", { length: 32 }).notNull(),
+    section: varchar("section", { length: 16 }).notNull(),
+    campus: varchar("campus", { length: 16 }).notNull(),
+    imageUrl: text("image_url").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => [unique().on(table.courseCode, table.section)],
+);
+
+export type SeatingChart = typeof seatingChartsTable.$inferSelect;
+export type InsertSeatingChart = typeof seatingChartsTable.$inferInsert;
+
