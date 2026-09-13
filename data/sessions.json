@@ -406,30 +406,12 @@
     },
     {
         "campus": "hyderabad",
-        "courseCode": "TSFL",
-        "section": "D",
-        "date": "2026-09-08",
-        "startTime": "12:30",
-        "endTime": "14:30",
-        "room": "AC 8 LT"
-    },
-    {
-        "campus": "hyderabad",
         "courseCode": "DMKT",
         "section": "A",
         "date": "2026-09-08",
         "startTime": "14:45",
         "endTime": "16:45",
         "room": "AC 4 LT"
-    },
-    {
-        "campus": "mohali",
-        "courseCode": "GSMT",
-        "section": "J",
-        "date": "2026-09-08",
-        "startTime": "14:45",
-        "endTime": "16:45",
-        "room": "AS 2 LT Pushpagiri"
     },
     {
         "campus": "mohali",
