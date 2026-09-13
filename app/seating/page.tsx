@@ -23,9 +23,9 @@ export default function SeatingPage() {
   const { studentId, campus: localCampus } = useLocalStudent();
   const { data: me } = useGetStudent(studentId || 0);
 
-  // Selected campus & section
-  const [selectedCampus, setSelectedCampus] = useState<"hyderabad" | "mohali">("hyderabad");
-  const [selectedSection, setSelectedSection] = useState<string>("A");
+  // Selected campus & section (Mohali first and auto-selected)
+  const [selectedCampus, setSelectedCampus] = useState<"hyderabad" | "mohali">("mohali");
+  const [selectedSection, setSelectedSection] = useState<string>("G");
   const [activeChart, setActiveChart] = useState<SeatingChartInfo | null>(null);
   const [availableCharts, setAvailableCharts] = useState<SeatingChartInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,20 +40,13 @@ export default function SeatingPage() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
-  // Sync user's campus and section if logged in
+  // Sync user's section if logged into a Mohali profile
   useEffect(() => {
-    if (me) {
-      if (me.campus === "hyderabad" || me.campus === "mohali") {
-        setSelectedCampus(me.campus);
-      }
-      if (me.section) {
-        setSelectedSection(me.section.toUpperCase());
-      }
-    } else if (localCampus) {
-      setSelectedCampus(localCampus);
-      setSelectedSection(localCampus === "hyderabad" ? "A" : "G");
+    if (me?.campus === "mohali" && me.section) {
+      setSelectedCampus("mohali");
+      setSelectedSection(me.section.toUpperCase());
     }
-  }, [me, localCampus]);
+  }, [me]);
 
   // Load available charts
   const fetchCharts = () => {
@@ -163,20 +156,8 @@ export default function SeatingPage() {
         </p>
       </header>
 
-      {/* Campus Switcher */}
+      {/* Campus Switcher (Mohali first) */}
       <div className="mb-4 grid grid-cols-2 gap-1.5 rounded-2xl bg-secondary p-1 border border-border w-full">
-        <button
-          type="button"
-          onClick={() => handleCampusChange("hyderabad")}
-          className={`flex items-center justify-center gap-1.5 rounded-xl py-2 text-xs font-semibold transition-all ${
-            selectedCampus === "hyderabad"
-              ? "bg-card text-foreground shadow-sm border border-card-border"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          <MapPin className="h-3.5 w-3.5" />
-          <span>Hyderabad</span>
-        </button>
         <button
           type="button"
           onClick={() => handleCampusChange("mohali")}
@@ -189,6 +170,18 @@ export default function SeatingPage() {
           <MapPin className="h-3.5 w-3.5" />
           <span>Mohali</span>
         </button>
+        <button
+          type="button"
+          onClick={() => handleCampusChange("hyderabad")}
+          className={`flex items-center justify-center gap-1.5 rounded-xl py-2 text-xs font-semibold transition-all ${
+            selectedCampus === "hyderabad"
+              ? "bg-card text-foreground shadow-sm border border-card-border"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <MapPin className="h-3.5 w-3.5" />
+          <span>Hyderabad</span>
+        </button>
       </div>
 
       {/* Section Selector Pills */}
@@ -198,7 +191,7 @@ export default function SeatingPage() {
             Select Section
           </p>
           <span className="text-[11px] text-muted-foreground">
-            {selectedCampus === "hyderabad" ? "Sec A – F" : "Sec G – L"}
+            {selectedCampus === "mohali" ? "Sec G – L" : "Sec A – F"}
           </span>
         </div>
         <div className="w-full min-w-0 overflow-hidden">
