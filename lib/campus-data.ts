@@ -35,6 +35,10 @@ interface RawSession {
   startTime: string;
   endTime: string;
   room: string | null;
+  isCancelled?: boolean;
+  rescheduledTo?: string;
+  rescheduledFrom?: string;
+  statusNote?: string;
 }
 
 const courses = coursesJson as Course[];
@@ -78,6 +82,10 @@ function toClassSession(s: RawSession): ClassSession {
     startTime: s.startTime,
     endTime: s.endTime,
     room: s.room,
+    isCancelled: s.isCancelled,
+    rescheduledTo: s.rescheduledTo,
+    rescheduledFrom: s.rescheduledFrom,
+    statusNote: s.statusNote,
   };
 }
 
@@ -144,7 +152,8 @@ export function getScheduleForDate(
 export function getWorkingDaySchedules(studentId: number): ScheduleDay[] {
   const { date: today } = nowInKolkata();
   const sessions = sessionsByStudent.get(studentId) ?? [];
-  const dates = [...new Set(sessions.map((session) => session.date))]
+  const activeSessions = sessions.filter((s) => !s.isCancelled);
+  const dates = [...new Set(activeSessions.map((session) => session.date))]
     .filter((date) => date >= today)
     .sort()
     .slice(0, 2);
@@ -182,6 +191,7 @@ export function getLiveStatus(studentId: number): LiveStatus {
   let nextSession: ClassSession | null = null;
 
   for (const s of todaySessions) {
+    if (s.isCancelled) continue;
     if (s.startTime <= time && time < s.endTime) {
       currentSession = s;
     } else if (s.startTime > time && !nextSession) {

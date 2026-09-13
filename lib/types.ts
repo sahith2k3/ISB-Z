@@ -20,6 +20,10 @@ export interface ClassSession {
   startTime: string; // HH:MM
   endTime: string; // HH:MM
   room: string | null;
+  isCancelled?: boolean;
+  rescheduledTo?: string;
+  rescheduledFrom?: string;
+  statusNote?: string;
 }
 
 export interface ScheduleDay {

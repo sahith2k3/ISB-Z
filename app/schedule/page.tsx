@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
@@ -40,6 +40,13 @@ export default function SchedulePage() {
           <h1 className="text-3xl font-display font-bold">My schedule</h1>
         </div>
       </header>
+      <div className="mb-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-3.5 text-xs text-muted-foreground flex items-start gap-2.5">
+        <span className="text-base leading-none shrink-0">ℹ️</span>
+        <div>
+          <span className="font-semibold text-foreground block mb-0.5">Term 4 Schedule Updates</span>
+          Rescheduled classes (Mohali: CCMA, LPFW, LSCM; Hyderabad: CMGT) are updated. Strikethrough sessions indicate original slots with their new dates noted.
+        </div>
+      </div>
       <StudentSchedule studentId={studentId} title="Upcoming classes" />
       <BottomNav />
     </div>

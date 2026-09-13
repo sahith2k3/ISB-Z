@@ -38,6 +38,9 @@ function DaySchedule({
   isToday: boolean;
   onOpenSeating?: (session: ClassSession) => void;
 }) {
+  const activeSessions = day.sessions.filter((s) => !s.isCancelled);
+  const cancelledSessions = day.sessions.filter((s) => s.isCancelled);
+
   return (
     <section data-testid={`schedule-day-${day.date}`}>
       <div className="flex items-center gap-2 mb-3">
@@ -50,45 +53,81 @@ function DaySchedule({
         </div>
       </div>
 
-      <div className="space-y-3 relative before:absolute before:inset-y-0 before:left-4 before:w-0.5 before:bg-border">
-        {day.sessions.map((session, index) => (
-          <div
-            key={`${day.date}-${session.courseCode}-${session.section}-${session.startTime}-${index}`}
-            className="relative flex gap-4"
-          >
-            <div className="w-8 shrink-0 flex justify-center z-10 pt-2">
-              <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary transition-transform duration-200 group-hover:scale-125" />
-            </div>
-            <div className="group flex-1 rounded-2xl p-4 border bg-card border-card-border transition-colors duration-200 hover:border-primary/40">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-sm font-semibold text-primary">
-                  {formatTime(session.startTime)} - {formatTime(session.endTime)}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => onOpenSeating?.(session)}
-                  title={`View ${session.courseCode} Section ${session.section} seating chart`}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-secondary/90 hover:bg-primary hover:text-primary-foreground text-foreground border border-border/60 transition-all active:scale-95"
-                >
-                  <Armchair className="h-3.5 w-3.5 text-primary group-hover:text-inherit" />
-                  <span>Seating</span>
-                </button>
+      {activeSessions.length > 0 ? (
+        <div className="space-y-3 relative before:absolute before:inset-y-0 before:left-4 before:w-0.5 before:bg-border">
+          {activeSessions.map((session, index) => (
+            <div
+              key={`${day.date}-${session.courseCode}-${session.section}-${session.startTime}-${index}`}
+              className="relative flex gap-4"
+            >
+              <div className="w-8 shrink-0 flex justify-center z-10 pt-2">
+                <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary transition-transform duration-200 group-hover:scale-125" />
               </div>
-              <h4 className="font-bold text-lg leading-tight mt-1.5 mb-1">
-                {session.courseName}
-              </h4>
-              <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground">
+              <div className="group flex-1 rounded-2xl p-4 border bg-card border-card-border transition-colors duration-200 hover:border-primary/40">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-sm font-semibold text-primary">
+                      {formatTime(session.startTime)} - {formatTime(session.endTime)}
+                    </span>
+                    {session.statusNote && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                        🔄 {session.statusNote}
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onOpenSeating?.(session)}
+                    title={`View ${session.courseCode} Section ${session.section} seating chart`}
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-secondary/90 hover:bg-primary hover:text-primary-foreground text-foreground border border-border/60 transition-all active:scale-95"
+                  >
+                    <Armchair className="h-3.5 w-3.5 text-primary group-hover:text-inherit" />
+                    <span>Seating</span>
+                  </button>
+                </div>
+                <h4 className="font-bold text-lg leading-tight mt-1.5 mb-1">
+                  {session.courseName}
+                </h4>
+                <div className="flex items-center justify-between gap-3 text-sm text-muted-foreground">
+                  <span>
+                    {session.courseCode} · Section {session.section}
+                  </span>
+                  <span className="flex items-center gap-1 shrink-0">
+                    <MapPin className="h-3 w-3" /> {session.room || "TBA"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-dashed border-primary/20 bg-card p-4 text-xs text-muted-foreground text-center">
+          No active classes today.
+        </div>
+      )}
+
+      {cancelledSessions.length > 0 && (
+        <div className="mt-3 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-3.5 text-xs">
+          <p className="font-semibold text-amber-700 dark:text-amber-300 mb-1.5 flex items-center gap-1.5">
+            <span>⚠️ Rescheduled Session{cancelledSessions.length > 1 ? "s" : ""}</span>
+          </p>
+          <div className="space-y-1.5">
+            {cancelledSessions.map((session, i) => (
+              <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-muted-foreground">
                 <span>
-                  {session.courseCode} · Section {session.section}
+                  <span className="line-through font-medium text-foreground">
+                    {session.courseCode} ({formatTime(session.startTime)} - {formatTime(session.endTime)})
+                  </span>
+                  {" · "}{session.courseName}
                 </span>
-                <span className="flex items-center gap-1 shrink-0">
-                  <MapPin className="h-3 w-3" /> {session.room || "TBA"}
+                <span className="font-semibold text-amber-600 dark:text-amber-400 shrink-0">
+                  {session.statusNote}
                 </span>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </section>
   );
 }

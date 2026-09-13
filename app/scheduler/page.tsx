@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useQueries } from "@tanstack/react-query";
@@ -75,6 +75,7 @@ function formatDay(date: string): string {
 
 function findFreeWindows(sessions: ClassSession[]): FreeWindow[] {
   const busy = sessions
+    .filter((session) => !session.isCancelled)
     .map((session) => ({
       start: Math.max(DAY_START, toMinutes(session.startTime)),
       end: Math.min(DAY_END, toMinutes(session.endTime)),
