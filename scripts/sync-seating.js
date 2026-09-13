@@ -7,6 +7,7 @@ if (!fs.existsSync(targetDir)) {
 }
 
 const sourceDirs = [
+  path.join(process.cwd(), 'attached_assets', 'seatings'),
   path.join(process.cwd(), 'attached_assets'),
   path.join(process.cwd(), 'assets')
 ];

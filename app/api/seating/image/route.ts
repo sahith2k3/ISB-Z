@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
   const sanitized = path.basename(file);
   const possibleDirs = [
     path.join(process.cwd(), "public", "seating"),
+    path.join(process.cwd(), "attached_assets", "seatings"),
     path.join(process.cwd(), "attached_assets"),
     path.join(process.cwd(), "assets"),
   ];

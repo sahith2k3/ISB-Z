@@ -62,6 +62,7 @@ export async function GET() {
   // 2. Scan local asset folders (public/seating, attached_assets, assets)
   const assetDirs = [
     { dir: path.join(process.cwd(), "public", "seating"), isPublic: true },
+    { dir: path.join(process.cwd(), "attached_assets", "seatings"), isPublic: false },
     { dir: path.join(process.cwd(), "attached_assets"), isPublic: false },
     { dir: path.join(process.cwd(), "assets"), isPublic: false },
   ];
