@@ -59,34 +59,43 @@ export async function GET() {
     }
   }
 
-  // 2. Scan public/seating folder if exists
-  const seatingDir = path.join(process.cwd(), "public", "seating");
-  if (fs.existsSync(seatingDir)) {
-    try {
-      const files = fs.readdirSync(seatingDir);
-      for (const file of files) {
-        if (/\.(jpg|jpeg|png|webp)$/i.test(file)) {
-          const parsed = parseSeatingFilename(file);
-          const courseCode = (parsed?.courseCode || file.replace(/\.[^/.]+$/, "")).toUpperCase();
-          const section = (parsed?.section || "All").toUpperCase();
-          const campus = parsed ? getCampusForSection(section) : undefined;
-          const courseName = courseNames.get(courseCode);
+  // 2. Scan local asset folders (public/seating, attached_assets, assets)
+  const assetDirs = [
+    { dir: path.join(process.cwd(), "public", "seating"), isPublic: true },
+    { dir: path.join(process.cwd(), "attached_assets"), isPublic: false },
+    { dir: path.join(process.cwd(), "assets"), isPublic: false },
+  ];
 
-          const key = `${courseCode}|${section}`;
-          if (!chartMap.has(key)) {
-            chartMap.set(key, {
-              filename: file,
-              url: `/seating/${encodeURIComponent(file)}`,
-              courseCode,
-              courseName,
-              section,
-              campus,
-            });
+  for (const { dir, isPublic } of assetDirs) {
+    if (fs.existsSync(dir)) {
+      try {
+        const files = fs.readdirSync(dir);
+        for (const file of files) {
+          if (/\.(jpg|jpeg|png|webp)$/i.test(file)) {
+            const parsed = parseSeatingFilename(file);
+            const courseCode = (parsed?.courseCode || file.replace(/\.[^/.]+$/, "")).toUpperCase();
+            const section = (parsed?.section || "All").toUpperCase();
+            const campus = parsed ? getCampusForSection(section) : undefined;
+            const courseName = courseNames.get(courseCode);
+
+            const key = `${courseCode}|${section}`;
+            if (!chartMap.has(key)) {
+              chartMap.set(key, {
+                filename: file,
+                url: isPublic
+                  ? `/seating/${encodeURIComponent(file)}`
+                  : `/api/seating/image?file=${encodeURIComponent(file)}`,
+                courseCode,
+                courseName,
+                section,
+                campus,
+              });
+            }
           }
         }
+      } catch (err) {
+        console.warn(`Error scanning ${dir}:`, err);
       }
-    } catch (err) {
-      console.warn("Error scanning public/seating:", err);
     }
   }
 
