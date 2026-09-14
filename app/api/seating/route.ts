@@ -111,7 +111,14 @@ export async function GET() {
     return a.courseCode.localeCompare(b.courseCode);
   });
 
-  return NextResponse.json({ charts: result });
+  return NextResponse.json(
+    { charts: result },
+    {
+      headers: {
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      },
+    }
+  );
 }
 
 export async function POST(request: NextRequest) {
