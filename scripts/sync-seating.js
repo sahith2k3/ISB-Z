@@ -22,9 +22,11 @@ for (const dir of sourceDirs) {
         const srcPath = path.join(dir, file);
         const destPath = path.join(targetDir, file);
         try {
-          fs.copyFileSync(srcPath, destPath);
-          console.log(`[sync-seating] Copied ${file} from ${path.basename(dir)} to public/seating/`);
-          copiedCount++;
+          if (!fs.existsSync(destPath)) {
+            fs.copyFileSync(srcPath, destPath);
+            console.log(`[sync-seating] Copied ${file} from ${path.basename(dir)} to public/seating/`);
+            copiedCount++;
+          }
         } catch (err) {
           console.error(`[sync-seating] Failed to copy ${file}:`, err);
         }
