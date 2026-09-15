@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";
+import { ShareButton } from "@/components/share-button";
 
 export function HomeView() {
   const { studentId, logout } = useLocalStudent();
@@ -103,7 +104,8 @@ export function HomeView() {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <ShareButton source="home_header" />
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
@@ -201,14 +203,17 @@ export function HomeView() {
             <p className="mb-8 max-w-[250px] text-muted-foreground">
               Add people from your cohort to see who&apos;s free right now.
             </p>
-            <button
-              type="button"
-              onClick={() => setSearchOpen(true)}
-              data-testid="button-find-people"
-              className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95"
-            >
-              Find People
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setSearchOpen(true)}
+                data-testid="button-find-people"
+                className="rounded-xl bg-primary px-5 py-2.5 font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95 text-xs"
+              >
+                Find People
+              </button>
+              <ShareButton variant="pill" source="empty_friends_state" />
+            </div>
           </div>
         ) : (
           <div className="mt-2 space-y-3">
@@ -292,6 +297,9 @@ export function HomeView() {
                 </motion.div>
               ))}
             </AnimatePresence>
+            <div className="pt-3 pb-1">
+              <ShareButton variant="banner" source="home_feed" />
+            </div>
           </div>
         )}
       </main>

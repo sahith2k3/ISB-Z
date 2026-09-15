@@ -65,6 +65,17 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
         action VARCHAR(16) NOT NULL,
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
       );
+
+      CREATE TABLE IF NOT EXISTS share_events (
+        id SERIAL PRIMARY KEY,
+        student_id INTEGER,
+        student_name VARCHAR(128),
+        campus VARCHAR(32),
+        source VARCHAR(64) NOT NULL,
+        method VARCHAR(32) NOT NULL,
+        user_agent TEXT,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+      );
     `);
 
     // 2. Insert records

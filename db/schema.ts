@@ -69,3 +69,21 @@ export const seatingChartsTable = pgTable(
 export type SeatingChart = typeof seatingChartsTable.$inferSelect;
 export type InsertSeatingChart = typeof seatingChartsTable.$inferInsert;
 
+// Share events: logs when users invoke the share feature
+export const shareEventsTable = pgTable("share_events", {
+  id: serial("id").primaryKey(),
+  studentId: integer("student_id"),
+  studentName: varchar("student_name", { length: 128 }),
+  campus: varchar("campus", { length: 32 }),
+  source: varchar("source", { length: 64 }).notNull(), // 'header_btn' | 'home_card' | 'schedule_header' | 'seating_header' | 'scheduler_header'
+  method: varchar("method", { length: 32 }).notNull(), // 'native_share' | 'whatsapp' | 'clipboard' | 'telegram'
+  userAgent: text("user_agent"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type ShareEvent = typeof shareEventsTable.$inferSelect;
+export type InsertShareEvent = typeof shareEventsTable.$inferInsert;
+
+

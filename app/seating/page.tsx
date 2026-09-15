@@ -25,6 +25,7 @@ import { CAMPUS_SECTIONS, type SeatingChartInfo } from "@/lib/seating";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
 import { SeatingModal } from "@/components/seating-modal";
+import { ShareButton } from "@/components/share-button";
 import sessionsData from "@/data/sessions.json";
 import coursesData from "@/data/courses.json";
 
@@ -183,18 +184,21 @@ export default function SeatingPage() {
     <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 pb-32 pt-5">
       {/* Header */}
       <header className="mb-4 w-full min-w-0">
-        <div className="flex items-center gap-2.5 min-w-0 mb-1.5">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-            <Armchair className="h-5 w-5" />
+        <div className="flex items-center justify-between gap-2.5 min-w-0 mb-1.5">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
+              <Armchair className="h-5 w-5" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 truncate">
+                Classroom Layouts
+              </p>
+              <h1 className="text-2xl font-display font-bold text-foreground leading-tight">
+                Seating Charts
+              </h1>
+            </div>
           </div>
-          <div className="min-w-0">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70 truncate">
-              Classroom Layouts
-            </p>
-            <h1 className="text-2xl font-display font-bold text-foreground leading-tight">
-              Seating Charts
-            </h1>
-          </div>
+          <ShareButton source="seating_header" />
         </div>
         <p className="text-xs text-muted-foreground leading-normal">
           Search any student or browse classes below to open high-resolution seating layouts.

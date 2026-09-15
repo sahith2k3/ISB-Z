@@ -30,6 +30,7 @@ import { Input } from "@/components/ui/input";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { formatTime } from "@/lib/utils";
 import { BottomNav } from "@/components/bottom-nav";
+import { ShareButton } from "@/components/share-button";
 import Link from "next/link";
 
 const MAX_GROUP_SIZE = 5;
@@ -227,9 +228,12 @@ export default function Scheduler() {
   return (
     <div className="min-h-[100dvh] max-w-md mx-auto overflow-y-auto bg-background px-6 pb-32 pt-7">
       <header className="mb-7">
-        <div className="mb-2 flex items-center gap-2 text-primary">
-          <Sparkles className="h-4 w-4" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Plan together</span>
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-primary">
+            <Sparkles className="h-4 w-4" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Plan together</span>
+          </div>
+          <ShareButton source="scheduler_header" />
         </div>
         <h1 className="text-3xl font-display font-bold">Find a time for everyone</h1>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
