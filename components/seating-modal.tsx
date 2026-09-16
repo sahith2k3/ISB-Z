@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { X, ZoomIn, ZoomOut, RotateCcw, ExternalLink, Armchair, AlertCircle } from "lucide-react";
-import { getSeatingCandidateUrls } from "@/lib/seating";
 import Link from "next/link";
 
 interface SeatingModalProps {
@@ -45,18 +44,7 @@ export function SeatingModal({
         return;
       }
 
-      // Test candidate URLs
-      const candidates = getSeatingCandidateUrls(courseCode, section);
       let isCancelled = false;
-
-      const testImage = (url: string): Promise<boolean> => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.src = url;
-        });
-      };
 
       const findValidUrl = async () => {
         // Fetch authoritative chart list from /api/seating
