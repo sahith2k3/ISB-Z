@@ -1,4 +1,4 @@
-const SEATING_CACHE = 'isbusy-seating-v4';
+const SEATING_CACHE = 'isbusy-seating-v5';
 
 // Service worker for PWA installability and high-speed offline seating charts.
 // Live class status and friends data always bypass the cache to guarantee real-time data.
@@ -33,6 +33,8 @@ self.addEventListener('fetch', (event) => {
           if (networkResponse && networkResponse.status === 200) {
             const clone = networkResponse.clone();
             caches.open(SEATING_CACHE).then((cache) => cache.put(event.request, clone));
+          } else if (networkResponse && networkResponse.status === 404) {
+            caches.open(SEATING_CACHE).then((cache) => cache.delete(event.request));
           }
           return networkResponse;
         })

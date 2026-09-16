@@ -59,7 +59,7 @@ export function SeatingModal({
       };
 
       const findValidUrl = async () => {
-        // Also fetch from /api/seating
+        // Fetch authoritative chart list from /api/seating
         try {
           const res = await fetch("/api/seating", { cache: "no-store" });
           if (res.ok) {
@@ -76,20 +76,12 @@ export function SeatingModal({
             }
           }
         } catch {
-          // ignore API error, fallback to candidates
+          // ignore API error
         }
 
-        for (const url of candidates) {
-          if (isCancelled) return;
-          const ok = await testImage(url);
-          if (ok && !isCancelled) {
-            setResolvedUrl(url);
-            setIsLoading(false);
-            return;
-          }
-        }
-
+        // If not in /api/seating, the seating chart is not published yet
         if (!isCancelled) {
+          setResolvedUrl(null);
           setHasError(true);
           setIsLoading(false);
         }
