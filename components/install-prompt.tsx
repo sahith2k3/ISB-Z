@@ -6,8 +6,13 @@ import { Download, Share, SquarePlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
 
+import { usePathname } from "next/navigation";
+import { useLocalStudent } from "@/hooks/use-local-student";
+
 export function InstallPrompt() {
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const { studentId } = useLocalStudent();
 
   useEffect(() => {
     setMounted(true);
@@ -16,7 +21,11 @@ export function InstallPrompt() {
   const { visible, canPromptNatively, showIosInstructions, promptInstall, dismiss } =
     useInstallPrompt();
 
-  if (!mounted) {
+  // On the first page (/ with no student selected), hide the prompt so it
+  // never collides with the campus selection or "View Seating without sign up" bar
+  const isOnboarding = pathname === "/" && !studentId;
+
+  if (!mounted || isOnboarding) {
     return null;
   }
 

@@ -22,7 +22,16 @@ for (const dir of sourceDirs) {
         const srcPath = path.join(dir, file);
         const destPath = path.join(targetDir, file);
         try {
-          if (!fs.existsSync(destPath)) {
+          const srcStat = fs.statSync(srcPath);
+          const destExists = fs.existsSync(destPath);
+          let shouldCopy = !destExists;
+          if (destExists) {
+            const destStat = fs.statSync(destPath);
+            if (srcStat.mtimeMs > destStat.mtimeMs) {
+              shouldCopy = true;
+            }
+          }
+          if (shouldCopy) {
             fs.copyFileSync(srcPath, destPath);
             console.log(`[sync-seating] Copied ${file} from ${path.basename(dir)} to public/seating/`);
             copiedCount++;
