@@ -1,4 +1,4 @@
-const SEATING_CACHE = 'isbusy-seating-v5';
+const SEATING_CACHE = 'isbusy-seating-v6';
 
 // Service worker for PWA installability and high-speed offline seating charts.
 // Live class status and friends data always bypass the cache to guarantee real-time data.
