@@ -81,11 +81,17 @@ export async function GET() {
 
             const key = `${courseCode}|${section}`;
             if (!chartMap.has(key)) {
+              let version = "";
+              try {
+                const stat = fs.statSync(path.join(dir, file));
+                version = `?v=${Math.floor(stat.mtimeMs)}`;
+              } catch {}
+
               chartMap.set(key, {
                 filename: file,
                 url: isPublic
-                  ? `/seating/${encodeURIComponent(file)}`
-                  : `/api/seating/image?file=${encodeURIComponent(file)}`,
+                  ? `/seating/${encodeURIComponent(file)}${version}`
+                  : `/api/seating/image?file=${encodeURIComponent(file)}${version ? `&${version.slice(1)}` : ""}`,
                 courseCode,
                 courseName,
                 section,
@@ -115,7 +121,7 @@ export async function GET() {
     { charts: result },
     {
       headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
       },
     }
   );

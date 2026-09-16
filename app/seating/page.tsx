@@ -106,7 +106,7 @@ export default function SeatingPage() {
   // Load available seating charts from API
   useEffect(() => {
     setIsLoadingCharts(true);
-    fetch("/api/seating")
+    fetch("/api/seating", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data.charts)) {

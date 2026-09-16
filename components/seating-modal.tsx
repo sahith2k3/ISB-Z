@@ -61,7 +61,7 @@ export function SeatingModal({
       const findValidUrl = async () => {
         // Also fetch from /api/seating
         try {
-          const res = await fetch("/api/seating");
+          const res = await fetch("/api/seating", { cache: "no-store" });
           if (res.ok) {
             const data = await res.json();
             const match = data.charts?.find(

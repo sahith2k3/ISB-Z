@@ -1,4 +1,4 @@
-const SEATING_CACHE = 'isbusy-seating-v1';
+const SEATING_CACHE = 'isbusy-seating-v4';
 
 // Service worker for PWA installability and high-speed offline seating charts.
 // Live class status and friends data always bypass the cache to guarantee real-time data.
@@ -7,30 +7,39 @@ self.addEventListener('install', () => {
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  // Purge all old caches to immediately clear stale seating photos
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== SEATING_CACHE) {
+            return caches.delete(key);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Cache-first strategy exclusively for static seating arrangement photos
+  // Network-first strategy for seating photos: always fetch fresh from network if online,
+  // falling back to local cache if offline or on network failure.
   if (url.pathname.startsWith('/seating/') && /\.(jpg|jpeg|png|webp)$/i.test(url.pathname)) {
     event.respondWith(
-      caches.open(SEATING_CACHE).then(async (cache) => {
-        const cached = await cache.match(event.request);
-        if (cached) {
-          return cached;
-        }
-        try {
-          const networkResponse = await fetch(event.request);
+      fetch(event.request)
+        .then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
-            cache.put(event.request, networkResponse.clone());
+            const clone = networkResponse.clone();
+            caches.open(SEATING_CACHE).then((cache) => cache.put(event.request, clone));
           }
           return networkResponse;
-        } catch {
+        })
+        .catch(async () => {
+          const cached = await caches.match(event.request);
           return cached || Response.error();
-        }
-      })
+        })
     );
     return;
   }
