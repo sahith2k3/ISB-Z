@@ -1,9 +1,8 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Check, Copy, Share2, MessageCircle, Send, Sparkles } from "lucide-react";
+import { Check, Copy, Share2, MessageCircle, Sparkles } from "lucide-react";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent } from "@/lib/api-client";
 import { track } from "@vercel/analytics";
@@ -88,12 +87,6 @@ export function ShareModal({ isOpen, onClose, source = "unknown" }: ShareModalPr
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
-  const handleTelegramShare = () => {
-    logShare("telegram");
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(appUrl)}&text=${encodeURIComponent(shareText)}`;
-    window.open(telegramUrl, "_blank", "noopener,noreferrer");
-  };
-
   const handleNativeShare = async () => {
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
@@ -157,16 +150,6 @@ export function ShareModal({ isOpen, onClose, source = "unknown" }: ShareModalPr
               More Share Options
             </button>
           )}
-
-          {/* Telegram Share Button */}
-          <button
-            type="button"
-            onClick={handleTelegramShare}
-            className="flex w-full items-center justify-center gap-2.5 rounded-2xl border border-sky-500/20 bg-sky-500/10 px-4 py-2.5 text-xs font-semibold text-sky-600 hover:bg-sky-500/20 active:scale-[0.98] transition-all"
-          >
-            <Send className="h-3.5 w-3.5 text-sky-500" />
-            Share via Telegram
-          </button>
 
           {/* Copy Link Input Box */}
           <div className="pt-1">
