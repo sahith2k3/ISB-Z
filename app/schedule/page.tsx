@@ -36,9 +36,6 @@ export default function SchedulePage() {
             <ChevronLeft className="h-5 w-5" />
           </Link>
           <div className="min-w-0">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60 truncate">
-              Your week, at a glance
-            </p>
             <h1 className="text-3xl font-display font-bold truncate">My schedule</h1>
           </div>
         </div>

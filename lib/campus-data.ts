@@ -239,3 +239,54 @@ export function getStudentEnrollments(studentId: number): StudentEnrolledCourse[
     };
   }).sort((a, b) => a.courseCode.localeCompare(b.courseCode));
 }
+
+/**
+ * Returns upcoming dates for group availability in the scheduler.
+ * Includes Monday-Thursday and any Fridays that have scheduled classes throughout Term 4,
+ * dynamically updating based on Asia/Kolkata current date.
+ */
+export function getSchedulerWorkingDates(count = 7): string[] {
+  const { date: today } = nowInKolkata();
+
+  const fridayClassDates = new Set<string>();
+  for (const s of rawSessions) {
+    if (!s.isCancelled) {
+      const weekday = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Kolkata",
+        weekday: "short",
+      }).format(new Date(`${s.date}T12:00:00+05:30`));
+      if (weekday === "Fri") {
+        fridayClassDates.add(s.date);
+      }
+    }
+  }
+
+  const result: string[] = [];
+  const start = new Date(`${today}T12:00:00+05:30`);
+
+  for (let i = 0; i < 60 && result.length < count; i++) {
+    const cur = new Date(start.getTime() + i * 24 * 60 * 60 * 1000);
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(cur);
+    const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
+    const dateStr = `${get("year")}-${get("month")}-${get("day")}`;
+
+    const weekday = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Kolkata",
+      weekday: "short",
+    }).format(cur);
+
+    if (["Mon", "Tue", "Wed", "Thu"].includes(weekday)) {
+      result.push(dateStr);
+    } else if (weekday === "Fri" && fridayClassDates.has(dateStr)) {
+      result.push(dateStr);
+    }
+  }
+
+  return result;
+}
+

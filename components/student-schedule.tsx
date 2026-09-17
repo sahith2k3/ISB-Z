@@ -154,9 +154,6 @@ export function StudentSchedule({
     <section className="mx-auto w-full max-w-3xl">
       <div className="mb-7 flex items-start justify-between gap-4">
         <div>
-          <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-primary/70">
-            Your week, at a glance
-          </p>
           <h2 className="text-2xl font-display font-bold text-foreground sm:text-3xl" data-testid="text-schedule-title">
             {title}
           </h2>

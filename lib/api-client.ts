@@ -167,6 +167,22 @@ export function useGetStudentScheduleWorkingDays(studentId: number | null | unde
   });
 }
 
+export const getGetSchedulerDatesQueryKey = () => ["schedulerDates"] as const;
+
+export const getGetSchedulerDatesQueryOptions = () => ({
+  queryKey: getGetSchedulerDatesQueryKey(),
+  queryFn: () => fetchJson<{ dates: string[] }>("/api/scheduler/dates"),
+  staleTime: 60_000,
+});
+
+export function useGetSchedulerDates() {
+  return useQuery({
+    queryKey: getGetSchedulerDatesQueryKey(),
+    queryFn: () => fetchJson<{ dates: string[] }>("/api/scheduler/dates"),
+    staleTime: 60_000,
+  });
+}
+
 export function useAddFriend() {
   const queryClient = useQueryClient();
 

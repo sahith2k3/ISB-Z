@@ -5,10 +5,8 @@ import { useQueries } from "@tanstack/react-query";
 import {
   getGetStudentScheduleForDateQueryKey,
   getGetStudentScheduleForDateQueryOptions,
-  getGetStudentScheduleWorkingDaysQueryKey,
-  getGetStudentScheduleWorkingDaysQueryOptions,
+  useGetSchedulerDates,
   type ClassSession,
-  type ScheduleDay,
   type StudentSummary,
   useGetStudent,
   useListStudents,
@@ -71,7 +69,76 @@ function formatDay(date: string): string {
     day: "numeric",
     month: "short",
     timeZone: "Asia/Kolkata",
-  }).format(new Date(`${date}T00:00:00+05:30`));
+  }).format(new Date(`${date}T12:00:00+05:30`));
+}
+
+function getTodayInKolkata(): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const get = (type: string) => parts.find((part) => part.type === type)?.value ?? "";
+  return `${get("year")}-${get("month")}-${get("day")}`;
+}
+
+const TERM4_FRIDAYS_WITH_CLASSES = new Set([
+  "2026-09-11",
+  "2026-09-18",
+  "2026-09-25",
+  "2026-10-09",
+]);
+
+function getClientFallbackDates(count = 7): string[] {
+  const todayStr = getTodayInKolkata();
+  const result: string[] = [];
+  const start = new Date(`${todayStr}T12:00:00+05:30`);
+
+  for (let i = 0; i < 60 && result.length < count; i++) {
+    const cur = new Date(start.getTime() + i * 24 * 60 * 60 * 1000);
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(cur);
+    const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
+    const dateStr = `${get("year")}-${get("month")}-${get("day")}`;
+    const weekday = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Kolkata",
+      weekday: "short",
+    }).format(cur);
+
+    if (["Mon", "Tue", "Wed", "Thu"].includes(weekday)) {
+      result.push(dateStr);
+    } else if (weekday === "Fri" && TERM4_FRIDAYS_WITH_CLASSES.has(dateStr)) {
+      result.push(dateStr);
+    }
+  }
+
+  return result;
+}
+
+function getDateTag(dateStr: string, index: number, todayStr: string): string {
+  if (dateStr === todayStr) return "Today";
+  const todayDt = new Date(`${todayStr}T12:00:00+05:30`);
+  const tomDt = new Date(todayDt.getTime() + 24 * 60 * 60 * 1000);
+  const tomParts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(tomDt);
+  const get = (type: string) => tomParts.find((p) => p.type === type)?.value ?? "";
+  const tomorrowStr = `${get("year")}-${get("month")}-${get("day")}`;
+  if (dateStr === tomorrowStr) return "Tomorrow";
+  if (index === 0) return "Soonest";
+
+  return new Intl.DateTimeFormat("en-IN", {
+    weekday: "short",
+    timeZone: "Asia/Kolkata",
+  }).format(new Date(`${dateStr}T12:00:00+05:30`));
 }
 
 function findFreeWindows(sessions: ClassSession[]): FreeWindow[] {
@@ -150,30 +217,20 @@ export default function Scheduler() {
     },
   );
 
-  const workingDayQueries = useQueries({
-    queries: group.map((person) =>
-      getGetStudentScheduleWorkingDaysQueryOptions(person.id, {
-        query: {
-          queryKey: getGetStudentScheduleWorkingDaysQueryKey(person.id),
-          staleTime: 60_000,
-        },
-      }),
-    ),
-  });
+  const { data: serverDatesData, isLoading: datesLoading } = useGetSchedulerDates();
 
   const dayOptions = useMemo(() => {
-    const days = new Map<string, ScheduleDay>();
-    workingDayQueries.forEach((query) => {
-      query.data?.forEach((day) => {
-        if (!days.has(day.date)) days.set(day.date, day);
-      });
-    });
-    return [...days.values()].sort((a, b) => a.date.localeCompare(b.date));
-  }, [workingDayQueries]);
+    if (serverDatesData?.dates && serverDatesData.dates.length > 0) {
+      return serverDatesData.dates;
+    }
+    return getClientFallbackDates(7);
+  }, [serverDatesData]);
 
   useEffect(() => {
-    if (!selectedDate || !dayOptions.some((day) => day.date === selectedDate)) {
-      setSelectedDate(dayOptions[0]?.date ?? "");
+    if (!selectedDate || !dayOptions.includes(selectedDate)) {
+      if (dayOptions.length > 0) {
+        setSelectedDate(dayOptions[0]);
+      }
     }
   }, [dayOptions, selectedDate]);
 
@@ -190,9 +247,7 @@ export default function Scheduler() {
       : [],
   });
 
-  const isDayLoading =
-    dayQueries.some((query) => query.isLoading) ||
-    workingDayQueries.some((query) => query.isLoading);
+  const isDayLoading = dayQueries.some((query) => query.isLoading);
   const hasDayError = dayQueries.some((query) => query.isError);
   const freeWindows = useMemo(() => {
     if (!selectedDate || group.length === 0 || hasDayError) return [];
@@ -330,13 +385,15 @@ export default function Scheduler() {
             </div>
             {dayOptions.length > 0 ? (
               <div className="flex gap-2 overflow-x-auto pb-1">
-                {dayOptions.map((day) => {
-                  const active = day.date === selectedDate;
+                {dayOptions.map((date, index) => {
+                  const active = date === selectedDate;
+                  const todayStr = getTodayInKolkata();
+                  const tag = getDateTag(date, index, todayStr);
                   return (
                     <button
                       type="button"
-                      key={day.date}
-                      onClick={() => setSelectedDate(day.date)}
+                      key={date}
+                      onClick={() => setSelectedDate(date)}
                       className={`min-w-[105px] rounded-2xl border px-3 py-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                         active
                           ? "border-primary bg-primary text-primary-foreground shadow-sm"
@@ -344,14 +401,14 @@ export default function Scheduler() {
                       }`}
                     >
                       <span className="block text-xs font-bold uppercase tracking-wide opacity-70">
-                        {day.date === dayOptions[0]?.date ? "Soonest" : "Next"}
+                        {tag}
                       </span>
-                      <span className="mt-1 block text-sm font-semibold">{formatDay(day.date)}</span>
+                      <span className="mt-1 block text-sm font-semibold">{formatDay(date)}</span>
                     </button>
                   );
                 })}
               </div>
-            ) : isDayLoading ? (
+            ) : (isDayLoading || datesLoading) ? (
               <div className="h-16 animate-pulse rounded-2xl bg-muted" />
             ) : (
               <div className="rounded-2xl border border-dashed border-primary/20 bg-card p-4 text-sm text-muted-foreground">
