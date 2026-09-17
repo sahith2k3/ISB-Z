@@ -2194,6 +2194,15 @@
         "statusNote": "Rescheduled from 30th September"
     },
     {
+        "campus": "hyderabad",
+        "courseCode": "REMA",
+        "section": "A",
+        "date": "2026-09-18",
+        "startTime": "13:30",
+        "endTime": "15:30",
+        "room": "AC 8 LT"
+    },
+    {
         "campus": "mohali",
         "courseCode": "CCMA",
         "section": "G",
@@ -3040,6 +3049,15 @@
         "room": "AS 3 LT Vikramashila"
     },
     {
+        "campus": "mohali",
+        "courseCode": "MGSP",
+        "section": "G",
+        "date": "2026-09-24",
+        "startTime": "08:00",
+        "endTime": "10:00",
+        "room": "AS 1 LT Nalanda"
+    },
+    {
         "campus": "hyderabad",
         "courseCode": "CSOD",
         "section": "A",
@@ -3276,6 +3294,15 @@
         "statusNote": "Rescheduled from 8th October"
     },
     {
+        "campus": "hyderabad",
+        "courseCode": "SUET",
+        "section": "A",
+        "date": "2026-09-25",
+        "startTime": "08:00",
+        "endTime": "10:00",
+        "room": "AC 2 LT"
+    },
+    {
         "campus": "mohali",
         "courseCode": "ENTR",
         "section": "G",
@@ -3283,6 +3310,15 @@
         "startTime": "10:15",
         "endTime": "12:15",
         "room": "AS 2 LT Pushpagiri"
+    },
+    {
+        "campus": "hyderabad",
+        "courseCode": "SUET",
+        "section": "E",
+        "date": "2026-09-25",
+        "startTime": "10:15",
+        "endTime": "12:15",
+        "room": "AC 2 LT"
     },
     {
         "campus": "mohali",
@@ -3314,6 +3350,15 @@
         "room": "AS 1 LT Nalanda",
         "rescheduledFrom": "2026-09-14",
         "statusNote": "Rescheduled from 14th September"
+    },
+    {
+        "campus": "hyderabad",
+        "courseCode": "SUET",
+        "section": "B",
+        "date": "2026-09-25",
+        "startTime": "14:45",
+        "endTime": "16:45",
+        "room": "AC 2 LT"
     },
     {
         "campus": "mohali",
@@ -5413,6 +5458,15 @@
         "room": "AC 8 LT"
     },
     {
+        "campus": "mohali",
+        "courseCode": "ENTR",
+        "section": "G",
+        "date": "2026-10-08",
+        "startTime": "14:45",
+        "endTime": "16:45",
+        "room": "AS 3 LT Vikramashila"
+    },
+    {
         "campus": "hyderabad",
         "courseCode": "CSOD",
         "section": "B",
@@ -5450,6 +5504,15 @@
         "startTime": "17:00",
         "endTime": "19:00",
         "room": "AS 1 LT Nalanda"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "ENTR",
+        "section": "H",
+        "date": "2026-10-08",
+        "startTime": "17:00",
+        "endTime": "19:00",
+        "room": "AS 2 LT Pushpagiri"
     },
     {
         "campus": "mohali",
