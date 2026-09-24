@@ -107,7 +107,10 @@
             "H"
         ],
         "venue": "AS 2 LT Pushpagiri (Section H), AS3 LT Vikramshila (Section G)",
-        "faculty": "Ramakrishna S Velamuri"
+        "faculty": "Ramakrishna S Velamuri",
+        "rescheduleNotes": [
+            "Thursday, October 8, 2026 sessions (Section G at 14:45 – 16:45, Section H at 17:00 – 19:00) are rescheduled to Friday, September 25, 2026 as a joint session for Sections G and H (10:15 – 12:15, Venue-MPH)."
+        ]
     },
     {
         "code": "GENAI",
@@ -143,7 +146,10 @@
             "I"
         ],
         "venue": "AS 2 LT Pushpagiri",
-        "faculty": "Seung Hoon Lee"
+        "faculty": "Seung Hoon Lee",
+        "rescheduleNotes": [
+            "Section G session originally on Monday, September 21, 2026 (17:00 – 19:00) is rescheduled to Friday, September 25, 2026 (17:00 – 19:00, AS 2 LT Pushpagiri)."
+        ]
     },
     {
         "code": "INFS",
@@ -155,7 +161,10 @@
             "B"
         ],
         "venue": "AC 2 LT",
-        "faculty": "Prasanna L. Tantri (Sessions 1–10)"
+        "faculty": "Prasanna L. Tantri (Sessions 1–10)",
+        "rescheduleNotes": [
+            "Thursday, September 24, 2026 sessions (Section A at 08:00 – 10:00, Section B at 14:45 – 16:45) are cancelled in the revised timetable."
+        ]
     },
     {
         "code": "LPFW",
@@ -198,7 +207,10 @@
             "G"
         ],
         "venue": "AS 1 LT Nalanda",
-        "faculty": "Harsha Tadikonda"
+        "faculty": "Harsha Tadikonda",
+        "rescheduleNotes": [
+            "Thursday, September 24, 2026 session was cancelled (makeup session was held on Friday, September 18, 2026)."
+        ]
     },
     {
         "code": "MKTR",
@@ -269,7 +281,11 @@
             "A"
         ],
         "venue": "AC 8 LT",
-        "faculty": "Sumit Kunnumkal (Sessions 1–10)"
+        "faculty": "Sumit Kunnumkal (Sessions 1–10)",
+        "rescheduleNotes": [
+            "Section A session on Friday, September 18, 2026 is rescheduled to Friday, September 25, 2026 (12:30 – 14:30, AC 8 LT).",
+            "REMA Guest Speaker Session is scheduled on Tuesday, October 6, 2026 (19:30 – 20:30, AC 8 LT)."
+        ]
     },
     {
         "code": "SPMG",
@@ -316,7 +332,10 @@
             "L"
         ],
         "venue": "AC2 LT",
-        "faculty": "Shashwat Alok\nHariom Manchiraju\nShilpa Aggarwal\nBhagwan Chowdhry\nPoornima Vinoo\nDebolina Dutta\nD V R Seshadri\nVidya Mani"
+        "faculty": "Shashwat Alok\nHariom Manchiraju\nShilpa Aggarwal\nBhagwan Chowdhry\nPoornima Vinoo\nDebolina Dutta\nD V R Seshadri\nVidya Mani",
+        "rescheduleNotes": [
+            "Wednesday, September 23, 2026 sessions (Section A at 10:15 – 12:15, Section E at 12:30 – 14:30, Section B at 17:00 – 19:00) are rescheduled to Friday, September 25, 2026 (Section A at 08:00 – 10:00, Section E at 10:15 – 12:15, Section B at 14:45 – 16:45, AC 2 LT)."
+        ]
     },
     {
         "code": "SWPM",

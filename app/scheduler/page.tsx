@@ -281,22 +281,22 @@ export default function Scheduler() {
   }
 
   return (
-    <div className="min-h-[100dvh] max-w-md mx-auto overflow-y-auto bg-background px-6 pb-32 pt-7">
+    <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 sm:px-6 pb-32 pt-7">
       <header className="mb-7">
         <div className="mb-2 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-primary">
-            <Sparkles className="h-4 w-4" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Plan together</span>
+          <div className="flex items-center gap-2 text-primary min-w-0">
+            <Sparkles className="h-4 w-4 shrink-0" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] truncate">Plan together</span>
           </div>
           <ShareButton source="scheduler_header" />
         </div>
-        <h1 className="text-3xl font-display font-bold">Find a time for everyone</h1>
+        <h1 className="text-2xl sm:text-3xl font-display font-bold">Find a time for everyone</h1>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
           Build a group of up to five and see when all of you are free on the same day.
         </p>
       </header>
 
-      <section className="mb-6 rounded-3xl border border-primary/10 bg-card p-4 shadow-sm">
+      <section className="mb-6 rounded-3xl border border-primary/10 bg-card p-4 shadow-sm w-full min-w-0">
         <div className="mb-3 flex items-center justify-between gap-3">
           <div>
             <p className="text-sm font-bold text-foreground">Your group</p>
@@ -378,35 +378,37 @@ export default function Scheduler() {
 
       {group.length > 0 && (
         <>
-          <section className="mb-6">
+          <section className="mb-6 w-full min-w-0">
             <div className="mb-3 flex items-center gap-2">
-              <CalendarDays className="h-4 w-4 text-primary" />
+              <CalendarDays className="h-4 w-4 text-primary shrink-0" />
               <h2 className="text-sm font-bold uppercase tracking-[0.16em]">Choose a day</h2>
             </div>
             {dayOptions.length > 0 ? (
-              <div className="flex gap-2 overflow-x-auto pb-1">
-                {dayOptions.map((date, index) => {
-                  const active = date === selectedDate;
-                  const todayStr = getTodayInKolkata();
-                  const tag = getDateTag(date, index, todayStr);
-                  return (
-                    <button
-                      type="button"
-                      key={date}
-                      onClick={() => setSelectedDate(date)}
-                      className={`min-w-[105px] rounded-2xl border px-3 py-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                        active
-                          ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                          : "border-card-border bg-card text-foreground hover:border-primary/40"
-                      }`}
-                    >
-                      <span className="block text-xs font-bold uppercase tracking-wide opacity-70">
-                        {tag}
-                      </span>
-                      <span className="mt-1 block text-sm font-semibold">{formatDay(date)}</span>
-                    </button>
-                  );
-                })}
+              <div className="w-full min-w-0 overflow-x-auto pb-2 pt-0.5 -mx-4 px-4 sm:-mx-6 sm:px-6 overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                <div className="inline-flex gap-2">
+                  {dayOptions.map((date, index) => {
+                    const active = date === selectedDate;
+                    const todayStr = getTodayInKolkata();
+                    const tag = getDateTag(date, index, todayStr);
+                    return (
+                      <button
+                        type="button"
+                        key={date}
+                        onClick={() => setSelectedDate(date)}
+                        className={`min-w-[95px] shrink-0 rounded-2xl border px-3 py-2.5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                          active
+                            ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                            : "border-card-border bg-card text-foreground hover:border-primary/40"
+                        }`}
+                      >
+                        <span className="block text-[11px] font-bold uppercase tracking-wide opacity-70">
+                          {tag}
+                        </span>
+                        <span className="mt-0.5 block text-sm font-semibold">{formatDay(date)}</span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             ) : (isDayLoading || datesLoading) ? (
               <div className="h-16 animate-pulse rounded-2xl bg-muted" />
@@ -417,17 +419,17 @@ export default function Scheduler() {
             )}
           </section>
 
-          <section className="rounded-3xl bg-primary p-5 text-primary-foreground shadow-lg shadow-primary/15">
+          <section className="rounded-3xl bg-primary p-5 text-primary-foreground shadow-lg shadow-primary/15 w-full min-w-0">
             <div className="mb-5 flex items-start justify-between gap-3">
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground/65">
                   Shared availability
                 </p>
-                <h2 className="mt-1 text-2xl font-display font-bold">
+                <h2 className="mt-1 text-2xl font-display font-bold truncate">
                   {selectedDate ? formatDay(selectedDate) : "Pick a day"}
                 </h2>
               </div>
-              <Clock3 className="h-6 w-6 text-primary-foreground/70" />
+              <Clock3 className="h-6 w-6 text-primary-foreground/70 shrink-0" />
             </div>
 
             {isDayLoading ? (
@@ -444,15 +446,15 @@ export default function Scheduler() {
                 {freeWindows.map((window) => (
                   <div
                     key={`${window.start}-${window.end}`}
-                    className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3"
+                    className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 min-w-0"
                   >
-                    <div>
-                      <p className="text-lg font-bold">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-base sm:text-lg font-bold truncate">
                         {formatTime(toTime(window.start))} – {formatTime(toTime(window.end))}
                       </p>
                       <p className="text-xs text-primary-foreground/65">Everyone is free</p>
                     </div>
-                    <Badge className="border-white/20 bg-white/15 text-primary-foreground shadow-none">
+                    <Badge className="border-white/20 bg-white/15 text-primary-foreground shadow-none shrink-0 text-xs">
                       {formatDuration(window)}
                     </Badge>
                   </div>

@@ -406,12 +406,30 @@
     },
     {
         "campus": "hyderabad",
+        "courseCode": "TSFL",
+        "section": "D",
+        "date": "2026-09-08",
+        "startTime": "12:30",
+        "endTime": "14:30",
+        "room": "AC 8 LT"
+    },
+    {
+        "campus": "hyderabad",
         "courseCode": "DMKT",
         "section": "A",
         "date": "2026-09-08",
         "startTime": "14:45",
         "endTime": "16:45",
         "room": "AC 4 LT"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "GSMT",
+        "section": "J",
+        "date": "2026-09-08",
+        "startTime": "14:45",
+        "endTime": "16:45",
+        "room": "AS 2 LT Pushpagiri"
     },
     {
         "campus": "mohali",
@@ -2178,9 +2196,7 @@
         "date": "2026-09-18",
         "startTime": "10:15",
         "endTime": "12:15",
-        "room": "AS 1 LT Nalanda",
-        "rescheduledFrom": "2026-09-28",
-        "statusNote": "Rescheduled from 28th September"
+        "room": "AS 1 LT Nalanda"
     },
     {
         "campus": "mohali",
@@ -2189,18 +2205,7 @@
         "date": "2026-09-18",
         "startTime": "12:30",
         "endTime": "14:30",
-        "room": "AS 1 LT Nalanda",
-        "rescheduledFrom": "2026-09-30",
-        "statusNote": "Rescheduled from 30th September"
-    },
-    {
-        "campus": "hyderabad",
-        "courseCode": "REMA",
-        "section": "A",
-        "date": "2026-09-18",
-        "startTime": "13:30",
-        "endTime": "15:30",
-        "room": "AC 8 LT"
+        "room": "AS 1 LT Nalanda"
     },
     {
         "campus": "mohali",
@@ -2407,7 +2412,10 @@
         "date": "2026-09-21",
         "startTime": "17:00",
         "endTime": "19:00",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "AS 2 LT Pushpagiri",
+        "isCancelled": true,
+        "rescheduledTo": "2026-09-25",
+        "statusNote": "Rescheduled to 25th September"
     },
     {
         "campus": "hyderabad",
@@ -2830,7 +2838,10 @@
         "date": "2026-09-23",
         "startTime": "10:15",
         "endTime": "12:15",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "isCancelled": true,
+        "rescheduledTo": "2026-09-25",
+        "statusNote": "Rescheduled to Friday, 25th September (8:00 AM - 10:00 AM)"
     },
     {
         "campus": "mohali",
@@ -2866,7 +2877,10 @@
         "date": "2026-09-23",
         "startTime": "12:30",
         "endTime": "14:30",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "isCancelled": true,
+        "rescheduledTo": "2026-09-25",
+        "statusNote": "Rescheduled to Friday, 25th September (10:15 AM - 12:15 PM)"
     },
     {
         "campus": "mohali",
@@ -2965,7 +2979,10 @@
         "date": "2026-09-23",
         "startTime": "17:00",
         "endTime": "19:00",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "isCancelled": true,
+        "rescheduledTo": "2026-09-25",
+        "statusNote": "Rescheduled to Friday, 25th September (2:45 PM - 4:45 PM)"
     },
     {
         "campus": "mohali",
@@ -3019,7 +3036,9 @@
         "date": "2026-09-24",
         "startTime": "08:00",
         "endTime": "10:00",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "isCancelled": true,
+        "statusNote": "Cancelled in revised timetable"
     },
     {
         "campus": "hyderabad",
@@ -3029,6 +3048,17 @@
         "startTime": "08:00",
         "endTime": "10:00",
         "room": "AC 4 LT"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "MGSP",
+        "section": "G",
+        "date": "2026-09-24",
+        "startTime": "08:00",
+        "endTime": "10:00",
+        "room": "AS 1 LT Nalanda",
+        "isCancelled": true,
+        "statusNote": "Cancelled (Makeup session held on 18th September)"
     },
     {
         "campus": "mohali",
@@ -3047,15 +3077,6 @@
         "startTime": "08:00",
         "endTime": "10:00",
         "room": "AS 3 LT Vikramashila"
-    },
-    {
-        "campus": "mohali",
-        "courseCode": "MGSP",
-        "section": "G",
-        "date": "2026-09-24",
-        "startTime": "08:00",
-        "endTime": "10:00",
-        "room": "AS 1 LT Nalanda"
     },
     {
         "campus": "hyderabad",
@@ -3190,7 +3211,9 @@
         "date": "2026-09-24",
         "startTime": "14:45",
         "endTime": "16:45",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "isCancelled": true,
+        "statusNote": "Cancelled in revised timetable"
     },
     {
         "campus": "hyderabad",
@@ -3300,7 +3323,9 @@
         "date": "2026-09-25",
         "startTime": "08:00",
         "endTime": "10:00",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "rescheduledFrom": "2026-09-23",
+        "statusNote": "Rescheduled from 23rd September"
     },
     {
         "campus": "mohali",
@@ -3309,7 +3334,20 @@
         "date": "2026-09-25",
         "startTime": "10:15",
         "endTime": "12:15",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "MPH",
+        "rescheduledFrom": "2026-10-08",
+        "statusNote": "Rescheduled from 8th October (Joint session at MPH)"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "ENTR",
+        "section": "H",
+        "date": "2026-09-25",
+        "startTime": "10:15",
+        "endTime": "12:15",
+        "room": "MPH",
+        "rescheduledFrom": "2026-10-08",
+        "statusNote": "Rescheduled from 8th October (Joint session at MPH)"
     },
     {
         "campus": "hyderabad",
@@ -3318,16 +3356,9 @@
         "date": "2026-09-25",
         "startTime": "10:15",
         "endTime": "12:15",
-        "room": "AC 2 LT"
-    },
-    {
-        "campus": "mohali",
-        "courseCode": "ENTR",
-        "section": "H",
-        "date": "2026-09-25",
-        "startTime": "12:30",
-        "endTime": "14:30",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "AC 2 LT",
+        "rescheduledFrom": "2026-09-23",
+        "statusNote": "Rescheduled from 23rd September"
     },
     {
         "campus": "mohali",
@@ -3339,6 +3370,17 @@
         "room": "AS 3 LT Vikramashila",
         "rescheduledFrom": "2026-10-08",
         "statusNote": "Rescheduled from 8th October"
+    },
+    {
+        "campus": "hyderabad",
+        "courseCode": "REMA",
+        "section": "A",
+        "date": "2026-09-25",
+        "startTime": "12:30",
+        "endTime": "14:30",
+        "room": "AC 8 LT",
+        "rescheduledFrom": "2026-09-18",
+        "statusNote": "Rescheduled from 18th September (12:30 PM - 2:30 PM, AC 8 LT)"
     },
     {
         "campus": "mohali",
@@ -3358,7 +3400,30 @@
         "date": "2026-09-25",
         "startTime": "14:45",
         "endTime": "16:45",
-        "room": "AC 2 LT"
+        "room": "AC 2 LT",
+        "rescheduledFrom": "2026-09-23",
+        "statusNote": "Rescheduled from 23rd September"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "CCMA",
+        "section": "G",
+        "date": "2026-09-25",
+        "startTime": "15:30",
+        "endTime": "17:30",
+        "room": "AS 1 LT Nalanda",
+        "statusNote": "CCMA Guest Session"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "GSMT",
+        "section": "G",
+        "date": "2026-09-25",
+        "startTime": "17:00",
+        "endTime": "19:00",
+        "room": "AS 2 LT Pushpagiri",
+        "rescheduledFrom": "2026-09-21",
+        "statusNote": "Rescheduled from 21st September"
     },
     {
         "campus": "mohali",
@@ -4445,6 +4510,46 @@
         "startTime": "19:15",
         "endTime": "21:15",
         "room": "AC 4 LT"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "PRCG",
+        "section": "G",
+        "date": "2026-10-03",
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "room": "Godrej Auditorium",
+        "statusNote": "PRCG Guest Session (Sections G, H, I, J)"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "PRCG",
+        "section": "H",
+        "date": "2026-10-03",
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "room": "Godrej Auditorium",
+        "statusNote": "PRCG Guest Session (Sections G, H, I, J)"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "PRCG",
+        "section": "I",
+        "date": "2026-10-03",
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "room": "Godrej Auditorium",
+        "statusNote": "PRCG Guest Session (Sections G, H, I, J)"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "PRCG",
+        "section": "J",
+        "date": "2026-10-03",
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "room": "Godrej Auditorium",
+        "statusNote": "PRCG Guest Session (Sections G, H, I, J)"
     },
     {
         "campus": "mohali",
@@ -4993,6 +5098,16 @@
         "room": "AC 4 LT"
     },
     {
+        "campus": "hyderabad",
+        "courseCode": "REMA",
+        "section": "A",
+        "date": "2026-10-06",
+        "startTime": "19:30",
+        "endTime": "20:30",
+        "room": "AC 8 LT",
+        "statusNote": "REMA Guest Speaker Session"
+    },
+    {
         "campus": "mohali",
         "courseCode": "CCMA",
         "section": "G",
@@ -5035,7 +5150,9 @@
         "date": "2026-10-07",
         "startTime": "08:00",
         "endTime": "10:00",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "AS 2 LT Pushpagiri",
+        "isCancelled": true,
+        "statusNote": "Covered by Guest Session on Saturday, 3rd October"
     },
     {
         "campus": "hyderabad",
@@ -5062,7 +5179,9 @@
         "date": "2026-10-07",
         "startTime": "10:15",
         "endTime": "12:15",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "AS 2 LT Pushpagiri",
+        "isCancelled": true,
+        "statusNote": "Covered by Guest Session on Saturday, 3rd October"
     },
     {
         "campus": "hyderabad",
@@ -5299,7 +5418,9 @@
         "date": "2026-10-08",
         "startTime": "08:00",
         "endTime": "10:00",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "AS 2 LT Pushpagiri",
+        "isCancelled": true,
+        "statusNote": "Covered by Guest Session on Saturday, 3rd October"
     },
     {
         "campus": "mohali",
@@ -5335,7 +5456,9 @@
         "date": "2026-10-08",
         "startTime": "10:15",
         "endTime": "12:15",
-        "room": "AS 2 LT Pushpagiri"
+        "room": "AS 2 LT Pushpagiri",
+        "isCancelled": true,
+        "statusNote": "Covered by Guest Session on Saturday, 3rd October"
     },
     {
         "campus": "hyderabad",
@@ -5414,6 +5537,18 @@
     },
     {
         "campus": "mohali",
+        "courseCode": "ENTR",
+        "section": "G",
+        "date": "2026-10-08",
+        "startTime": "14:45",
+        "endTime": "16:45",
+        "room": "AS 3 LT Vikramashila",
+        "isCancelled": true,
+        "rescheduledTo": "2026-09-25",
+        "statusNote": "Rescheduled to 25th September (MPH)"
+    },
+    {
+        "campus": "mohali",
         "courseCode": "GENAI",
         "section": "G",
         "date": "2026-10-08",
@@ -5458,15 +5593,6 @@
         "room": "AC 8 LT"
     },
     {
-        "campus": "mohali",
-        "courseCode": "ENTR",
-        "section": "G",
-        "date": "2026-10-08",
-        "startTime": "14:45",
-        "endTime": "16:45",
-        "room": "AS 3 LT Vikramashila"
-    },
-    {
         "campus": "hyderabad",
         "courseCode": "CSOD",
         "section": "B",
@@ -5474,6 +5600,18 @@
         "startTime": "17:00",
         "endTime": "19:00",
         "room": "AC 4 LT"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "ENTR",
+        "section": "H",
+        "date": "2026-10-08",
+        "startTime": "17:00",
+        "endTime": "19:00",
+        "room": "AS 2 LT Pushpagiri",
+        "isCancelled": true,
+        "rescheduledTo": "2026-09-25",
+        "statusNote": "Rescheduled to 25th September (MPH)"
     },
     {
         "campus": "mohali",
@@ -5504,15 +5642,6 @@
         "startTime": "17:00",
         "endTime": "19:00",
         "room": "AS 1 LT Nalanda"
-    },
-    {
-        "campus": "mohali",
-        "courseCode": "ENTR",
-        "section": "H",
-        "date": "2026-10-08",
-        "startTime": "17:00",
-        "endTime": "19:00",
-        "room": "AS 2 LT Pushpagiri"
     },
     {
         "campus": "mohali",
