@@ -3406,16 +3406,6 @@
     },
     {
         "campus": "mohali",
-        "courseCode": "CCMA",
-        "section": "G",
-        "date": "2026-09-25",
-        "startTime": "15:30",
-        "endTime": "17:30",
-        "room": "AS 1 LT Nalanda",
-        "statusNote": "CCMA Guest Session"
-    },
-    {
-        "campus": "mohali",
         "courseCode": "GSMT",
         "section": "G",
         "date": "2026-09-25",
@@ -3424,6 +3414,16 @@
         "room": "AS 2 LT Pushpagiri",
         "rescheduledFrom": "2026-09-21",
         "statusNote": "Rescheduled from 21st September"
+    },
+    {
+        "campus": "mohali",
+        "courseCode": "CCMA",
+        "section": "G",
+        "date": "2026-09-26",
+        "startTime": "15:30",
+        "endTime": "17:30",
+        "room": "AS 1 LT Nalanda",
+        "statusNote": "CCMA Guest Session"
     },
     {
         "campus": "mohali",
