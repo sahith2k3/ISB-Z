@@ -143,17 +143,10 @@ export function HomeView() {
         {/* Logged-in User Row */}
         {me && (
           <div className="mb-6 pt-1">
-            <div className="mb-2 flex items-center justify-between">
+            <div className="mb-2">
               <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 You
               </p>
-              <Link
-                href="/schedule"
-                className="flex items-center gap-1 text-xs font-semibold text-primary transition-colors hover:underline"
-              >
-                <span>Full schedule</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
             </div>
             <Link
               href="/schedule"
