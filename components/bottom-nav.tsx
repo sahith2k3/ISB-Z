@@ -1,15 +1,14 @@
 "use client";
 
-import { Armchair, CalendarDays, Sparkles, Users } from "lucide-react";
+import { Home, Sparkles, Users } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const items = [
-  { href: "/schedule", label: "My schedule", icon: CalendarDays },
-  { href: "/", label: "Friends", icon: Users },
+  { href: "/", label: "Home", icon: Home },
   { href: "/scheduler", label: "Scheduler", icon: Sparkles },
-  { href: "/seating", label: "Seating", icon: Armchair },
+  { href: "/sg-planner", label: "SG planner", icon: Users },
 ];
 
 export function BottomNav() {
@@ -20,7 +19,7 @@ export function BottomNav() {
       aria-label="Primary navigation"
       className="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-border/60 bg-background/95 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_24px_rgba(20,30,60,0.06)] backdrop-blur-md"
     >
-      <div className="grid grid-cols-4 gap-1">
+      <div className="grid grid-cols-3 gap-2">
         {items.map(({ href, label, icon: Icon }) => {
           const active =
             href === "/"

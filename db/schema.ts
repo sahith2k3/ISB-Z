@@ -86,4 +86,22 @@ export const shareEventsTable = pgTable("share_events", {
 export type ShareEvent = typeof shareEventsTable.$inferSelect;
 export type InsertShareEvent = typeof shareEventsTable.$inferInsert;
 
+// Study Group Planner: stores each student's study group status for Term 5 classes
+export const studyGroupStatusesTable = pgTable(
+  "study_group_statuses",
+  {
+    id: serial("id").primaryKey(),
+    studentId: integer("student_id").notNull(),
+    courseName: varchar("course_name", { length: 256 }).notNull(),
+    section: varchar("section", { length: 32 }).notNull(),
+    campus: varchar("campus", { length: 32 }).notNull(),
+    status: varchar("status", { length: 32 }).notNull(), // 'available' | 'unknown' | 'dropping' | 'unavailable'
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => [unique().on(table.studentId, table.courseName, table.section)],
+);
 
+export type StudyGroupStatus = typeof studyGroupStatusesTable.$inferSelect;
+export type InsertStudyGroupStatus = typeof studyGroupStatusesTable.$inferInsert;

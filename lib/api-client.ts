@@ -243,3 +243,110 @@ export function useLogProfileView() {
     },
   });
 }
+
+// ==================== SG Planner Types & Hooks ====================
+
+export type SGStatus = "available" | "unknown" | "dropping" | "unavailable";
+
+export interface SgEnrolledCourse {
+  courseName: string;
+  section: string;
+  campus: Campus;
+  studentCount: number;
+  myStatus: SGStatus;
+  updatedAt?: string;
+}
+
+export interface SgCourseSummary {
+  courseName: string;
+  section: string;
+  campus: Campus;
+  studentCount: number;
+  statusCounts: {
+    available: number;
+    dropping: number;
+    unavailable: number;
+  };
+}
+
+export interface SgPlannerData {
+  myEnrolledCourses: SgEnrolledCourse[];
+  allCourses: SgCourseSummary[];
+}
+
+export interface SgRosterStudent {
+  id: number;
+  name: string;
+  email: string;
+  status: SGStatus;
+  updatedAt?: string;
+}
+
+export interface SgSectionRosterData {
+  courseName: string;
+  section: string;
+  campus: Campus;
+  counts: {
+    total: number;
+    available: number;
+    unknown: number;
+    dropping: number;
+    unavailable: number;
+  };
+  students: SgRosterStudent[];
+}
+
+export function useGetSgPlannerSummary(studentId: number | null | undefined, campus?: Campus | null) {
+  return useQuery({
+    queryKey: ["sgPlannerSummary", studentId, campus],
+    queryFn: () => {
+      const sp = new URLSearchParams();
+      if (studentId) sp.set("studentId", studentId.toString());
+      if (campus) sp.set("campus", campus);
+      return fetchJson<SgPlannerData>(`/api/sg-planner?${sp.toString()}`);
+    },
+    refetchInterval: 30 * 1000,
+  });
+}
+
+export function useGetSgSectionRoster(courseName: string | null, section: string | null) {
+  return useQuery({
+    queryKey: ["sgSectionRoster", courseName, section],
+    queryFn: () => {
+      if (!courseName || !section) return null;
+      const sp = new URLSearchParams({
+        courseName,
+        section,
+      });
+      return fetchJson<SgSectionRosterData>(`/api/sg-planner?${sp.toString()}`);
+    },
+    enabled: !!courseName && !!section,
+    refetchInterval: 20 * 1000,
+  });
+}
+
+export function useUpdateSgStatus() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (payload: {
+      studentId: number;
+      courseName: string;
+      section: string;
+      campus?: string;
+      status: SGStatus;
+    }) => {
+      return fetchJson<{ success: boolean; status: SGStatus }>(`/api/sg-planner`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    },
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["sgPlannerSummary"] });
+      queryClient.invalidateQueries({
+        queryKey: ["sgSectionRoster", variables.courseName, variables.section],
+      });
+    },
+  });
+}

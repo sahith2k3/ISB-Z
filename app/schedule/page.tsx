@@ -30,7 +30,7 @@ export default function SchedulePage() {
         <div className="flex items-center gap-3 min-w-0">
           <Link
             href="/"
-            aria-label="Back to friends"
+            aria-label="Back to home"
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <ChevronLeft className="h-5 w-5" />

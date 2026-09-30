@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocalStudent } from "@/hooks/use-local-student";
-import { useListFriends, useListStudents, useGetStudent } from "@/lib/api-client";
+import { useListFriends, useListStudents, useGetStudent, useGetStudentStatus } from "@/lib/api-client";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -17,6 +17,7 @@ import {
   X,
   ArrowUpRight,
   RefreshCw,
+  Armchair,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";
@@ -35,6 +36,7 @@ export function HomeView() {
   }, [searchQuery]);
 
   const { data: me } = useGetStudent(studentId!);
+  const { data: myStatus } = useGetStudentStatus(studentId!);
   const {
     data: friends,
     isLoading: friendsLoading,
@@ -104,8 +106,17 @@ export function HomeView() {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <ShareButton source="home_header" />
+          <Link
+            href="/seating"
+            data-testid="button-seating"
+            title="Seating charts"
+            className="inline-flex items-center gap-1.5 rounded-full border border-card-border bg-card px-3 py-2 text-xs font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95 shadow-sm"
+          >
+            <Armchair className="h-4 w-4 text-primary shrink-0" />
+            <span>Seating</span>
+          </Link>
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
@@ -127,8 +138,101 @@ export function HomeView() {
         </div>
       </header>
 
-      {/* Friends List */}
+      {/* Main Content */}
       <main className="flex-1 overflow-y-auto px-6 pb-32">
+        {/* Logged-in User Row */}
+        {me && (
+          <div className="mb-6 pt-1">
+            <div className="mb-2 flex items-center justify-between">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                You
+              </p>
+              <Link
+                href="/schedule"
+                className="flex items-center gap-1 text-xs font-semibold text-primary transition-colors hover:underline"
+              >
+                <span>Full schedule</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+            <Link
+              href="/schedule"
+              data-testid="link-user-card"
+              className="group relative block overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/10 via-card to-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]"
+            >
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <Avatar
+                    name={me.name}
+                    className="h-14 w-14 ring-2 ring-primary/30"
+                  />
+                  <div
+                    className={`absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-card flex items-center justify-center ${
+                      myStatus?.isInClass ? "bg-destructive" : "bg-free"
+                    }`}
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex justify-between items-start mb-1">
+                    <div className="flex items-center gap-2 truncate pr-2">
+                      <h3 className="font-semibold text-foreground truncate">
+                        {me.name}
+                      </h3>
+                      <Badge variant="outline" className="text-[10px] shrink-0 border-primary/30 text-primary">
+                        You
+                      </Badge>
+                    </div>
+                    {myStatus?.isInClass ? (
+                      <Badge
+                        variant="destructive"
+                        className="shrink-0 text-[10px]"
+                      >
+                        In Class
+                      </Badge>
+                    ) : (
+                      <Badge
+                        variant="free"
+                        className="shrink-0 text-[10px]"
+                      >
+                        Free
+                      </Badge>
+                    )}
+                  </div>
+
+                  {myStatus?.isInClass && myStatus.currentSession ? (
+                    <div className="text-sm text-muted-foreground flex flex-col gap-0.5">
+                      <span className="truncate font-medium text-foreground">
+                        {myStatus.currentSession.courseCode}
+                      </span>
+                      <span className="text-xs flex items-center gap-1 opacity-80">
+                        <Clock className="h-3 w-3" />
+                        Until {formatTime(myStatus.currentSession.endTime)}
+                      </span>
+                    </div>
+                  ) : myStatus?.nextSession ? (
+                    <div className="text-sm text-muted-foreground flex flex-col gap-0.5">
+                      <span className="truncate">
+                        Free until {formatTime(myStatus.nextSession.startTime)}
+                      </span>
+                      <span className="text-xs flex items-center gap-1 opacity-80">
+                        Next: {myStatus.nextSession.courseCode}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="text-sm text-muted-foreground flex items-center gap-1">
+                      <span className="text-free opacity-90 font-medium">
+                        Free for the rest of the day
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-primary/40 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+              </div>
+            </Link>
+          </div>
+        )}
+
+        {/* Friends List */}
         <div className="mb-6 flex items-end justify-between gap-4 pt-1">
           <div>
             <p className="mb-1 text-sm font-medium text-muted-foreground">
