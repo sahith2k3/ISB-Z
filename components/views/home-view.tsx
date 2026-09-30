@@ -111,11 +111,11 @@ export function HomeView() {
           <Link
             href="/seating"
             data-testid="button-seating"
+            aria-label="Seating charts"
             title="Seating charts"
-            className="inline-flex items-center gap-1.5 rounded-full border border-card-border bg-card px-3 py-2 text-xs font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95 shadow-sm"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <Armchair className="h-4 w-4 text-primary shrink-0" />
-            <span>Seating</span>
+            <Armchair className="h-5 w-5" />
           </Link>
           <button
             type="button"
@@ -443,7 +443,7 @@ export function HomeView() {
             <div className="flex-1 overflow-y-auto px-6 py-4 space-y-3">
               {searchQuery.length < 2 ? (
                 <div className="text-center mt-10 text-muted-foreground">
-                  <p>Search by name or email</p>
+                  <p>Search by name</p>
                 </div>
               ) : searchLoading ? (
                 <div className="mt-4 space-y-3" data-testid="search-loading">
