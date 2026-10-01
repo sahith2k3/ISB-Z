@@ -40,7 +40,9 @@ export type InsertProfileView = typeof profileViewsTable.$inferInsert;
 export const friendshipAuditLogsTable = pgTable("friendship_audit_logs", {
   id: serial("id").primaryKey(),
   ownerId: integer("owner_id").notNull(),
+  ownerName: varchar("owner_name", { length: 128 }),
   friendId: integer("friend_id").notNull(),
+  friendName: varchar("friend_name", { length: 128 }),
   action: varchar("action", { length: 16 }).notNull(), // 'add' | 'remove'
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()

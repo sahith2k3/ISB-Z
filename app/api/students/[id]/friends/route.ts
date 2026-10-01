@@ -141,7 +141,9 @@ export async function POST(
     // Record friendship activity in audit logs for analytics
     await db.insert(friendshipAuditLogsTable).values({
       ownerId,
+      ownerName: owner.name,
       friendId,
+      friendName: friend.name,
       action: "add",
     });
 

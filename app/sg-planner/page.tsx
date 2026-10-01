@@ -203,10 +203,10 @@ export default function SgPlannerPage() {
   }, [isUserInCurrentSection, loggedInId, rosterData?.students]);
 
   return (
-    <div className="min-h-[100dvh] max-w-md mx-auto overflow-y-auto bg-background px-5 pb-32 pt-6">
+    <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 sm:px-5 pb-32 pt-6">
       {/* SECTION ROSTER DRILLDOWN VIEW */}
       {selectedSection ? (
-        <div>
+        <div className="w-full min-w-0">
           {/* Header with back button */}
           <div className="mb-4 flex items-center justify-between gap-3">
             <button
@@ -233,17 +233,17 @@ export default function SgPlannerPage() {
           </div>
 
           {/* Section Info Card */}
-          <div className="mb-5 rounded-2xl border border-card-border bg-card p-4 shadow-sm">
+          <div className="mb-5 rounded-2xl border border-card-border bg-card p-4 shadow-sm w-full overflow-hidden">
             <div className="flex items-center justify-between gap-2 mb-2">
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="font-semibold text-xs border-primary/30 text-primary">
+              <div className="flex items-center gap-2 min-w-0">
+                <Badge variant="outline" className="font-semibold text-xs border-primary/30 text-primary shrink-0">
                   Section {selectedSection.section}
                 </Badge>
-                <span className="text-xs font-medium text-muted-foreground capitalize">
+                <span className="text-xs font-medium text-muted-foreground capitalize truncate">
                   {rosterData?.campus || selectedSection.campus || ""} Campus
                 </span>
               </div>
-              <span className="text-xs font-semibold text-foreground">
+              <span className="text-xs font-semibold text-foreground shrink-0">
                 {rosterData?.counts.total ?? "..."} Students
               </span>
             </div>
@@ -251,13 +251,13 @@ export default function SgPlannerPage() {
             {/* If logged-in user is in this section: Interactive SG Status Card */}
             {isUserInCurrentSection && (
               <div className="mt-4 pt-4 border-t border-border/60">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-foreground">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="text-xs font-bold text-foreground truncate">
                     Your SG Status for this class:
                   </span>
                   <Badge
                     variant="outline"
-                    className={`text-[10px] font-semibold border ${STATUS_CONFIG[userCurrentStatusInSection].badgeClass}`}
+                    className={`shrink-0 text-[10px] font-semibold border ${STATUS_CONFIG[userCurrentStatusInSection].badgeClass}`}
                   >
                     {STATUS_CONFIG[userCurrentStatusInSection].shortLabel}
                   </Badge>
@@ -286,8 +286,8 @@ export default function SgPlannerPage() {
                         : "border-card-border bg-secondary/50 text-muted-foreground hover:border-emerald-500/40 hover:text-foreground"
                     }`}
                   >
-                    <CheckCircle2 className={`h-4 w-4 mb-1 ${userCurrentStatusInSection === "available" ? "text-emerald-500" : "text-muted-foreground"}`} />
-                    <span>Available</span>
+                    <CheckCircle2 className={`h-4 w-4 mb-1 shrink-0 ${userCurrentStatusInSection === "available" ? "text-emerald-500" : "text-muted-foreground"}`} />
+                    <span className="text-[11px] truncate w-full text-center">Available</span>
                   </button>
 
                   <button
@@ -306,8 +306,8 @@ export default function SgPlannerPage() {
                         : "border-card-border bg-secondary/50 text-muted-foreground hover:border-amber-500/40 hover:text-foreground"
                     }`}
                   >
-                    <AlertCircle className={`h-4 w-4 mb-1 ${userCurrentStatusInSection === "dropping" ? "text-amber-500" : "text-muted-foreground"}`} />
-                    <span>Drop class?</span>
+                    <AlertCircle className={`h-4 w-4 mb-1 shrink-0 ${userCurrentStatusInSection === "dropping" ? "text-amber-500" : "text-muted-foreground"}`} />
+                    <span className="text-[11px] truncate w-full text-center">Drop class?</span>
                   </button>
 
                   <button
@@ -326,8 +326,8 @@ export default function SgPlannerPage() {
                         : "border-card-border bg-secondary/50 text-muted-foreground hover:border-slate-500/40 hover:text-foreground"
                     }`}
                   >
-                    <XCircle className={`h-4 w-4 mb-1 ${userCurrentStatusInSection === "unavailable" ? "text-slate-500" : "text-muted-foreground"}`} />
-                    <span>SG formed</span>
+                    <XCircle className={`h-4 w-4 mb-1 shrink-0 ${userCurrentStatusInSection === "unavailable" ? "text-slate-500" : "text-muted-foreground"}`} />
+                    <span className="text-[11px] truncate w-full text-center">SG formed</span>
                   </button>
                 </div>
               </div>
@@ -336,11 +336,11 @@ export default function SgPlannerPage() {
 
           {/* Roster Filter Pills */}
           {rosterData && (
-            <div className="mb-4 flex flex-wrap items-center gap-1.5 text-xs">
+            <div className="mb-4 w-full min-w-0 overflow-x-auto pb-1 pt-0.5 -mx-4 px-4 sm:mx-0 sm:px-0 overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex items-center gap-1.5 text-xs">
               <button
                 type="button"
                 onClick={() => setRosterFilter("all")}
-                className={`rounded-full px-3 py-1 font-semibold transition-all ${
+                className={`shrink-0 rounded-full px-3 py-1 font-semibold transition-all ${
                   rosterFilter === "all"
                     ? "bg-primary text-primary-foreground"
                     : "border border-card-border bg-card text-muted-foreground hover:text-foreground"
@@ -351,7 +351,7 @@ export default function SgPlannerPage() {
               <button
                 type="button"
                 onClick={() => setRosterFilter("available")}
-                className={`flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition-all ${
+                className={`shrink-0 flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition-all ${
                   rosterFilter === "available"
                     ? "bg-emerald-600 text-white"
                     : "border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20"
@@ -363,7 +363,7 @@ export default function SgPlannerPage() {
               <button
                 type="button"
                 onClick={() => setRosterFilter("unknown")}
-                className={`flex items-center gap-1 rounded-full px-2.5 py-1 font-medium transition-all ${
+                className={`shrink-0 flex items-center gap-1 rounded-full px-2.5 py-1 font-medium transition-all ${
                   rosterFilter === "unknown"
                     ? "bg-foreground text-background"
                     : "border border-card-border bg-card text-muted-foreground hover:text-foreground"
@@ -375,7 +375,7 @@ export default function SgPlannerPage() {
               <button
                 type="button"
                 onClick={() => setRosterFilter("dropping")}
-                className={`flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition-all ${
+                className={`shrink-0 flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition-all ${
                   rosterFilter === "dropping"
                     ? "bg-amber-600 text-white"
                     : "border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20"
@@ -387,7 +387,7 @@ export default function SgPlannerPage() {
               <button
                 type="button"
                 onClick={() => setRosterFilter("unavailable")}
-                className={`flex items-center gap-1 rounded-full px-2.5 py-1 font-medium transition-all ${
+                className={`shrink-0 flex items-center gap-1 rounded-full px-2.5 py-1 font-medium transition-all ${
                   rosterFilter === "unavailable"
                     ? "bg-slate-700 text-white"
                     : "border border-card-border bg-card text-muted-foreground hover:text-foreground"
@@ -441,26 +441,26 @@ export default function SgPlannerPage() {
                 return (
                   <div
                     key={student.id}
-                    className={`flex items-center justify-between gap-3 rounded-2xl border p-3.5 transition-all ${
+                    className={`w-full overflow-hidden flex items-center justify-between gap-2.5 rounded-2xl border p-3 transition-all ${
                       isMe
                         ? "border-primary/40 bg-primary/5 shadow-sm"
                         : "border-card-border bg-card hover:border-primary/30"
                     }`}
                   >
-                    <div className="flex items-center gap-3 min-w-0">
+                    <div className="flex items-center gap-2.5 min-w-0 flex-1">
                       <div className="relative shrink-0">
-                        <Avatar name={student.name} className="h-10 w-10" />
+                        <Avatar name={student.name} className="h-10 w-10 text-xs shrink-0" />
                         <span
                           className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-card ${config.dotClass}`}
                         />
                       </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-1.5">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 min-w-0">
                           <h4 className="font-semibold text-sm text-foreground truncate">
                             {student.name}
                           </h4>
                           {isMe && (
-                            <Badge variant="outline" className="text-[9px] px-1 py-0 h-4 border-primary/40 text-primary">
+                            <Badge variant="outline" className="text-[9px] px-1 py-0 h-4 border-primary/40 text-primary shrink-0">
                               You
                             </Badge>
                           )}
@@ -471,10 +471,10 @@ export default function SgPlannerPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex flex-col items-end justify-center gap-1.5 shrink-0">
                       <Badge
                         variant="outline"
-                        className={`text-[10px] font-semibold border ${config.badgeClass}`}
+                        className={`text-[10px] font-semibold border px-2 py-0.5 whitespace-nowrap ${config.badgeClass}`}
                       >
                         {config.shortLabel}
                       </Badge>
@@ -485,20 +485,22 @@ export default function SgPlannerPage() {
                             type="button"
                             onClick={() => handleCopyEmail(student.email)}
                             title="Copy email"
-                            className="flex h-7 w-7 items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                            aria-label={`Copy email of ${student.name}`}
+                            className="flex h-6 w-6 items-center justify-center rounded-md bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
                           >
                             {copiedEmail === student.email ? (
-                              <Check className="h-3.5 w-3.5 text-emerald-500" />
+                              <Check className="h-3 w-3 text-emerald-500" />
                             ) : (
-                              <Copy className="h-3.5 w-3.5" />
+                              <Copy className="h-3 w-3" />
                             )}
                           </button>
                           <a
                             href={`mailto:${student.email}?subject=ISB%20Study%20Group%20-%20${encodeURIComponent(selectedSection.courseName)}`}
                             title="Send email"
-                            className="flex h-7 w-7 items-center justify-center rounded-lg bg-secondary text-muted-foreground hover:text-primary transition-colors"
+                            aria-label={`Send email to ${student.name}`}
+                            className="flex h-6 w-6 items-center justify-center rounded-md bg-secondary text-muted-foreground hover:text-primary hover:bg-secondary/80 transition-colors"
                           >
-                            <Mail className="h-3.5 w-3.5" />
+                            <Mail className="h-3 w-3" />
                           </a>
                         </div>
                       )}
@@ -625,18 +627,18 @@ export default function SgPlannerPage() {
                   return (
                     <div
                       key={`${c.courseName}-${c.section}`}
-                      className="rounded-2xl border border-card-border bg-card p-4 shadow-sm transition-all hover:border-primary/40"
+                      className="w-full overflow-hidden rounded-2xl border border-card-border bg-card p-4 shadow-sm transition-all hover:border-primary/40"
                     >
                       <div className="flex items-start justify-between gap-3 mb-2">
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <h4 className="font-semibold text-foreground text-sm leading-tight">
                             {c.courseName}
                           </h4>
                           <div className="flex items-center gap-2 mt-1">
-                            <Badge variant="outline" className="text-[10px] font-semibold border-primary/30 text-primary">
+                            <Badge variant="outline" className="text-[10px] font-semibold border-primary/30 text-primary shrink-0">
                               Sec {c.section}
                             </Badge>
-                            <span className="text-[11px] text-muted-foreground capitalize">
+                            <span className="text-[11px] text-muted-foreground capitalize truncate">
                               {c.campus} • {c.studentCount} students
                             </span>
                           </div>
@@ -672,7 +674,7 @@ export default function SgPlannerPage() {
                                 : "border-card-border bg-secondary/50 text-muted-foreground hover:border-emerald-500/40 hover:text-foreground"
                             }`}
                           >
-                            🟢 Available
+                            <span className="truncate block">🟢 Available</span>
                           </button>
 
                           <button
@@ -686,7 +688,7 @@ export default function SgPlannerPage() {
                                 : "border-card-border bg-secondary/50 text-muted-foreground hover:border-amber-500/40 hover:text-foreground"
                             }`}
                           >
-                            🟠 Drop class?
+                            <span className="truncate block">🟠 Drop class?</span>
                           </button>
 
                           <button
@@ -700,7 +702,7 @@ export default function SgPlannerPage() {
                                 : "border-card-border bg-secondary/50 text-muted-foreground hover:border-slate-500/40 hover:text-foreground"
                             }`}
                           >
-                            ⚪ Formed
+                            <span className="truncate block">⚪ Formed</span>
                           </button>
                         </div>
                       </div>
@@ -809,7 +811,7 @@ export default function SgPlannerPage() {
                           campus: c.campus,
                         })
                       }
-                      className="w-full text-left rounded-2xl border border-card-border bg-card p-4 transition-all hover:border-primary/45 hover:shadow-sm active:scale-[0.99] flex items-center justify-between gap-3 group"
+                      className="w-full overflow-hidden text-left rounded-2xl border border-card-border bg-card p-4 transition-all hover:border-primary/45 hover:shadow-sm active:scale-[0.99] flex items-center justify-between gap-3 group"
                     >
                       <div className="min-w-0 flex-1">
                         <h4 className="font-semibold text-foreground text-sm leading-tight truncate group-hover:text-primary transition-colors">

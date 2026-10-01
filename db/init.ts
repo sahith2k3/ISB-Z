@@ -1,5 +1,6 @@
 import pg from "pg";
 import { SEED_FRIENDSHIPS } from "./seed-data";
+import studentsJson from "@/data/students.json";
 
 const { Pool } = pg;
 
@@ -9,6 +10,7 @@ export interface InitDbResult {
   tableCreated: boolean;
   insertedCount: number;
   totalRowCount: number;
+  backfilledAuditLogs?: number;
   error?: string;
 }
 
@@ -61,10 +63,15 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
       CREATE TABLE IF NOT EXISTS friendship_audit_logs (
         id SERIAL PRIMARY KEY,
         owner_id INTEGER NOT NULL,
+        owner_name VARCHAR(128),
         friend_id INTEGER NOT NULL,
+        friend_name VARCHAR(128),
         action VARCHAR(16) NOT NULL,
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
       );
+
+      ALTER TABLE friendship_audit_logs ADD COLUMN IF NOT EXISTS owner_name VARCHAR(128);
+      ALTER TABLE friendship_audit_logs ADD COLUMN IF NOT EXISTS friend_name VARCHAR(128);
 
       CREATE TABLE IF NOT EXISTS share_events (
         id SERIAL PRIMARY KEY,
@@ -111,16 +118,55 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
       );
     `);
 
-    // 4. Get total rows count
+    // 4. Backfill existing friendship_audit_logs that have null owner_name or friend_name
+    let backfilledLogs = 0;
+    try {
+      await client.query(`
+        CREATE TEMP TABLE IF NOT EXISTS temp_student_names (
+          id INTEGER PRIMARY KEY,
+          name VARCHAR(128) NOT NULL
+        );
+      `);
+
+      const studentIds: number[] = [];
+      const studentNames: string[] = [];
+      for (const s of studentsJson as { id: number; name: string }[]) {
+        studentIds.push(s.id);
+        studentNames.push(s.name);
+      }
+
+      await client.query(
+        `INSERT INTO temp_student_names (id, name)
+         SELECT * FROM UNNEST($1::int[], $2::varchar[])
+         ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name`,
+        [studentIds, studentNames],
+      );
+
+      const updateRes = await client.query(`
+        UPDATE friendship_audit_logs f
+        SET 
+          owner_name = COALESCE(f.owner_name, (SELECT name FROM temp_student_names WHERE id = f.owner_id)),
+          friend_name = COALESCE(f.friend_name, (SELECT name FROM temp_student_names WHERE id = f.friend_id))
+        WHERE f.owner_name IS NULL OR f.friend_name IS NULL;
+      `);
+
+      await client.query(`DROP TABLE IF EXISTS temp_student_names;`);
+      backfilledLogs = updateRes.rowCount ?? 0;
+    } catch (backfillErr) {
+      console.warn("Audit logs backfill warning during init:", backfillErr);
+    }
+
+    // 5. Get total rows count
     const countRes = await client.query(`SELECT COUNT(*)::int as count FROM friendships;`);
     const totalRowCount = countRes.rows[0]?.count || 0;
 
     return {
       success: true,
-      message: `Database initialized and seeded successfully. Inserted: ${inserted}, Total rows: ${totalRowCount}.`,
+      message: `Database initialized and seeded successfully. Inserted: ${inserted}, Total rows: ${totalRowCount}, Backfilled audit logs: ${backfilledLogs}.`,
       tableCreated: true,
       insertedCount: inserted,
       totalRowCount,
+      backfilledAuditLogs: backfilledLogs,
     };
   } catch (err: any) {
     console.error("Database initialization failed:", err);
@@ -137,4 +183,92 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
     await pool.end();
   }
 }
-// Database initialized and verified with Neon Postgres integration
+
+export async function backfillAuditLogNames(connectionString?: string): Promise<{
+  success: boolean;
+  message: string;
+  updatedCount: number;
+  error?: string;
+}> {
+  const url = connectionString || process.env.DATABASE_URL;
+  if (!url) {
+    return {
+      success: false,
+      message: "No DATABASE_URL provided or configured in environment variables.",
+      updatedCount: 0,
+    };
+  }
+
+  const isSsl =
+    url.includes("sslmode=require") ||
+    url.includes("neon.tech") ||
+    url.includes("supabase.co") ||
+    process.env.NODE_ENV === "production";
+
+  const pool = new Pool({
+    connectionString: url,
+    ssl: isSsl ? { rejectUnauthorized: false } : undefined,
+  });
+
+  let client: pg.PoolClient | null = null;
+  try {
+    client = await pool.connect();
+
+    // Ensure columns exist first
+    await client.query(`
+      ALTER TABLE friendship_audit_logs ADD COLUMN IF NOT EXISTS owner_name VARCHAR(128);
+      ALTER TABLE friendship_audit_logs ADD COLUMN IF NOT EXISTS friend_name VARCHAR(128);
+    `);
+
+    // Create temp table with student roster data
+    await client.query(`
+      CREATE TEMP TABLE IF NOT EXISTS temp_student_names (
+        id INTEGER PRIMARY KEY,
+        name VARCHAR(128) NOT NULL
+      );
+    `);
+
+    const studentIds: number[] = [];
+    const studentNames: string[] = [];
+    for (const s of studentsJson as { id: number; name: string }[]) {
+      studentIds.push(s.id);
+      studentNames.push(s.name);
+    }
+
+    await client.query(
+      `INSERT INTO temp_student_names (id, name)
+       SELECT * FROM UNNEST($1::int[], $2::varchar[])
+       ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name`,
+      [studentIds, studentNames],
+    );
+
+    const updateRes = await client.query(`
+      UPDATE friendship_audit_logs f
+      SET 
+        owner_name = COALESCE(f.owner_name, (SELECT name FROM temp_student_names WHERE id = f.owner_id)),
+        friend_name = COALESCE(f.friend_name, (SELECT name FROM temp_student_names WHERE id = f.friend_id))
+      WHERE f.owner_name IS NULL OR f.friend_name IS NULL;
+    `);
+
+    await client.query(`DROP TABLE IF EXISTS temp_student_names;`);
+
+    const updatedCount = updateRes.rowCount ?? 0;
+    return {
+      success: true,
+      message: `Successfully backfilled names for ${updatedCount} audit log records.`,
+      updatedCount,
+    };
+  } catch (err: any) {
+    console.error("Backfilling audit logs failed:", err);
+    return {
+      success: false,
+      message: err?.message || "Backfilling audit logs failed",
+      updatedCount: 0,
+      error: err?.stack || String(err),
+    };
+  } finally {
+    if (client) client.release();
+    await pool.end();
+  }
+}
+

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { eq, and } from "drizzle-orm";
 import { db, friendshipsTable, friendshipAuditLogsTable } from "@/db";
+import { getStudentById } from "@/lib/campus-data";
 
 export async function DELETE(
   _request: NextRequest,
@@ -25,10 +26,15 @@ export async function DELETE(
       )
       .returning();
 
+    const owner = getStudentById(ownerId);
+    const friend = getStudentById(friendId);
+
     // Log removal in audit table for analytics
     await db.insert(friendshipAuditLogsTable).values({
       ownerId,
+      ownerName: owner?.name ?? null,
       friendId,
+      friendName: friend?.name ?? null,
       action: "remove",
     });
 

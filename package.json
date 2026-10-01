@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:push": "drizzle-kit push",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "db:backfill": "node scripts/backfill-audit-logs.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
