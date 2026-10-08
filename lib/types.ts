@@ -24,6 +24,27 @@ export interface ClassSession {
   rescheduledTo?: string;
   rescheduledFrom?: string;
   statusNote?: string;
+  isExam?: boolean;
+  examType?: string;
+  examComments?: string;
+}
+
+export interface ExamInfo {
+  campus: Campus;
+  courseCode: string;
+  courseName: string;
+  sections: string[];
+  date: string;
+  displayDate: string;
+  startTime: string;
+  endTime: string;
+  duration: string;
+  room: string;
+  typeOfExam: string;
+  allowedItems: string[];
+  prohibitedItems: string[];
+  comments: string;
+  pdfUrl: string;
 }
 
 export interface ScheduleDay {

@@ -9,6 +9,7 @@ import type {
   ScheduleDay,
   Campus,
   ClassSession,
+  ExamInfo,
 } from "./types";
 
 export type {
@@ -19,6 +20,7 @@ export type {
   ScheduleDay,
   Campus,
   ClassSession,
+  ExamInfo,
 };
 import {
   getLocalFriendIds,
@@ -350,3 +352,22 @@ export function useUpdateSgStatus() {
     },
   });
 }
+
+export interface ExamsResponse {
+  student?: Student;
+  myExams?: ClassSession[];
+  allExams: ExamInfo[];
+}
+
+export function useGetExams(studentId?: number | null, campus?: Campus) {
+  return useQuery({
+    queryKey: ["exams", studentId, campus],
+    queryFn: () => {
+      const sp = new URLSearchParams();
+      if (studentId) sp.set("studentId", String(studentId));
+      if (campus) sp.set("campus", campus);
+      return fetchJson<ExamsResponse>(`/api/exams?${sp.toString()}`);
+    },
+  });
+}
+

@@ -2,6 +2,7 @@ import coursesJson from "@/data/courses.json";
 import studentsJson from "@/data/students.json";
 import enrollmentsJson from "@/data/enrollments.json";
 import sessionsJson from "@/data/sessions.json";
+import examsJson from "@/data/exams.json";
 import type {
   Campus,
   StudentSummary,
@@ -9,6 +10,7 @@ import type {
   ClassSession,
   ScheduleDay,
   LiveStatus,
+  ExamInfo,
 } from "./types";
 
 interface Course {
@@ -39,6 +41,9 @@ interface RawSession {
   rescheduledTo?: string;
   rescheduledFrom?: string;
   statusNote?: string;
+  isExam?: boolean;
+  examType?: string;
+  examComments?: string;
 }
 
 const courses = coursesJson as Course[];
@@ -86,6 +91,9 @@ function toClassSession(s: RawSession): ClassSession {
     rescheduledTo: s.rescheduledTo,
     rescheduledFrom: s.rescheduledFrom,
     statusNote: s.statusNote,
+    isExam: s.isExam,
+    examType: s.examType,
+    examComments: s.examComments,
   };
 }
 
@@ -156,7 +164,7 @@ export function getWorkingDaySchedules(studentId: number): ScheduleDay[] {
   const dates = [...new Set(activeSessions.map((session) => session.date))]
     .filter((date) => date >= today)
     .sort()
-    .slice(0, 2);
+    .slice(0, 5);
 
   return dates.map((date) => ({
     date,
@@ -249,8 +257,12 @@ export function getSchedulerWorkingDates(count = 7): string[] {
   const { date: today } = nowInKolkata();
 
   const fridayClassDates = new Set<string>();
+  const examDates = new Set<string>();
   for (const s of rawSessions) {
     if (!s.isCancelled) {
+      if (s.isExam) {
+        examDates.add(s.date);
+      }
       const weekday = new Intl.DateTimeFormat("en-US", {
         timeZone: "Asia/Kolkata",
         weekday: "short",
@@ -284,9 +296,23 @@ export function getSchedulerWorkingDates(count = 7): string[] {
       result.push(dateStr);
     } else if (weekday === "Fri" && fridayClassDates.has(dateStr)) {
       result.push(dateStr);
+    } else if (examDates.has(dateStr)) {
+      result.push(dateStr);
     }
   }
 
   return result;
+}
+
+export const allExams = examsJson as ExamInfo[];
+
+export function getExamsForCampus(campus?: Campus): ExamInfo[] {
+  if (!campus) return allExams;
+  return allExams.filter((e) => e.campus === campus);
+}
+
+export function getStudentExams(studentId: number): ClassSession[] {
+  const sessions = sessionsByStudent.get(studentId) ?? [];
+  return sessions.filter((s) => s.isExam && !s.isCancelled);
 }
 

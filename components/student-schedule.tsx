@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useGetStudentScheduleWorkingDays } from "@/lib/api-client";
 import type { ClassSession, ScheduleDay } from "@/lib/types";
-import { Armchair, CalendarDays, ChevronLeft, MapPin, RefreshCw } from "lucide-react";
+import { Armchair, CalendarDays, ChevronLeft, MapPin, RefreshCw, FileText } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
 import { SeatingModal } from "@/components/seating-modal";
@@ -32,23 +33,33 @@ function formatScheduleDate(date: string): string {
 function DaySchedule({
   day,
   isToday,
+  dayIndex = 0,
   onOpenSeating,
 }: {
   day: ScheduleDay;
   isToday: boolean;
+  dayIndex?: number;
   onOpenSeating?: (session: ClassSession) => void;
 }) {
   const activeSessions = day.sessions.filter((s) => !s.isCancelled);
   const cancelledSessions = day.sessions.filter((s) => s.isCancelled);
+  const isExamDay = day.sessions.some((s) => s.isExam);
 
   return (
     <section data-testid={`schedule-day-${day.date}`}>
       <div className="flex items-center gap-2 mb-3">
-        <CalendarDays className="h-4 w-4 text-primary" />
+        <CalendarDays className={`h-4 w-4 ${isExamDay ? "text-red-500" : "text-primary"}`} />
         <div>
-          <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">
-            {isToday ? "Today" : "Next class day"}
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">
+              {isToday ? "Today" : isExamDay ? "End-Term Exam Day" : dayIndex === 1 ? "Next class day" : "Upcoming"}
+            </h3>
+            {isExamDay && (
+              <span className="inline-flex items-center rounded-full bg-red-500/10 px-2 py-0.5 text-[10px] font-bold text-red-600 dark:text-red-400 border border-red-500/25">
+                EXAM
+              </span>
+            )}
+          </div>
           <p className="text-xs text-muted-foreground">{formatScheduleDate(day.date)}</p>
         </div>
       </div>
@@ -61,29 +72,44 @@ function DaySchedule({
               className="relative flex gap-4"
             >
               <div className="w-8 shrink-0 flex justify-center z-10 pt-2">
-                <div className="h-2.5 w-2.5 rounded-full ring-4 ring-background bg-primary transition-transform duration-200 group-hover:scale-125" />
+                <div className={`h-2.5 w-2.5 rounded-full ring-4 ring-background ${session.isExam ? "bg-red-500" : "bg-primary"} transition-transform duration-200 group-hover:scale-125`} />
               </div>
-              <div className="group flex-1 rounded-2xl p-4 border bg-card border-card-border transition-colors duration-200 hover:border-primary/40">
+              <div className={`group flex-1 rounded-2xl p-4 border bg-card ${session.isExam ? "border-red-500/30 bg-red-500/[0.02]" : "border-card-border"} transition-colors duration-200 hover:border-primary/40`}>
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-sm font-semibold text-primary">
+                    <span className={`text-sm font-semibold ${session.isExam ? "text-red-600 dark:text-red-400 font-bold" : "text-primary"}`}>
                       {formatTime(session.startTime)} - {formatTime(session.endTime)}
                     </span>
-                    {session.statusNote && (
+                    {session.isExam ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-red-500/15 px-2.5 py-0.5 text-xs font-bold text-red-700 dark:text-red-300 border border-red-500/30">
+                        📝 End-Term Exam
+                      </span>
+                    ) : session.statusNote ? (
                       <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                         🔄 {session.statusNote}
                       </span>
-                    )}
+                    ) : null}
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => onOpenSeating?.(session)}
-                    title={`View ${session.courseCode} Section ${session.section} seating chart`}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-secondary/90 hover:bg-primary hover:text-primary-foreground text-foreground border border-border/60 transition-all active:scale-95"
-                  >
-                    <Armchair className="h-3.5 w-3.5 text-primary group-hover:text-inherit" />
-                    <span>Seating</span>
-                  </button>
+                  {session.isExam ? (
+                    <Link
+                      href="/exams"
+                      title="View exam rules and guidelines"
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-red-500/10 hover:bg-red-500 hover:text-white text-red-600 dark:text-red-400 border border-red-500/30 transition-all active:scale-95"
+                    >
+                      <FileText className="h-3.5 w-3.5" />
+                      <span>Exam Rules</span>
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => onOpenSeating?.(session)}
+                      title={`View ${session.courseCode} Section ${session.section} seating chart`}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-secondary/90 hover:bg-primary hover:text-primary-foreground text-foreground border border-border/60 transition-all active:scale-95"
+                    >
+                      <Armchair className="h-3.5 w-3.5 text-primary group-hover:text-inherit" />
+                      <span>Seating</span>
+                    </button>
+                  )}
                 </div>
                 <h4 className="font-bold text-lg leading-tight mt-1.5 mb-1">
                   {session.courseName}
@@ -93,9 +119,21 @@ function DaySchedule({
                     {session.courseCode} · Section {session.section}
                   </span>
                   <span className="flex items-center gap-1 shrink-0">
-                    <MapPin className="h-3 w-3" /> {session.room || "TBA"}
+                    <MapPin className="h-3 w-3" /> {session.room || "Exam Hall"}
                   </span>
                 </div>
+                {session.examType && (
+                  <div className="mt-2.5 rounded-xl bg-secondary/60 p-2.5 border border-border/60 text-xs">
+                    <p className="font-semibold text-foreground">
+                      📋 {session.examType}
+                    </p>
+                    {session.examComments && (
+                      <p className="text-[11px] text-muted-foreground mt-1">
+                        {session.examComments}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -194,11 +232,12 @@ export function StudentSchedule({
         </div>
       ) : days && days.length > 0 ? (
         <div className="space-y-8">
-          {days.map((day) => (
+          {days.map((day, index) => (
             <DaySchedule
               key={day.date}
               day={day}
               isToday={day.date === today}
+              dayIndex={index}
               onOpenSeating={setSeatingSession}
             />
           ))}
