@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useGetStudentScheduleWorkingDays } from "@/lib/api-client";
 import type { ClassSession, ScheduleDay } from "@/lib/types";
@@ -188,6 +188,31 @@ export function StudentSchedule({
   const today = todayInKolkata();
   const [seatingSession, setSeatingSession] = useState<ClassSession | null>(null);
 
+  const firstExamDate = days?.find((d) => d.sessions.some((s) => s.isExam))?.date;
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !days || days.length === 0) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const shouldScroll =
+      urlParams.get("scrollTo") === "exam" ||
+      window.location.hash === "#first-exam-day";
+
+    if (shouldScroll) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById("first-exam-day");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("ring-2", "ring-red-500/50", "rounded-2xl", "p-2", "transition-all");
+          setTimeout(() => {
+            el.classList.remove("ring-2", "ring-red-500/50", "p-2");
+          }, 2500);
+        }
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [days]);
+
   return (
     <section className="mx-auto w-full max-w-3xl">
       <div className="mb-7 flex items-start justify-between gap-4">
@@ -232,15 +257,23 @@ export function StudentSchedule({
         </div>
       ) : days && days.length > 0 ? (
         <div className="space-y-8">
-          {days.map((day, index) => (
-            <DaySchedule
-              key={day.date}
-              day={day}
-              isToday={day.date === today}
-              dayIndex={index}
-              onOpenSeating={setSeatingSession}
-            />
-          ))}
+          {days.map((day, index) => {
+            const isFirstExamDay = day.date === firstExamDate;
+            return (
+              <div
+                key={day.date}
+                id={isFirstExamDay ? "first-exam-day" : `schedule-day-${day.date}`}
+                className={isFirstExamDay ? "scroll-mt-6" : undefined}
+              >
+                <DaySchedule
+                  day={day}
+                  isToday={day.date === today}
+                  dayIndex={index}
+                  onOpenSeating={setSeatingSession}
+                />
+              </div>
+            );
+          })}
         </div>
       ) : (
         <div className="rounded-3xl border-2 border-dashed border-primary/15 bg-card p-8 text-center" data-testid="schedule-empty">

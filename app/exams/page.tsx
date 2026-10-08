@@ -1,96 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent, useGetExams } from "@/lib/api-client";
-import { formatTime } from "@/lib/utils";
-import type { Campus, ExamInfo, ClassSession } from "@/lib/types";
+import type { Campus } from "@/lib/types";
 import {
   ChevronLeft,
   GraduationCap,
-  Calendar,
-  Clock,
-  MapPin,
   FileText,
   ExternalLink,
   Download,
-  AlertTriangle,
-  CheckCircle2,
-  XCircle,
-  HelpCircle,
+  ArrowUpRight,
   ShieldCheck,
-  Search,
-  Sparkles,
+  CalendarDays,
 } from "lucide-react";
+import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { BottomNav } from "@/components/bottom-nav";
 import { ShareButton } from "@/components/share-button";
 
-const PDF_URLS: Record<Campus, { filename: string; url: string; title: string }> = {
+const PDF_INFO: Record<Campus, { filename: string; url: string; title: string; campusLabel: string }> = {
   hyderabad: {
     filename: "Term4_Endterm_Examdetails_Hyderabad.pdf",
     url: "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf",
-    title: "Hyderabad Term 4 End-Term Exam Details",
+    title: "Hyderabad End-Term Exam Timetable",
+    campusLabel: "Hyderabad Campus",
   },
   mohali: {
     filename: "Term 4_End_Term_Exam_Mohali_2026-27.pdf",
     url: "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf",
-    title: "Mohali Term 4 End-Term Exam Details",
+    title: "Mohali End-Term Exam Timetable",
+    campusLabel: "Mohali Campus",
   },
 };
-
-function formatExamDate(dateStr: string): string {
-  try {
-    return new Intl.DateTimeFormat("en-IN", {
-      timeZone: "Asia/Kolkata",
-      weekday: "short",
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    }).format(new Date(`${dateStr}T00:00:00+05:30`));
-  } catch {
-    return dateStr;
-  }
-}
 
 export default function ExamsPage() {
   const { studentId: loggedInId } = useLocalStudent();
   const { data: me } = useGetStudent(loggedInId || 0);
 
-  const [selectedCampus, setSelectedCampus] = useState<Campus>("hyderabad");
-  const [showEmbeddedPdf, setShowEmbeddedPdf] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  // Strictly use logged-in student's campus (no option to view other campus)
+  const campus: Campus = me?.campus || "hyderabad";
+  const pdf = PDF_INFO[campus];
 
-  // Sync selected campus with user's campus when loaded
-  useEffect(() => {
-    if (me?.campus) {
-      setSelectedCampus(me.campus);
-    }
-  }, [me?.campus]);
-
-  const { data: examsData, isLoading } = useGetExams(loggedInId, selectedCampus);
-
-  const currentPdf = PDF_URLS[selectedCampus];
-
-  const filteredExams = (examsData?.allExams || []).filter((ex: ExamInfo) => {
-    if (ex.campus !== selectedCampus) return false;
-    if (!searchQuery.trim()) return true;
-    const q = searchQuery.toLowerCase();
-    return (
-      ex.courseCode.toLowerCase().includes(q) ||
-      ex.courseName.toLowerCase().includes(q) ||
-      ex.typeOfExam.toLowerCase().includes(q)
-    );
-  });
-
+  const { data: examsData } = useGetExams(loggedInId, campus);
   const myExams = examsData?.myExams || [];
+  const examCount = myExams.length;
 
   return (
     <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 sm:px-5 pb-32 pt-6">
       {/* Header */}
-      <header className="mb-5 flex items-center justify-between gap-3">
+      <header className="mb-6 flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <Link
             href="/"
@@ -105,119 +64,73 @@ export default function ExamsPage() {
               <h1 className="text-2xl font-display font-bold truncate">Exams</h1>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5 truncate">
-              Term 4 End-Term Timetable & Guidelines
+              Term 4 End-Term Timetable &bull; {pdf.campusLabel}
             </p>
           </div>
         </div>
         <ShareButton source="exams_header" />
       </header>
 
-      {/* Campus Selector */}
-      <div className="mb-5 flex rounded-2xl bg-secondary/80 p-1">
-        <button
-          type="button"
-          onClick={() => setSelectedCampus("hyderabad")}
-          className={`flex-1 rounded-xl py-2 text-xs font-semibold transition-all ${
-            selectedCampus === "hyderabad"
-              ? "bg-card text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Hyderabad Campus
-        </button>
-        <button
-          type="button"
-          onClick={() => setSelectedCampus("mohali")}
-          className={`flex-1 rounded-xl py-2 text-xs font-semibold transition-all ${
-            selectedCampus === "mohali"
-              ? "bg-card text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Mohali Campus
-        </button>
-      </div>
-
-      {/* SECTION 1: PERSONALIZED EXAM SCHEDULE */}
-      {loggedInId && (
-        <section className="mb-6 rounded-2xl border border-primary/25 bg-primary/[0.03] p-4 shadow-sm">
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-primary" />
-              <h2 className="font-display font-bold text-sm text-foreground">
-                Your Exam Schedule
-              </h2>
-            </div>
-            {me && (
-              <Badge variant="outline" className="text-[10px] font-semibold border-primary/30 text-primary">
-                {me.name.split(" ")[0]} ({me.section})
-              </Badge>
-            )}
+      {/* SECTION 1: YOUR EXAM SCHEDULE (Matching "You" card on Home) */}
+      {me && (
+        <section className="mb-6">
+          <div className="mb-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              Your Exam Schedule
+            </p>
           </div>
+          <Link
+            href="/schedule?scrollTo=exam#first-exam-day"
+            data-testid="link-user-exam-card"
+            className="group relative block overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/10 via-card to-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]"
+          >
+            <div className="flex items-center gap-4">
+              <div className="relative shrink-0">
+                <Avatar
+                  name={me.name}
+                  className="h-14 w-14 ring-2 ring-primary/30"
+                />
+                <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-card bg-red-500 text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
+                  📝
+                </div>
+              </div>
 
-          {myExams.length > 0 ? (
-            <div className="space-y-3">
-              {myExams.map((session: ClassSession, idx: number) => (
-                <div
-                  key={`${session.courseCode}-${session.date}-${idx}`}
-                  className="rounded-xl border border-card-border bg-card p-3.5 shadow-xs transition-all hover:border-primary/40"
-                >
-                  <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <div className="min-w-0 flex-1">
-                      <span className="text-[11px] font-semibold text-primary">
-                        {session.courseCode} · Section {session.section}
-                      </span>
-                      <h3 className="font-semibold text-sm leading-tight text-foreground">
-                        {session.courseName}
-                      </h3>
-                    </div>
-                    <Badge variant="outline" className="shrink-0 text-[10px] font-bold border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400">
-                      Exam
+              <div className="flex-1 min-w-0">
+                <div className="flex justify-between items-start mb-1">
+                  <div className="flex items-center gap-2 truncate pr-2">
+                    <h3 className="font-semibold text-foreground truncate">
+                      {me.name}
+                    </h3>
+                    <Badge variant="outline" className="text-[10px] shrink-0 border-primary/30 text-primary">
+                      You
                     </Badge>
                   </div>
-
-                  <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-muted-foreground mb-2">
-                    <span className="flex items-center gap-1 font-medium text-foreground">
-                      <Calendar className="h-3.5 w-3.5 text-primary" />
-                      {formatExamDate(session.date)}
-                    </span>
-                    <span className="flex items-center gap-1 font-medium text-foreground">
-                      <Clock className="h-3.5 w-3.5 text-primary" />
-                      {formatTime(session.startTime)} - {formatTime(session.endTime)}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="h-3.5 w-3.5" />
-                      {session.room || "Exam Hall"}
-                    </span>
-                  </div>
-
-                  {session.examType && (
-                    <div className="rounded-lg bg-secondary/50 p-2 text-xs border border-border/40">
-                      <p className="font-semibold text-foreground text-[11px]">
-                        📋 {session.examType}
-                      </p>
-                      {session.examComments && (
-                        <p className="text-[11px] text-muted-foreground mt-0.5">
-                          {session.examComments}
-                        </p>
-                      )}
-                    </div>
-                  )}
+                  <Badge
+                    variant="outline"
+                    className="shrink-0 text-[10px] font-bold border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400"
+                  >
+                    {examCount > 0 ? `${examCount} Exam${examCount > 1 ? "s" : ""}` : "End-Term"}
+                  </Badge>
                 </div>
-              ))}
+
+                <div className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
+                  <CalendarDays className="h-3.5 w-3.5 text-primary shrink-0" />
+                  <span className="truncate text-foreground font-medium">
+                    Open schedule &bull; Jump to first exam
+                  </span>
+                </div>
+                <p className="text-[11px] text-muted-foreground/80 mt-0.5 truncate">
+                  Sec {me.section} &bull; Oct 11 &ndash; Oct 13, 2026
+                </p>
+              </div>
+
+              <ArrowUpRight className="h-4 w-4 shrink-0 text-primary/40 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
             </div>
-          ) : (
-            <div className="rounded-xl border border-dashed border-border bg-card/60 p-4 text-center text-xs text-muted-foreground">
-              <p className="font-medium text-foreground">No end-term exams for your enrolled courses</p>
-              <p className="mt-1">
-                Your courses may use project evaluations or assignments instead of sit-in exams.
-              </p>
-            </div>
-          )}
+          </Link>
         </section>
       )}
 
-      {/* SECTION 2: OFFICIAL END-TERM EXAM PDF VIEWER & DOWNLOAD */}
+      {/* SECTION 2: OFFICIAL END-TERM EXAM PDF */}
       <section className="mb-6 rounded-2xl border border-card-border bg-card p-4 shadow-sm">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="min-w-0">
@@ -225,185 +138,39 @@ export default function ExamsPage() {
               Official Notification PDF
             </span>
             <h2 className="font-display font-bold text-base text-foreground truncate">
-              {currentPdf.title}
+              {pdf.title}
             </h2>
             <p className="text-xs text-muted-foreground mt-0.5 truncate">
-              {currentPdf.filename}
+              {pdf.filename}
             </p>
           </div>
           <FileText className="h-6 w-6 text-primary shrink-0" />
         </div>
 
         {/* Action Buttons for PDF */}
-        <div className="grid grid-cols-2 gap-2 mb-3">
+        <div className="grid grid-cols-2 gap-2">
           <a
-            href={currentPdf.url}
+            href={pdf.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 rounded-xl bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 active:scale-95"
+            className="flex items-center justify-center gap-1.5 rounded-xl bg-primary px-3 py-2.5 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 active:scale-95"
           >
             <ExternalLink className="h-3.5 w-3.5" />
-            <span>Open PDF in Tab</span>
+            <span>Open in New Tab</span>
           </a>
 
           <a
-            href={currentPdf.url}
-            download={currentPdf.filename}
-            className="flex items-center justify-center gap-1.5 rounded-xl border border-card-border bg-secondary/80 px-3 py-2 text-xs font-semibold text-foreground transition-all hover:bg-secondary active:scale-95"
+            href={pdf.url}
+            download={pdf.filename}
+            className="flex items-center justify-center gap-1.5 rounded-xl border border-card-border bg-secondary/80 px-3 py-2.5 text-xs font-semibold text-foreground transition-all hover:bg-secondary active:scale-95"
           >
             <Download className="h-3.5 w-3.5" />
             <span>Download PDF</span>
           </a>
         </div>
-
-        {/* Toggle Embedded PDF Preview */}
-        <button
-          type="button"
-          onClick={() => setShowEmbeddedPdf(!showEmbeddedPdf)}
-          className="w-full text-center py-1.5 text-xs font-semibold text-primary hover:underline transition-all"
-        >
-          {showEmbeddedPdf ? "▲ Hide Embedded PDF Viewer" : "▼ Preview PDF inside app"}
-        </button>
-
-        {showEmbeddedPdf && (
-          <div className="mt-3 rounded-xl border border-card-border overflow-hidden bg-muted/20">
-            <iframe
-              src={currentPdf.url}
-              title={currentPdf.title}
-              className="w-full h-[460px] border-none"
-            />
-          </div>
-        )}
       </section>
 
-      {/* SECTION 3: COMPLETE TIMETABLE FOR SELECTED CAMPUS */}
-      <section className="mb-6">
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <div>
-            <h2 className="font-display font-bold text-base text-foreground capitalize">
-              {selectedCampus} Exam Schedule
-            </h2>
-            <p className="text-xs text-muted-foreground">
-              Oct 11 – Oct 13, 2026 timetable
-            </p>
-          </div>
-          <span className="text-xs font-semibold text-muted-foreground">
-            {filteredExams.length} Courses
-          </span>
-        </div>
-
-        {/* Course Search */}
-        <div className="relative mb-3">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder={`Search ${selectedCampus} exams...`}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 h-10 bg-card border-card-border rounded-xl text-sm"
-          />
-        </div>
-
-        {isLoading ? (
-          <div className="space-y-3">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="animate-pulse rounded-2xl border border-card-border bg-card p-4 space-y-2"
-              >
-                <div className="h-4 bg-muted rounded w-1/3" />
-                <div className="h-5 bg-muted rounded w-2/3" />
-                <div className="h-3 bg-muted rounded w-1/2" />
-              </div>
-            ))}
-          </div>
-        ) : filteredExams.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-card-border bg-card p-6 text-center text-xs text-muted-foreground">
-            No exams found matching &quot;{searchQuery}&quot;.
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {filteredExams.map((exam: ExamInfo) => (
-              <div
-                key={`${exam.courseCode}-${exam.date}`}
-                className="rounded-2xl border border-card-border bg-card p-4 shadow-sm transition-all hover:border-primary/40"
-              >
-                <div className="flex items-start justify-between gap-2 mb-1.5">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-primary">
-                        {exam.courseCode}
-                      </span>
-                      <span className="text-[10px] text-muted-foreground">
-                        Sec {exam.sections.join(", ")}
-                      </span>
-                    </div>
-                    <h3 className="font-semibold text-sm leading-tight text-foreground mt-0.5">
-                      {exam.courseName}
-                    </h3>
-                  </div>
-                  <Badge variant="outline" className="shrink-0 text-[10px] font-semibold border-border">
-                    {exam.duration}
-                  </Badge>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-muted-foreground mb-3">
-                  <span className="flex items-center gap-1 font-medium text-foreground">
-                    <Calendar className="h-3.5 w-3.5 text-primary" />
-                    {exam.displayDate}
-                  </span>
-                  <span className="flex items-center gap-1 font-medium text-foreground">
-                    <Clock className="h-3.5 w-3.5 text-primary" />
-                    {formatTime(exam.startTime)} - {formatTime(exam.endTime)}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <MapPin className="h-3.5 w-3.5" />
-                    {exam.room}
-                  </span>
-                </div>
-
-                {/* Exam Format & Rules */}
-                <div className="rounded-xl bg-secondary/50 p-2.5 border border-border/50 text-xs space-y-1.5">
-                  <div className="flex items-start gap-1.5">
-                    <span className="font-semibold text-foreground shrink-0">Type:</span>
-                    <span className="text-foreground">{exam.typeOfExam}</span>
-                  </div>
-
-                  {exam.allowedItems && exam.allowedItems.length > 0 && (
-                    <div className="flex items-start gap-1.5 text-[11px]">
-                      <span className="font-semibold text-emerald-600 dark:text-emerald-400 shrink-0">
-                        Allowed:
-                      </span>
-                      <span className="text-muted-foreground">
-                        {exam.allowedItems.join(" · ")}
-                      </span>
-                    </div>
-                  )}
-
-                  {exam.prohibitedItems && exam.prohibitedItems.length > 0 && (
-                    <div className="flex items-start gap-1.5 text-[11px]">
-                      <span className="font-semibold text-amber-600 dark:text-amber-400 shrink-0">
-                        Not Allowed:
-                      </span>
-                      <span className="text-muted-foreground">
-                        {exam.prohibitedItems.join(" · ")}
-                      </span>
-                    </div>
-                  )}
-
-                  {exam.comments && (
-                    <p className="text-[11px] text-muted-foreground pt-1 border-t border-border/40">
-                      ℹ️ {exam.comments}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* SECTION 4: MANDATORY EXAM GUIDELINES */}
+      {/* SECTION 3: KEY EXAM GUIDELINES */}
       <section className="rounded-2xl border border-card-border bg-card p-4 shadow-sm">
         <div className="flex items-center gap-2 mb-3">
           <ShieldCheck className="h-4 w-4 text-primary" />
