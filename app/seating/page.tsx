@@ -339,7 +339,7 @@ export default function SeatingPage() {
               </div>
             ) : enrolledCourses.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-border bg-card/50 p-6 text-center text-muted-foreground text-xs">
-                No courses registered for Term 4.
+                No courses registered yet. Ready for Term 5 schedules.
               </div>
             ) : (
               <div className="space-y-2.5 w-full">
@@ -518,70 +518,76 @@ export default function SeatingPage() {
               </span>
             </div>
 
-            <div className="space-y-2.5 w-full">
-              {sectionCourses.map((course) => {
-                const matchingChart = availableCharts.find(
-                  (c) =>
-                    c.courseCode.toUpperCase() === course.courseCode.toUpperCase() &&
-                    (c.section.toUpperCase() === selectedSection.toUpperCase() || c.section === "All")
-                );
+            {sectionCourses.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-border bg-card/50 p-6 text-center text-muted-foreground text-xs">
+                No courses registered for Section {selectedSection} yet. Term 5 schedules arriving shortly.
+              </div>
+            ) : (
+              <div className="space-y-2.5 w-full">
+                {sectionCourses.map((course) => {
+                  const matchingChart = availableCharts.find(
+                    (c) =>
+                      c.courseCode.toUpperCase() === course.courseCode.toUpperCase() &&
+                      (c.section.toUpperCase() === selectedSection.toUpperCase() || c.section === "All")
+                  );
 
-                return (
-                  <div
-                    key={course.courseCode}
-                    className="flex items-center justify-between gap-3 rounded-2xl border border-card-border bg-card p-3.5 transition-all hover:border-primary/40 w-full"
-                  >
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-                        <span className="font-bold text-base text-foreground">
-                          {course.courseCode}
-                        </span>
-                        <Badge
-                          variant="secondary"
-                          className="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-md"
-                        >
-                          Sec {selectedSection}
-                        </Badge>
-                        {matchingChart && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                            <Check className="h-3 w-3" /> Ready
+                  return (
+                    <div
+                      key={course.courseCode}
+                      className="flex items-center justify-between gap-3 rounded-2xl border border-card-border bg-card p-3.5 transition-all hover:border-primary/40 w-full"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+                          <span className="font-bold text-base text-foreground">
+                            {course.courseCode}
                           </span>
+                          <Badge
+                            variant="secondary"
+                            className="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-md"
+                          >
+                            Sec {selectedSection}
+                          </Badge>
+                          {matchingChart && (
+                            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                              <Check className="h-3 w-3" /> Ready
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {course.courseName}
+                        </p>
+                        {course.venue && (
+                          <p className="text-[11px] text-muted-foreground/80 mt-1 flex items-center gap-1 truncate">
+                            <MapPin className="h-3 w-3 shrink-0" />
+                            <span>{course.venue}</span>
+                          </p>
                         )}
                       </div>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {course.courseName}
-                      </p>
-                      {course.venue && (
-                        <p className="text-[11px] text-muted-foreground/80 mt-1 flex items-center gap-1 truncate">
-                          <MapPin className="h-3 w-3 shrink-0" />
-                          <span>{course.venue}</span>
-                        </p>
-                      )}
-                    </div>
 
-                    <button
-                      type="button"
-                      onClick={() =>
-                        handleOpenSeating(
-                          course.courseCode,
-                          selectedSection,
-                          course.courseName,
-                          matchingChart?.url
-                        )
-                      }
-                      className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold shrink-0 transition-all active:scale-95 ${
-                        matchingChart
-                          ? "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:opacity-90"
-                          : "bg-secondary text-foreground hover:bg-secondary/80 border border-border/50"
-                      }`}
-                    >
-                      <Armchair className="h-3.5 w-3.5" />
-                      <span>Seating</span>
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleOpenSeating(
+                            course.courseCode,
+                            selectedSection,
+                            course.courseName,
+                            matchingChart?.url
+                          )
+                        }
+                        className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold shrink-0 transition-all active:scale-95 ${
+                          matchingChart
+                            ? "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:opacity-90"
+                            : "bg-secondary text-foreground hover:bg-secondary/80 border border-border/50"
+                        }`}
+                      >
+                        <Armchair className="h-3.5 w-3.5" />
+                        <span>Seating</span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </section>
         </div>
       )}

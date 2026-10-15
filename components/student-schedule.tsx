@@ -172,7 +172,7 @@ function DaySchedule({
 
 export function StudentSchedule({
   studentId,
-  title = "Term 4 Schedule",
+  title = "Class Schedule",
   onClose,
 }: {
   studentId: number;

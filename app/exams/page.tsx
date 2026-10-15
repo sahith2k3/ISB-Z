@@ -19,19 +19,9 @@ import { Badge } from "@/components/ui/badge";
 import { BottomNav } from "@/components/bottom-nav";
 import { ShareButton } from "@/components/share-button";
 
-const PDF_INFO: Record<Campus, { filename: string; url: string; title: string; campusLabel: string }> = {
-  hyderabad: {
-    filename: "Term4_Endterm_Examdetails_Hyderabad.pdf",
-    url: "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf",
-    title: "Hyderabad End-Term Exam Timetable",
-    campusLabel: "Hyderabad Campus",
-  },
-  mohali: {
-    filename: "Term 4_End_Term_Exam_Mohali_2026-27.pdf",
-    url: "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf",
-    title: "Mohali End-Term Exam Timetable",
-    campusLabel: "Mohali Campus",
-  },
+const PDF_INFO: Record<Campus, { filename: string; url: string; title: string; campusLabel: string } | null> = {
+  hyderabad: null,
+  mohali: null,
 };
 
 export default function ExamsPage() {
@@ -41,6 +31,7 @@ export default function ExamsPage() {
   // Strictly use logged-in student's campus (no option to view other campus)
   const campus: Campus = me?.campus || "hyderabad";
   const pdf = PDF_INFO[campus];
+  const campusLabel = campus === "mohali" ? "Mohali Campus" : "Hyderabad Campus";
 
   const { data: examsData } = useGetExams(loggedInId, campus);
   const myExams = examsData?.myExams || [];
@@ -64,7 +55,7 @@ export default function ExamsPage() {
               <h1 className="text-2xl font-display font-bold truncate">Exams</h1>
             </div>
             <p className="text-xs text-muted-foreground mt-0.5 truncate">
-              Term 4 End-Term Timetable &bull; {pdf.campusLabel}
+              End-Term Timetable &bull; {campusLabel}
             </p>
           </div>
         </div>
@@ -124,7 +115,7 @@ export default function ExamsPage() {
                   </span>
                 </div>
                 <p className="text-[11px] text-muted-foreground/80 mt-0.5 truncate">
-                  {examCount > 0 ? `Sec ${me.section} • Oct 11 – Oct 13, 2026` : `Sec ${me.section} • Term 4 concluded`}
+                  {examCount > 0 ? `Sec ${me.section} • Oct 11 – Oct 13, 2026` : `Sec ${me.section} • No active exams`}
                 </p>
               </div>
 
@@ -135,44 +126,56 @@ export default function ExamsPage() {
       )}
 
       {/* SECTION 2: OFFICIAL END-TERM EXAM PDF */}
-      <section className="mb-6 rounded-2xl border border-card-border bg-card p-4 shadow-sm">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="min-w-0">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
-              Official Notification PDF
-            </span>
-            <h2 className="font-display font-bold text-base text-foreground truncate">
-              {pdf.title}
-            </h2>
-            <p className="text-xs text-muted-foreground mt-0.5 truncate">
-              {pdf.filename}
-            </p>
+      {pdf ? (
+        <section className="mb-6 rounded-2xl border border-card-border bg-card p-4 shadow-sm">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div className="min-w-0">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
+                Official Notification PDF
+              </span>
+              <h2 className="font-display font-bold text-base text-foreground truncate">
+                {pdf.title}
+              </h2>
+              <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                {pdf.filename}
+              </p>
+            </div>
+            <FileText className="h-6 w-6 text-primary shrink-0" />
           </div>
-          <FileText className="h-6 w-6 text-primary shrink-0" />
-        </div>
 
-        {/* Action Buttons for PDF */}
-        <div className="grid grid-cols-2 gap-2">
-          <a
-            href={pdf.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 rounded-xl bg-primary px-3 py-2.5 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 active:scale-95"
-          >
-            <ExternalLink className="h-3.5 w-3.5" />
-            <span>Open in New Tab</span>
-          </a>
+          {/* Action Buttons for PDF */}
+          <div className="grid grid-cols-2 gap-2">
+            <a
+              href={pdf.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 rounded-xl bg-primary px-3 py-2.5 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 active:scale-95"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              <span>Open in New Tab</span>
+            </a>
 
-          <a
-            href={pdf.url}
-            download={pdf.filename}
-            className="flex items-center justify-center gap-1.5 rounded-xl border border-card-border bg-secondary/80 px-3 py-2.5 text-xs font-semibold text-foreground transition-all hover:bg-secondary active:scale-95"
-          >
-            <Download className="h-3.5 w-3.5" />
-            <span>Download PDF</span>
-          </a>
-        </div>
-      </section>
+            <a
+              href={pdf.url}
+              download={pdf.filename}
+              className="flex items-center justify-center gap-1.5 rounded-xl border border-card-border bg-secondary/80 px-3 py-2.5 text-xs font-semibold text-foreground transition-all hover:bg-secondary active:scale-95"
+            >
+              <Download className="h-3.5 w-3.5" />
+              <span>Download PDF</span>
+            </a>
+          </div>
+        </section>
+      ) : (
+        <section className="mb-6 rounded-2xl border border-dashed border-card-border bg-card p-6 text-center shadow-sm">
+          <GraduationCap className="mx-auto mb-2 h-7 w-7 text-primary/70" />
+          <h2 className="font-display font-bold text-sm text-foreground">
+            No Exam Timetable Published Yet
+          </h2>
+          <p className="text-xs text-muted-foreground mt-1 max-w-xs mx-auto">
+            Term 5 end-term exam timetable and official guidelines will be published here when announced.
+          </p>
+        </section>
+      )}
 
       {/* SECTION 3: KEY EXAM GUIDELINES */}
       <section className="rounded-2xl border border-card-border bg-card p-4 shadow-sm">
