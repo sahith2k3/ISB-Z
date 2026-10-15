@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useGetStudentScheduleWorkingDays } from "@/lib/api-client";
 import type { ClassSession, ScheduleDay } from "@/lib/types";
-import { Armchair, CalendarDays, ChevronLeft, MapPin, RefreshCw, FileText } from "lucide-react";
+import { Armchair, CalendarDays, ChevronLeft, MapPin, RefreshCw } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
 import { SeatingModal } from "@/components/seating-modal";
@@ -90,16 +90,7 @@ function DaySchedule({
                       </span>
                     ) : null}
                   </div>
-                  {session.isExam ? (
-                    <Link
-                      href="/exams"
-                      title="View exam rules and guidelines"
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-red-500/10 hover:bg-red-500 hover:text-white text-red-600 dark:text-red-400 border border-red-500/30 transition-all active:scale-95"
-                    >
-                      <FileText className="h-3.5 w-3.5" />
-                      <span>Exam Rules</span>
-                    </Link>
-                  ) : (
+                  {!session.isExam && (
                     <button
                       type="button"
                       onClick={() => onOpenSeating?.(session)}
