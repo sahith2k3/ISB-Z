@@ -1,0 +1,314 @@
+[
+  {
+    "campus": "mohali",
+    "courseCode": "SUET",
+    "courseName": "Sustainability and Ethics",
+    "sections": [
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L"
+    ],
+    "date": "2026-10-11",
+    "displayDate": "Sunday, Oct 11, 2026",
+    "startTime": "09:00",
+    "endTime": "10:30",
+    "duration": "1.5 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed note",
+    "allowedItems": [
+      "Pencil (for OMR bubble sheet)",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Calculators",
+      "Cheat sheets",
+      "Electronic gadgets"
+    ],
+    "comments": "OMR: You should write with a pencil to answer the OMR part of the exam. Answers to MCQ to be marked in separate bubble sheet. Rough sheets will not be provided (show workings in question booklet).",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "GSMT",
+    "courseName": "Global Strategic Management",
+    "sections": [
+      "G",
+      "H",
+      "I"
+    ],
+    "date": "2026-10-11",
+    "displayDate": "Sunday, Oct 11, 2026",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed note · 1 A4 two-sided handwritten cheat sheet allowed",
+    "allowedItems": [
+      "Blue/black pen",
+      "1 A4 two-sided handwritten cheat sheet (photocopy not allowed)",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Calculators",
+      "Printed cheat sheets",
+      "Electronic gadgets"
+    ],
+    "comments": "Descriptive: Write with blue/black pen only in question cum answer booklet. Rough sheets will not be provided (show workings in question booklet). Permitted cheat sheet must be submitted with question paper before leaving.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LSCM",
+    "courseName": "Supply Chain Management",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "date": "2026-10-12",
+    "displayDate": "Monday, Oct 12, 2026",
+    "startTime": "09:00",
+    "endTime": "11:30",
+    "duration": "2.5 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Open book & Open notes · Calculators allowed",
+    "allowedItems": [
+      "Open book & notes",
+      "Calculators",
+      "Pencil (for OMR)",
+      "Blue/black pen",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Electronic gadgets"
+    ],
+    "comments": "OMR & Explanation: Students select correct MCQ and provide brief explanation/justification in space below each question. OMR answered with pencil. Rough sheets not provided.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTR",
+    "courseName": "Marketing Research for Consumer Insights and Growth Strategies",
+    "sections": [
+      "G"
+    ],
+    "date": "2026-10-12",
+    "displayDate": "Monday, Oct 12, 2026",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Simulation Exam · Laptop & Internet allowed",
+    "allowedItems": [
+      "Laptop (fully charged recommended)",
+      "Internet access",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Mobile phones / Smart watches"
+    ],
+    "comments": "Simulation Exam: Students are required to use laptops to attempt the simulation exam. Please ensure you carefully follow instructions announced during exam.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CCMA",
+    "courseName": "Corporate Control, Mergers and Acquisitions",
+    "sections": [
+      "G"
+    ],
+    "date": "2026-10-13",
+    "displayDate": "Tuesday, Oct 13, 2026",
+    "startTime": "09:00",
+    "endTime": "11:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed note · Calculators allowed · 1 A4 two-sided cheat sheet allowed",
+    "allowedItems": [
+      "Calculators",
+      "1 A4 two-sided printed or handwritten cheat sheet",
+      "Pencil (for OMR)",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Mobile phones / Smart watches"
+    ],
+    "comments": "OMR: Write with pencil to answer OMR bubble sheet. Rough sheets will not be provided (show workings in question booklet). Permitted cheat sheet must be submitted with question paper.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Mohali_2026-27.pdf"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SUET",
+    "courseName": "Sustainability and Ethics",
+    "sections": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "date": "2026-10-11",
+    "displayDate": "Sunday, Oct 11, 2026",
+    "startTime": "09:00",
+    "endTime": "10:30",
+    "duration": "1.5 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed notes",
+    "allowedItems": [
+      "Pencil (for OMR bubble sheet)",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Calculators",
+      "Cheat sheets",
+      "Electronic gadgets"
+    ],
+    "comments": "OMR Part: Write with pencil to answer OMR bubble sheet. Rough sheets will not be provided (show workings in question cum answer booklet).",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "REMA",
+    "courseName": "Revenue Management Analytics",
+    "sections": [
+      "A"
+    ],
+    "date": "2026-10-11",
+    "displayDate": "Sunday, Oct 11, 2026",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Open book & Open notes · Calculators allowed",
+    "allowedItems": [
+      "Open book & notes",
+      "Calculators",
+      "Blue/black pen",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Electronic gadgets"
+    ],
+    "comments": "Write with blue/black pen in question booklet provided. Rough sheets will not be provided (show workings in question cum answer booklet).",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSCM",
+    "courseName": "Supply Chain Management",
+    "sections": [
+      "A"
+    ],
+    "date": "2026-10-12",
+    "displayDate": "Monday, Oct 12, 2026",
+    "startTime": "09:00",
+    "endTime": "11:30",
+    "duration": "2.5 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Open book & Open notes · Calculators allowed",
+    "allowedItems": [
+      "Open book & notes",
+      "Calculators",
+      "Blue/black pen",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Electronic gadgets"
+    ],
+    "comments": "Descriptive and Objective: Write with blue/black pen in question booklet provided. Rough sheets will not be provided.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NSDL",
+    "courseName": "New Product and Service Development and Launch",
+    "sections": [
+      "A"
+    ],
+    "date": "2026-10-12",
+    "displayDate": "Monday, Oct 12, 2026",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed notes · Calculators allowed",
+    "allowedItems": [
+      "Calculators",
+      "Blue/black pen",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Cheat sheets",
+      "Electronic gadgets"
+    ],
+    "comments": "Descriptive and Objective: Write with blue/black pen in question booklet provided. Rough sheets will not be provided.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INFS",
+    "courseName": "Indian Financial Systems",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "date": "2026-10-13",
+    "displayDate": "Tuesday, Oct 13, 2026",
+    "startTime": "09:00",
+    "endTime": "11:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed notes · Calculators allowed · 2 A4 cheat sheets allowed",
+    "allowedItems": [
+      "Calculators",
+      "Two A4 size two-sided handwritten or printed cheat sheets",
+      "Pencil (for OMR)",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Electronic gadgets"
+    ],
+    "comments": "OMR Part: Write with pencil to answer OMR bubble sheet. Rough sheets will not be provided.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "PRCG",
+    "courseName": "Pricing",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "date": "2026-10-13",
+    "displayDate": "Tuesday, Oct 13, 2026",
+    "startTime": "14:00",
+    "endTime": "16:00",
+    "duration": "2 hrs",
+    "room": "Exam Hall",
+    "typeOfExam": "Closed book & Closed notes · Calculators allowed · 1 A4 cheat sheet allowed",
+    "allowedItems": [
+      "Calculators",
+      "One A4 Size Two-sided Handwritten cheat sheet",
+      "Blue/black pen",
+      "Student ID Card"
+    ],
+    "prohibitedItems": [
+      "Laptops",
+      "Electronic gadgets"
+    ],
+    "comments": "Descriptive: Write with blue/black pen in question booklet provided. Rough sheets will not be provided.",
+    "pdfUrl": "/exams/Term_4_End_Term_Exam_Hyderabad_2026-27.pdf"
+  }
+]

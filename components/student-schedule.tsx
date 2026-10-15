@@ -279,7 +279,7 @@ export function StudentSchedule({
         <div className="rounded-3xl border-2 border-dashed border-primary/15 bg-card p-8 text-center" data-testid="schedule-empty">
           <CalendarDays className="mx-auto mb-3 h-7 w-7 text-primary/70" />
           <p className="font-semibold text-foreground">No upcoming classes scheduled.</p>
-          <p className="mt-1 text-sm text-muted-foreground">Looks like a lighter week ahead.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Term completed or new schedule not yet published.</p>
         </div>
       )}
 

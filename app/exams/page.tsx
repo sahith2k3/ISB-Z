@@ -80,7 +80,7 @@ export default function ExamsPage() {
             </p>
           </div>
           <Link
-            href="/schedule?scrollTo=exam#first-exam-day"
+            href={examCount > 0 ? "/schedule?scrollTo=exam#first-exam-day" : "/schedule"}
             data-testid="link-user-exam-card"
             className="group relative block overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/10 via-card to-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]"
           >
@@ -90,8 +90,8 @@ export default function ExamsPage() {
                   name={me.name}
                   className="h-14 w-14 ring-2 ring-primary/30"
                 />
-                <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-card bg-red-500 text-white flex items-center justify-center text-[10px] font-bold shadow-xs">
-                  📝
+                <div className={`absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-card ${examCount > 0 ? "bg-red-500 text-white" : "bg-emerald-500 text-white"} flex items-center justify-center text-[10px] font-bold shadow-xs`}>
+                  {examCount > 0 ? "📝" : "✓"}
                 </div>
               </div>
 
@@ -107,20 +107,24 @@ export default function ExamsPage() {
                   </div>
                   <Badge
                     variant="outline"
-                    className="shrink-0 text-[10px] font-bold border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400"
+                    className={`shrink-0 text-[10px] font-bold ${
+                      examCount > 0
+                        ? "border-red-500/30 bg-red-500/10 text-red-600 dark:text-red-400"
+                        : "border-muted-foreground/30 bg-muted/40 text-muted-foreground"
+                    }`}
                   >
-                    {examCount > 0 ? `${examCount} Exam${examCount > 1 ? "s" : ""}` : "End-Term"}
+                    {examCount > 0 ? `${examCount} Exam${examCount > 1 ? "s" : ""}` : "No Exams"}
                   </Badge>
                 </div>
 
                 <div className="text-xs text-muted-foreground flex items-center gap-1.5 mt-0.5">
                   <CalendarDays className="h-3.5 w-3.5 text-primary shrink-0" />
                   <span className="truncate text-foreground font-medium">
-                    Open schedule &bull; Jump to first exam
+                    {examCount > 0 ? "Open schedule • Jump to first exam" : "No active exams scheduled"}
                   </span>
                 </div>
                 <p className="text-[11px] text-muted-foreground/80 mt-0.5 truncate">
-                  Sec {me.section} &bull; Oct 11 &ndash; Oct 13, 2026
+                  {examCount > 0 ? `Sec ${me.section} • Oct 11 – Oct 13, 2026` : `Sec ${me.section} • Term 4 concluded`}
                 </p>
               </div>
 
