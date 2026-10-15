@@ -250,7 +250,7 @@ export function getStudentEnrollments(studentId: number): StudentEnrolledCourse[
 
 /**
  * Returns upcoming dates for group availability in the scheduler.
- * Includes Monday-Thursday and any Fridays that have scheduled classes throughout Term 4,
+ * Includes Monday-Thursday and any Fridays that have scheduled classes throughout Term 5,
  * dynamically updating based on Asia/Kolkata current date.
  */
 export function getSchedulerWorkingDates(count = 7): string[] {
