@@ -11,6 +11,7 @@ import type {
   ScheduleDay,
   LiveStatus,
   ExamInfo,
+  SamplingSession,
 } from "./types";
 
 interface Course {
@@ -314,5 +315,35 @@ export function getExamsForCampus(campus?: Campus): ExamInfo[] {
 export function getStudentExams(studentId: number): ClassSession[] {
   const sessions = sessionsByStudent.get(studentId) ?? [];
   return sessions.filter((s) => s.isExam && !s.isCancelled);
+}
+
+export function getAllSamplingSessions(campus?: Campus): SamplingSession[] {
+  const list = rawSessions.filter((s) => !s.isCancelled);
+  return list
+    .filter((s) => !campus || s.campus === campus)
+    .map((s) => {
+      const course = courseByCode.get(s.courseCode);
+      const roster = rosterByCourseSection.get(`${s.courseCode}|${s.section}`) ?? [];
+      return {
+        id: `${s.date}_${s.courseCode}_${s.section}`,
+        campus: s.campus,
+        courseCode: s.courseCode,
+        courseName: course?.name ?? s.courseCode,
+        section: s.section,
+        date: s.date,
+        startTime: s.startTime,
+        endTime: s.endTime,
+        room: s.room ?? course?.venue ?? "TBA",
+        venue: course?.venue ?? s.room ?? "TBA",
+        faculty: course?.faculty ?? "",
+        enrolledCount: roster.length,
+        enrolledStudentIds: roster,
+      };
+    })
+    .sort((a, b) => {
+      if (a.date !== b.date) return a.date.localeCompare(b.date);
+      if (a.startTime !== b.startTime) return a.startTime.localeCompare(b.startTime);
+      return a.room.localeCompare(b.room);
+    });
 }
 

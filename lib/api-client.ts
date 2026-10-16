@@ -10,6 +10,9 @@ import type {
   Campus,
   ClassSession,
   ExamInfo,
+  SamplingSession,
+  SamplingVerdict,
+  SamplingVerdictStatus,
 } from "./types";
 
 export type {
@@ -21,6 +24,9 @@ export type {
   Campus,
   ClassSession,
   ExamInfo,
+  SamplingSession,
+  SamplingVerdict,
+  SamplingVerdictStatus,
 };
 import {
   getLocalFriendIds,
@@ -181,6 +187,18 @@ export function useGetSchedulerDates() {
   return useQuery({
     queryKey: getGetSchedulerDatesQueryKey(),
     queryFn: () => fetchJson<{ dates: string[] }>("/api/scheduler/dates"),
+    staleTime: 60_000,
+  });
+}
+
+export const getSamplingSessionsQueryKey = (campus?: Campus) =>
+  ["samplingSessions", campus ?? "all"] as const;
+
+export function useGetSamplingSessions(campus?: Campus) {
+  const url = campus ? `/api/sampling/sessions?campus=${campus}` : `/api/sampling/sessions`;
+  return useQuery({
+    queryKey: getSamplingSessionsQueryKey(campus),
+    queryFn: () => fetchJson<{ sessions: SamplingSession[] }>(url),
     staleTime: 60_000,
   });
 }

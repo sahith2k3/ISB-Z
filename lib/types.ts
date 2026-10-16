@@ -69,3 +69,28 @@ export interface FriendEntry extends LiveStatus {
 export interface HealthStatus {
   status: string;
 }
+
+export interface SamplingSession {
+  id: string;
+  campus: Campus;
+  courseCode: string;
+  courseName: string;
+  section: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  room: string;
+  venue: string;
+  faculty: string;
+  enrolledCount: number;
+  enrolledStudentIds: number[];
+}
+
+export type SamplingVerdictStatus = "keep" | "backup" | "drop" | "undecided";
+
+export interface SamplingVerdict {
+  status: SamplingVerdictStatus;
+  notes: string;
+  rating?: number;
+  updatedAt?: string;
+}
