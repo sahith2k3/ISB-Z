@@ -110,7 +110,8 @@ export function HomeView() {
         </div>
         <div className="flex items-center gap-2">
           <ShareButton source="home_header" />
-          <Link
+          {/* Seating button temporarily hidden while /seating is redirected */}
+          {/* <Link
             href="/seating"
             data-testid="button-seating"
             aria-label="Seating charts"
@@ -118,7 +119,7 @@ export function HomeView() {
             className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <Armchair className="h-5 w-5" />
-          </Link>
+          </Link> */}
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
