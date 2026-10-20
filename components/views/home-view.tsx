@@ -20,6 +20,7 @@ import {
   Armchair,
   Compass,
   ArrowRight,
+  UserPlus,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";
@@ -422,7 +423,57 @@ export function HomeView() {
                 </motion.div>
               ))}
             </AnimatePresence>
-            <div className="pt-3 pb-1">
+            <div className="pt-3 pb-1 space-y-3">
+              {/* Add Friends Section */}
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => setSearchOpen(true)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSearchOpen(true);
+                  }
+                }}
+                data-testid="section-add-more-friends"
+                className="group relative cursor-pointer overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card to-card p-4 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-start gap-3 min-w-0">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary shadow-inner mt-0.5 transition-transform duration-200 group-hover:scale-105">
+                      <UserPlus className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
+                          Add Friends
+                        </span>
+                      </div>
+                      <h3 className="font-display font-bold text-sm text-foreground leading-tight">
+                        Add more friends to your list
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
+                        Search classmates across Hyderabad &amp; Mohali
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSearchOpen(true);
+                    }}
+                    data-testid="button-add-friends-cta"
+                    className="shrink-0 inline-flex items-center gap-1.5 rounded-2xl bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 active:scale-95 transition-all"
+                  >
+                    <UserPlus className="h-3.5 w-3.5" />
+                    <span>Add</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Share Banner */}
               <ShareButton variant="banner" source="home_feed" />
             </div>
           </div>
