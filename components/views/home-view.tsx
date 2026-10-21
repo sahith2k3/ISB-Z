@@ -18,8 +18,6 @@ import {
   ArrowUpRight,
   RefreshCw,
   Armchair,
-  Compass,
-  ArrowRight,
   UserPlus,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -225,31 +223,6 @@ export function HomeView() {
                 </div>
                 <ArrowUpRight className="h-4 w-4 shrink-0 text-primary/40 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
               </div>
-            </Link>
-
-            {/* Term 5 Sampling Banner */}
-            <Link
-              href="/sampling"
-              data-testid="link-sampling-banner"
-              className="group mt-3 flex items-center justify-between rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/10 via-card to-card p-3.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <Compass className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <h4 className="text-xs font-bold text-foreground">Term 5 Sampling Days</h4>
-                    <Badge className="h-4 px-1 text-[9px] font-semibold bg-primary text-primary-foreground">
-                      Live
-                    </Badge>
-                  </div>
-                  <p className="truncate text-[11px] text-muted-foreground mt-0.5">
-                    Audit any class • Plan your 19 & 20 Oct schedule
-                  </p>
-                </div>
-              </div>
-              <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-hover:translate-x-1 group-hover:text-primary" />
             </Link>
           </div>
         )}
