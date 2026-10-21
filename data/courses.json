@@ -165,8 +165,8 @@
       "G",
       "H"
     ],
-    "venue": "AS 3 LT Vikramashila",
-    "faculty": ""
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Aruna Rajan"
   },
   {
     "code": "BVFS",
@@ -177,7 +177,7 @@
       "G"
     ],
     "venue": "AS 2 LT Pushpagiri",
-    "faculty": ""
+    "faculty": "Rishabh Aggarwal"
   },
   {
     "code": "CDMA2",
@@ -191,7 +191,7 @@
       "J"
     ],
     "venue": "AS 1 LT Nalanda",
-    "faculty": ""
+    "faculty": "Siddharth Sharma"
   },
   {
     "code": "COBE",
@@ -203,8 +203,8 @@
       "H",
       "I"
     ],
-    "venue": "AS 1 LT Nalanda / AS 2 LT Pushpagiri",
-    "faculty": ""
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Poornima Vinoo"
   },
   {
     "code": "DTME1",
@@ -214,8 +214,8 @@
     "sections": [
       "G"
     ],
-    "venue": "AS 1 LT Nalanda",
-    "faculty": ""
+    "venue": "AS 3 LT Vikramshila",
+    "faculty": "Chandan Chowdhury"
   },
   {
     "code": "ENVC",
@@ -223,11 +223,10 @@
     "category": "Elective",
     "campus": "mohali",
     "sections": [
-      "G",
-      "H"
+      "G"
     ],
     "venue": "AS 2 LT Pushpagiri",
-    "faculty": ""
+    "faculty": "Ramakrishna S Velamuri"
   },
   {
     "code": "LWPM",
@@ -238,8 +237,8 @@
       "G",
       "H"
     ],
-    "venue": "AS 3 LT Vikramashila",
-    "faculty": ""
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Ramakrishna Nidumolu"
   },
   {
     "code": "MKTS",
@@ -251,8 +250,8 @@
       "H",
       "I"
     ],
-    "venue": "AS 3 LT Vikramashila",
-    "faculty": ""
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "S Arunachalam"
   },
   {
     "code": "MSTC",
@@ -264,7 +263,7 @@
       "H"
     ],
     "venue": "AS 3 LT Vikramashila",
-    "faculty": ""
+    "faculty": "Himanshu Tambe"
   },
   {
     "code": "MTCC",
@@ -274,8 +273,8 @@
     "sections": [
       "G"
     ],
-    "venue": "AS 1 LT Nalanda",
-    "faculty": ""
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Rajib Saha"
   },
   {
     "code": "NEGA1",
@@ -283,11 +282,10 @@
     "category": "Elective",
     "campus": "mohali",
     "sections": [
-      "G",
-      "H"
+      "G"
     ],
-    "venue": "AS 2 LT Pushpagiri",
-    "faculty": ""
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Ashneet Kaur"
   },
   {
     "code": "NSDL",
@@ -298,8 +296,8 @@
       "G",
       "H"
     ],
-    "venue": "AS 3 LT Vikramashila",
-    "faculty": ""
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Siddharth S. Singh"
   },
   {
     "code": "PEVF",
@@ -307,11 +305,10 @@
     "category": "Elective",
     "campus": "mohali",
     "sections": [
-      "G",
-      "H"
+      "G"
     ],
-    "venue": "AS 2 LT Pushpagiri",
-    "faculty": ""
+    "venue": "AS 3 LT Vikramashila",
+    "faculty": "Jash Jain"
   },
   {
     "code": "RTLG",
@@ -323,7 +320,7 @@
       "H"
     ],
     "venue": "AS 1 LT Nalanda",
-    "faculty": ""
+    "faculty": "Nanda Kumar"
   },
   {
     "code": "STAR",
@@ -333,7 +330,7 @@
     "sections": [
       "G"
     ],
-    "venue": "AS 2 LT Pushpagiri",
-    "faculty": ""
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Ramabhadran Thirumalai"
   }
 ]
