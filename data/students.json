@@ -913,8 +913,8 @@
   },
   {
     "id": 62610119,
-    "name": "NR",
-    "email": "",
+    "name": "Nikhil Ramesh",
+    "email": "nikhil_ramesh_pgp2027@isb.edu",
     "campus": "mohali",
     "section": "K",
     "studyGroup": "K9"
@@ -6758,5 +6758,13 @@
     "campus": "mohali",
     "section": "G",
     "studyGroup": "-"
+  },
+  {
+    "id": 62619016,
+    "name": "Divanna Silva Novelo",
+    "email": "Divanna_SilvaNovelo_x2027@isb.edu",
+    "campus": "mohali",
+    "section": "G",
+    "studyGroup": "G9"
   }
 ]
