@@ -10,7 +10,7 @@
       "C"
     ],
     "venue": "AC 2 LT",
-    "faculty": ""
+    "faculty": "Arani Roy"
   },
   {
     "code": "CAMS",
@@ -22,7 +22,7 @@
       "B"
     ],
     "venue": "AC 2 LT",
-    "faculty": ""
+    "faculty": "Madhu Viswanathan"
   },
   {
     "code": "ECSG",
@@ -30,11 +30,10 @@
     "category": "Elective",
     "campus": "hyderabad",
     "sections": [
-      "A",
-      "B"
+      "A"
     ],
-    "venue": "AC 4 LT",
-    "faculty": ""
+    "venue": "AC 8 LT",
+    "faculty": "Bruce Phelps"
   },
   {
     "code": "FINB",
@@ -46,7 +45,7 @@
       "B"
     ],
     "venue": "AC 2 LT",
-    "faculty": ""
+    "faculty": "Shilpa Aggarwal"
   },
   {
     "code": "GPMK",
@@ -58,7 +57,7 @@
       "B"
     ],
     "venue": "AC 4 LT",
-    "faculty": ""
+    "faculty": "Madhu Viswanathan/Siddharth Prusty"
   },
   {
     "code": "GSMT",
@@ -68,8 +67,8 @@
     "sections": [
       "A"
     ],
-    "venue": "AC 2 LT",
-    "faculty": ""
+    "venue": "AC 4 LT",
+    "faculty": "Seung Hoon Lee"
   },
   {
     "code": "INVT",
@@ -80,7 +79,7 @@
       "A"
     ],
     "venue": "AC 4 LT",
-    "faculty": ""
+    "faculty": "Anindo Sarkar"
   },
   {
     "code": "LPFW",
@@ -93,7 +92,7 @@
       "C"
     ],
     "venue": "AC 8 LT",
-    "faculty": ""
+    "faculty": "Chandrasekhar Sripada"
   },
   {
     "code": "LSWS",
@@ -105,7 +104,7 @@
       "B"
     ],
     "venue": "AC 2 LT",
-    "faculty": ""
+    "faculty": "K Ganesh"
   },
   {
     "code": "MKSV",
@@ -117,7 +116,7 @@
       "B"
     ],
     "venue": "AC 8 LT",
-    "faculty": ""
+    "faculty": "Piyush Kumar"
   },
   {
     "code": "NEGA1",
@@ -130,7 +129,7 @@
       "C"
     ],
     "venue": "AC 4 LT",
-    "faculty": ""
+    "faculty": "Leena Kinger Hans"
   },
   {
     "code": "STRI",
@@ -142,7 +141,7 @@
       "B"
     ],
     "venue": "AC 4 LT",
-    "faculty": ""
+    "faculty": "Anusha Sirigiri"
   },
   {
     "code": "SWPM",
@@ -154,7 +153,7 @@
       "B"
     ],
     "venue": "AC 8 LT",
-    "faculty": ""
+    "faculty": "Chandrashekhar Vattikuti"
   },
   {
     "code": "ABTE",
