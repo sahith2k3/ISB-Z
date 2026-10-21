@@ -75,3 +75,5 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
    - Add `DATABASE_URL` with your PostgreSQL connection string (from Neon, Supabase, or Vercel Postgres).
 4. **Deploy**: Click **Deploy**!
    - Your application will be built and live with global serverless edge execution.
+
+<!-- Term 5 Updated -->
