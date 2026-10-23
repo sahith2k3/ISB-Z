@@ -20,14 +20,15 @@ export function SeatingTickerBanner() {
     "🚨 SEATINGS ARE NOW LIVE FOR MOHALI STUDENTS! 🪑 25 of 26 classroom layouts uploaded • Tap here to view your seat & layout • Updated for Term 5 •";
 
   const handleNavigate = (e: React.MouseEvent) => {
-    // Programmatic backup navigation in case mobile gesture swallows Link click
+    // Full cache-bypassing navigation to guarantee seating page loads directly
     e.preventDefault();
-    router.push("/seating");
+    window.location.href = "/seating?v=5";
   };
 
   return (
     <Link
-      href="/seating"
+      href="/seating?v=5"
+      prefetch={false}
       onClick={handleNavigate}
       data-testid="seating-ticker-banner"
       className="group relative mt-3 flex w-full cursor-pointer items-center overflow-hidden rounded-2xl border border-rose-500/30 bg-gradient-to-r from-rose-500/15 via-amber-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-200 hover:border-primary/50 hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"

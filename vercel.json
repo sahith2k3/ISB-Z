@@ -1,7 +1,20 @@
 {
   "headers": [
     {
-      "source": "/seating/(.*)",
+      "source": "/seating",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "Clear-Site-Data",
+          "value": "\"cache\""
+        }
+      ]
+    },
+    {
+      "source": "/seating/(.*\\.(?:jpg|jpeg|png|webp|svg))",
       "headers": [
         {
           "key": "Cache-Control",

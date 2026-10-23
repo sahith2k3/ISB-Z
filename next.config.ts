@@ -7,7 +7,20 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/seating/:path*",
+        source: "/seating",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+          {
+            key: "Clear-Site-Data",
+            value: "\"cache\"",
+          },
+        ],
+      },
+      {
+        source: "/seating/:path*\\.(jpg|jpeg|png|webp|svg)",
         headers: [
           {
             key: "Cache-Control",

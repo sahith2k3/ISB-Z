@@ -112,7 +112,12 @@ export function HomeView() {
           <ShareButton source="home_header" />
           {me?.campus === "mohali" && (
             <Link
-              href="/seating"
+              href="/seating?v=5"
+              prefetch={false}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/seating?v=5";
+              }}
               data-testid="button-seating"
               aria-label="Seating charts"
               title="Seating charts"

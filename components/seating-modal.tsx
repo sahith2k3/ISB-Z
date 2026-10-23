@@ -222,8 +222,12 @@ export function SeatingModal({
                 The seating arrangement for <strong>{courseCode} · Section {section}</strong> has not been published yet.
               </p>
               <Link
-                href="/seating"
-                onClick={onClose}
+                href="/seating?v=5"
+                prefetch={false}
+                onClick={(e) => {
+                  onClose();
+                  window.location.href = "/seating?v=5";
+                }}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-all shadow-sm"
               >
                 Browse All Seating Charts
