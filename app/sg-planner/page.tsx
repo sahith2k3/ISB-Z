@@ -269,7 +269,7 @@ export default function SgPlannerPage() {
                   </p>
                 )}
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
                     onClick={() =>
@@ -280,7 +280,7 @@ export default function SgPlannerPage() {
                         "available"
                       )
                     }
-                    className={`flex flex-col items-center justify-center p-2 rounded-xl border text-center transition-all text-xs font-medium ${
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all text-xs font-medium ${
                       userCurrentStatusInSection === "available"
                         ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold shadow-sm"
                         : "border-card-border bg-secondary/50 text-muted-foreground hover:border-emerald-500/40 hover:text-foreground"
@@ -297,30 +297,10 @@ export default function SgPlannerPage() {
                         selectedSection.courseName,
                         selectedSection.section,
                         selectedSection.campus || "hyderabad",
-                        "dropping"
-                      )
-                    }
-                    className={`flex flex-col items-center justify-center p-2 rounded-xl border text-center transition-all text-xs font-medium ${
-                      userCurrentStatusInSection === "dropping"
-                        ? "border-amber-500 bg-amber-500/15 text-amber-700 dark:text-amber-300 font-semibold shadow-sm"
-                        : "border-card-border bg-secondary/50 text-muted-foreground hover:border-amber-500/40 hover:text-foreground"
-                    }`}
-                  >
-                    <AlertCircle className={`h-4 w-4 mb-1 shrink-0 ${userCurrentStatusInSection === "dropping" ? "text-amber-500" : "text-muted-foreground"}`} />
-                    <span className="text-[11px] truncate w-full text-center">Drop class?</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleUpdateStatus(
-                        selectedSection.courseName,
-                        selectedSection.section,
-                        selectedSection.campus || "hyderabad",
                         "unavailable"
                       )
                     }
-                    className={`flex flex-col items-center justify-center p-2 rounded-xl border text-center transition-all text-xs font-medium ${
+                    className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all text-xs font-medium ${
                       userCurrentStatusInSection === "unavailable"
                         ? "border-slate-500 bg-slate-500/15 text-slate-700 dark:text-slate-300 font-semibold shadow-sm"
                         : "border-card-border bg-secondary/50 text-muted-foreground hover:border-slate-500/40 hover:text-foreground"
@@ -371,18 +351,6 @@ export default function SgPlannerPage() {
               >
                 <span className="h-2 w-2 rounded-full bg-muted-foreground/50" />
                 Not set ({rosterData.counts.unknown})
-              </button>
-              <button
-                type="button"
-                onClick={() => setRosterFilter("dropping")}
-                className={`shrink-0 flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition-all ${
-                  rosterFilter === "dropping"
-                    ? "bg-amber-600 text-white"
-                    : "border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20"
-                }`}
-              >
-                <span className="h-2 w-2 rounded-full bg-amber-500" />
-                Dropping ({rosterData.counts.dropping})
               </button>
               <button
                 type="button"
@@ -662,33 +630,19 @@ export default function SgPlannerPage() {
                           </div>
                         ) : null}
 
-                        <div className="grid grid-cols-3 gap-1.5">
+                        <div className="grid grid-cols-2 gap-2">
                           <button
                             type="button"
                             onClick={() =>
                               handleUpdateStatus(c.courseName, c.section, c.campus, "available")
                             }
-                            className={`rounded-xl border py-2 px-1 text-center transition-all text-[11px] font-medium ${
+                            className={`rounded-xl border py-2 px-2 text-center transition-all text-xs font-medium flex items-center justify-center gap-1.5 ${
                               c.myStatus === "available"
                                 ? "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold shadow-sm"
                                 : "border-card-border bg-secondary/50 text-muted-foreground hover:border-emerald-500/40 hover:text-foreground"
                             }`}
                           >
-                            <span className="truncate block">🟢 Available</span>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() =>
-                              handleUpdateStatus(c.courseName, c.section, c.campus, "dropping")
-                            }
-                            className={`rounded-xl border py-2 px-1 text-center transition-all text-[11px] font-medium ${
-                              c.myStatus === "dropping"
-                                ? "border-amber-500 bg-amber-500/15 text-amber-700 dark:text-amber-300 font-semibold shadow-sm"
-                                : "border-card-border bg-secondary/50 text-muted-foreground hover:border-amber-500/40 hover:text-foreground"
-                            }`}
-                          >
-                            <span className="truncate block">🟠 Drop class?</span>
+                            <span className="truncate">🟢 Available</span>
                           </button>
 
                           <button
@@ -696,13 +650,13 @@ export default function SgPlannerPage() {
                             onClick={() =>
                               handleUpdateStatus(c.courseName, c.section, c.campus, "unavailable")
                             }
-                            className={`rounded-xl border py-2 px-1 text-center transition-all text-[11px] font-medium ${
+                            className={`rounded-xl border py-2 px-2 text-center transition-all text-xs font-medium flex items-center justify-center gap-1.5 ${
                               c.myStatus === "unavailable"
                                 ? "border-slate-500 bg-slate-500/15 text-slate-700 dark:text-slate-300 font-semibold shadow-sm"
                                 : "border-card-border bg-secondary/50 text-muted-foreground hover:border-slate-500/40 hover:text-foreground"
                             }`}
                           >
-                            <span className="truncate block">⚪ Formed</span>
+                            <span className="truncate">⚪ SG formed</span>
                           </button>
                         </div>
                       </div>

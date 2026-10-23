@@ -42,7 +42,9 @@ export async function GET(request: NextRequest) {
 
       const studentsWithStatus = sectionData.students.map((student) => {
         const stored = statusMap.get(student.id);
-        const status: SGStatus = stored?.status || "unknown";
+        let status: SGStatus = stored?.status || "unknown";
+        // Sampling is over; course dropping is closed - normalize legacy dropping to unknown
+        if (status === "dropping") status = "unknown";
         return {
           id: student.id,
           name: student.name,
@@ -52,7 +54,7 @@ export async function GET(request: NextRequest) {
         };
       });
 
-      // Strict Ordering: available -> unknown -> mostly gonna drop -> unavailable
+      // Strict Ordering: available -> unknown -> unavailable
       // Secondary: alphabetical by student name
       studentsWithStatus.sort((a, b) => {
         const wA = STATUS_WEIGHT[a.status] ?? 2;
@@ -65,7 +67,7 @@ export async function GET(request: NextRequest) {
         total: studentsWithStatus.length,
         available: studentsWithStatus.filter((s) => s.status === "available").length,
         unknown: studentsWithStatus.filter((s) => s.status === "unknown").length,
-        dropping: studentsWithStatus.filter((s) => s.status === "dropping").length,
+        dropping: 0,
         unavailable: studentsWithStatus.filter((s) => s.status === "unavailable").length,
       };
 
@@ -92,12 +94,14 @@ export async function GET(request: NextRequest) {
           const sec = getTerm5Section(e.courseName, e.section);
           const key = sectionKey(e.courseName, e.section);
           const statusInfo = studentStatusMap.get(key);
+          let myStatus: SGStatus = (statusInfo?.status || "unknown") as SGStatus;
+          if (myStatus === "dropping") myStatus = "unknown";
           return {
             courseName: e.courseName,
             section: e.section,
             campus: e.campus,
             studentCount: sec?.students.length || 0,
-            myStatus: (statusInfo?.status || "unknown") as SGStatus,
+            myStatus,
             updatedAt: statusInfo?.updatedAt,
           };
         });
@@ -111,10 +115,10 @@ export async function GET(request: NextRequest) {
     // Map: sectionKey -> counts
     const statusCountsMap = new Map<string, { available: number; dropping: number; unavailable: number }>();
     for (const item of storedList) {
+      if (item.status === "dropping") continue;
       const key = sectionKey(item.courseName, item.section);
       const curr = statusCountsMap.get(key) || { available: 0, dropping: 0, unavailable: 0 };
       if (item.status === "available") curr.available++;
-      else if (item.status === "dropping") curr.dropping++;
       else if (item.status === "unavailable") curr.unavailable++;
       statusCountsMap.set(key, curr);
     }
@@ -156,10 +160,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "courseName and section are required" }, { status: 400 });
     }
 
-    const validStatuses: SGStatus[] = ["available", "unknown", "dropping", "unavailable"];
+    const validStatuses: SGStatus[] = ["available", "unknown", "unavailable"];
     if (!validStatuses.includes(status)) {
       return NextResponse.json(
-        { error: `Invalid status. Must be one of: ${validStatuses.join(", ")}` },
+        { error: `Invalid status. Must be one of: ${validStatuses.join(", ")} (course dropping is closed after sampling)` },
         { status: 400 }
       );
     }
