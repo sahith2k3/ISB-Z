@@ -6200,11 +6200,6 @@
           "email": "naman_sood_pgp2027@isb.edu"
         },
         {
-          "id": 62610830,
-          "name": "Niharika Venkatesh Koduri",
-          "email": "niharika_koduri_pgp2027@isb.edu"
-        },
-        {
           "id": 62610641,
           "name": "Prakhar Saxena",
           "email": "prakhar_saxena_pgp2027@isb.edu"
@@ -6310,7 +6305,7 @@
           "email": "yash_bhutada_pgp2027@isb.edu"
         }
       ],
-      "studentCount": 45
+      "studentCount": 44
     },
     {
       "courseName": "Software Product Management",
@@ -6411,6 +6406,11 @@
           "id": 62610227,
           "name": "Mayur Sanjay Deshpande",
           "email": "mayur_deshpande_pgp2027@isb.edu"
+        },
+        {
+          "id": 62610830,
+          "name": "Niharika Venkatesh Koduri",
+          "email": "niharika_koduri_pgp2027@isb.edu"
         },
         {
           "id": 62610435,
@@ -6548,7 +6548,7 @@
           "email": "yash_munoth_pgp2027@isb.edu"
         }
       ],
-      "studentCount": 46
+      "studentCount": 47
     },
     {
       "courseName": "Strategy Implementation",
@@ -6751,11 +6751,6 @@
           "email": "neel_porwal_pgp2027@isb.edu"
         },
         {
-          "id": 62610830,
-          "name": "Niharika Venkatesh Koduri",
-          "email": "niharika_koduri_pgp2027@isb.edu"
-        },
-        {
           "id": 62610321,
           "name": "Nitya Poddar",
           "email": "nitya_poddar_pgp2027@isb.edu"
@@ -6871,7 +6866,7 @@
           "email": "vishva_thaker_pgp2027@isb.edu"
         }
       ],
-      "studentCount": 63
+      "studentCount": 62
     },
     {
       "courseName": "Strategy Implementation",
@@ -7027,6 +7022,11 @@
           "id": 62610209,
           "name": "Mudit Sabharwal",
           "email": "mudit_sabharwal_pgp2027@isb.edu"
+        },
+        {
+          "id": 62610830,
+          "name": "Niharika Venkatesh Koduri",
+          "email": "niharika_koduri_pgp2027@isb.edu"
         },
         {
           "id": 62619014,
@@ -7219,7 +7219,7 @@
           "email": "yashika_ahuja_pgp2027@isb.edu"
         }
       ],
-      "studentCount": 68
+      "studentCount": 69
     },
     {
       "courseName": "A/B Testing and Tech Product Experimentation",
@@ -24781,12 +24781,12 @@
       },
       {
         "courseName": "Software Product Management",
-        "section": "A",
+        "section": "B",
         "campus": "hyderabad"
       },
       {
         "courseName": "Strategy Implementation",
-        "section": "A",
+        "section": "B",
         "campus": "hyderabad"
       }
     ],
