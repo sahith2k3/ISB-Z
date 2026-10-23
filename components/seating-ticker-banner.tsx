@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent } from "@/lib/api-client";
 
 export function SeatingTickerBanner() {
-  const router = useRouter();
   const { studentId } = useLocalStudent();
   const { data: me } = useGetStudent(studentId || 0);
 
@@ -19,19 +17,12 @@ export function SeatingTickerBanner() {
   const tickerText =
     "🚨 SEATINGS ARE NOW LIVE FOR MOHALI STUDENTS! 🪑 25 of 26 classroom layouts uploaded • Tap here to view your seat & layout • Updated for Term 5 •";
 
-  const handleNavigate = (e: React.MouseEvent) => {
-    // Full cache-bypassing navigation to guarantee seating page loads directly
-    e.preventDefault();
-    window.location.href = "/seating?v=5";
-  };
-
   return (
     <Link
-      href="/seating?v=5"
-      prefetch={false}
-      onClick={handleNavigate}
+      href="/seating"
+      prefetch={true}
       data-testid="seating-ticker-banner"
-      className="group relative mt-3 flex w-full cursor-pointer items-center overflow-hidden rounded-2xl border border-rose-500/30 bg-gradient-to-r from-rose-500/15 via-amber-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-200 hover:border-primary/50 hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="group relative mt-3 flex w-full cursor-pointer touch-manipulation select-none items-center overflow-hidden rounded-2xl border border-rose-500/30 bg-gradient-to-r from-rose-500/15 via-amber-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-150 hover:border-primary/50 hover:shadow-md active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {/* TV Breaking News Tag */}
       <div className="z-10 flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-sm pointer-events-none">

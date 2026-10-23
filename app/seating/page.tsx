@@ -28,6 +28,7 @@ import { SeatingModal } from "@/components/seating-modal";
 import { ShareButton } from "@/components/share-button";
 import sessionsData from "@/data/sessions.json";
 import coursesData from "@/data/courses.json";
+import seatingManifestData from "@/data/seating-manifest.json";
 
 export default function SeatingPage() {
   const { studentId: loggedInId } = useLocalStudent();
@@ -55,8 +56,11 @@ export default function SeatingPage() {
     url?: string;
   } | null>(null);
 
-  const [availableCharts, setAvailableCharts] = useState<SeatingChartInfo[]>([]);
-  const [isLoadingCharts, setIsLoadingCharts] = useState(true);
+  // Pre-seed with static manifest so charts are instantly ready on frame 0
+  const [availableCharts, setAvailableCharts] = useState<SeatingChartInfo[]>(
+    seatingManifestData as SeatingChartInfo[]
+  );
+  const [isLoadingCharts, setIsLoadingCharts] = useState(false);
 
   // Automatically initialize viewing student to logged-in user
   useEffect(() => {
@@ -103,21 +107,17 @@ export default function SeatingPage() {
   const viewingStudent = studentData?.student || (viewingStudentId === me?.id ? me : null);
   const enrolledCourses = studentData?.courses || [];
 
-  // Load available seating charts from API
+  // Background refresh seating charts from API for dynamic DB additions
   useEffect(() => {
-    setIsLoadingCharts(true);
     fetch("/api/seating", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
-        if (Array.isArray(data.charts)) {
+        if (Array.isArray(data.charts) && data.charts.length > 0) {
           setAvailableCharts(data.charts);
         }
       })
       .catch((err) => {
         console.warn("Could not load seating charts:", err);
-      })
-      .finally(() => {
-        setIsLoadingCharts(false);
       });
   }, []);
 

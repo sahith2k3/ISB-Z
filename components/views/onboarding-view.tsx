@@ -83,13 +83,9 @@ export function OnboardingView() {
 
                 <div className="pt-2">
                   <Link
-                    href="/seating?v=5"
-                    prefetch={false}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.location.href = "/seating?v=5";
-                    }}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-card/60 hover:bg-card border border-card-border hover:border-primary/50 text-sm font-medium text-foreground transition-all shadow-sm group"
+                    href="/seating"
+                    prefetch={true}
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-card/60 hover:bg-card border border-card-border hover:border-primary/50 text-sm font-medium text-foreground transition-all duration-150 shadow-sm group touch-manipulation active:scale-[0.98]"
                   >
                     <Armchair className="h-4 w-4 text-primary group-hover:scale-110 transition-transform" />
                     <span>View Seating Arrangements without sign up &rarr;</span>

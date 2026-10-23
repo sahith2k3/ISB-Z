@@ -112,16 +112,12 @@ export function HomeView() {
           <ShareButton source="home_header" />
           {me?.campus === "mohali" && (
             <Link
-              href="/seating?v=5"
-              prefetch={false}
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = "/seating?v=5";
-              }}
+              href="/seating"
+              prefetch={true}
               data-testid="button-seating"
               aria-label="Seating charts"
               title="Seating charts"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border bg-card text-muted-foreground transition-all duration-150 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation active:scale-95"
             >
               <Armchair className="h-5 w-5" />
             </Link>

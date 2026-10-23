@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const items = [
-  { href: "/", label: "Home", icon: Home, matchPrefix: "/" },
-  { href: "/scheduler", label: "Scheduler", icon: Sparkles, matchPrefix: "/scheduler" },
-  { href: "/seating?v=5", label: "Seating", icon: Armchair, matchPrefix: "/seating" },
-  { href: "/sg-planner", label: "SG planner", icon: Users, matchPrefix: "/sg-planner" },
+  { href: "/", label: "Home", icon: Home },
+  { href: "/scheduler", label: "Scheduler", icon: Sparkles },
+  { href: "/seating", label: "Seating", icon: Armchair },
+  { href: "/sg-planner", label: "SG planner", icon: Users },
 ];
 
 export function BottomNav() {
@@ -21,26 +21,20 @@ export function BottomNav() {
       className="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-border/60 bg-background/95 px-2 sm:px-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_24px_rgba(20,30,60,0.06)] backdrop-blur-md"
     >
       <div className="grid grid-cols-4 gap-1 sm:gap-1.5">
-        {items.map(({ href, label, icon: Icon, matchPrefix }) => {
+        {items.map(({ href, label, icon: Icon }) => {
           const active =
-            matchPrefix === "/"
+            href === "/"
               ? pathname === "/"
-              : pathname === matchPrefix || pathname.startsWith(`${matchPrefix}/`);
+              : pathname === href || pathname.startsWith(`${href}/`);
 
           return (
             <Link
               key={href}
               href={href}
-              prefetch={false}
-              onClick={(e) => {
-                if (href.startsWith("/seating")) {
-                  e.preventDefault();
-                  window.location.href = href;
-                }
-              }}
+              prefetch={true}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[11px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                "flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[11px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation select-none active:scale-95",
                 active
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:bg-secondary hover:text-foreground",
