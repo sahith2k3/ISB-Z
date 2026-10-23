@@ -25,6 +25,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";
 import { ShareButton } from "@/components/share-button";
 import { SeatingTickerBanner } from "@/components/seating-ticker-banner";
+import seatingManifestData from "@/data/seating-manifest.json";
 
 export function HomeView() {
   const router = useRouter();
@@ -41,7 +42,23 @@ export function HomeView() {
   }, [router]);
 
   // Pre-warm enrolled courses into React Query cache for instant seating view
-  useGetStudentCourses(studentId);
+  const { data: myCoursesData } = useGetStudentCourses(studentId);
+
+  // Silently pre-warm student's seating chart images in browser & Service Worker cache
+  useEffect(() => {
+    if (typeof window === "undefined" || !myCoursesData?.courses) return;
+    for (const c of myCoursesData.courses) {
+      const match = (seatingManifestData as Array<{ courseCode: string; section: string; url: string }>).find(
+        (m) =>
+          m.courseCode.toUpperCase() === c.courseCode.toUpperCase() &&
+          (m.section.toUpperCase() === c.section.toUpperCase() || m.section === "All")
+      );
+      if (match?.url) {
+        const img = new Image();
+        img.src = match.url;
+      }
+    }
+  }, [myCoursesData]);
 
   // Debounce search
   useEffect(() => {

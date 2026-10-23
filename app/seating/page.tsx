@@ -122,6 +122,23 @@ export default function SeatingPage() {
       });
   }, []);
 
+  // Pre-warm student's enrolled seating charts into browser & Service Worker cache
+  useEffect(() => {
+    if (typeof window === "undefined" || !enrolledCourses || enrolledCourses.length === 0) return;
+
+    for (const course of enrolledCourses) {
+      const match = availableCharts.find(
+        (c) =>
+          c.courseCode.toUpperCase() === course.courseCode.toUpperCase() &&
+          (c.section.toUpperCase() === course.section.toUpperCase() || c.section === "All")
+      );
+      if (match?.url) {
+        const img = new Image();
+        img.src = match.url;
+      }
+    }
+  }, [enrolledCourses, availableCharts]);
+
   // Handler to select a student from search results
   const handleSelectStudent = (student: StudentSummary) => {
     setViewingStudentId(student.id);

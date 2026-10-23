@@ -241,6 +241,8 @@ export function SeatingModal({
               <img
                 src={resolvedUrl}
                 alt={`Seating arrangement for ${courseCode} Section ${section}`}
+                loading="eager"
+                decoding="async"
                 onError={() => {
                   setHasError(true);
                   setIsLoading(false);

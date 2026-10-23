@@ -6,6 +6,37 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["pg"],
   async headers() {
     return [
+      // 1. Static images across the site: 1 year immutable caching
+      {
+        source: "/:path*.(jpg|jpeg|png|webp|svg|ico|gif|avif)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // 2. Seating images under /seating/
+      {
+        source: "/seating/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // 3. Dynamic seating image endpoint
+      {
+        source: "/api/seating/image",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // 4. Exact /seating page HTML route: fresh data navigation
       {
         source: "/seating",
         headers: [
@@ -15,15 +46,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/seating/:path*\\.(jpg|jpeg|png|webp|svg)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=604800, stale-while-revalidate=86400",
-          },
-        ],
-      },
+      // 5. JSON API routes: dynamic
       {
         source: "/api/seating",
         headers: [
@@ -33,12 +56,13 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // 6. Service worker script: never cached so updates take effect immediately
       {
-        source: "/api/seating/image",
+        source: "/sw.js",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=604800, stale-while-revalidate=86400",
+            value: "no-cache, no-store, must-revalidate",
           },
         ],
       },
