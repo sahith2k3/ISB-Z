@@ -2,7 +2,7 @@
 
 import { Home, Sparkles, Armchair, Users } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -14,6 +14,7 @@ const items = [
 
 export function BottomNav() {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <nav
@@ -32,6 +33,7 @@ export function BottomNav() {
               key={href}
               href={href}
               prefetch={true}
+              onPointerDown={() => router.prefetch(href)}
               aria-current={active ? "page" : undefined}
               className={cn(
                 "flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 text-[11px] font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation select-none active:scale-95",

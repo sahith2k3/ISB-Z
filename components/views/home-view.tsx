@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useLocalStudent } from "@/hooks/use-local-student";
-import { useListFriends, useListStudents, useGetStudent, useGetStudentStatus } from "@/lib/api-client";
+import { useListFriends, useListStudents, useGetStudent, useGetStudentStatus, useGetStudentCourses } from "@/lib/api-client";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -26,10 +27,21 @@ import { ShareButton } from "@/components/share-button";
 import { SeatingTickerBanner } from "@/components/seating-ticker-banner";
 
 export function HomeView() {
+  const router = useRouter();
   const { studentId, logout } = useLocalStudent();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  // Pre-fetch primary navigation targets so PWA page transitions are instant
+  useEffect(() => {
+    router.prefetch("/seating");
+    router.prefetch("/scheduler");
+    router.prefetch("/sg-planner");
+  }, [router]);
+
+  // Pre-warm enrolled courses into React Query cache for instant seating view
+  useGetStudentCourses(studentId);
 
   // Debounce search
   useEffect(() => {

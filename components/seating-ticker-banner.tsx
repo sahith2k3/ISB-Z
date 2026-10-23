@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import { useGetStudent } from "@/lib/api-client";
 
 export function SeatingTickerBanner() {
+  const router = useRouter();
   const { studentId } = useLocalStudent();
   const { data: me } = useGetStudent(studentId || 0);
 
@@ -21,8 +23,9 @@ export function SeatingTickerBanner() {
     <Link
       href="/seating"
       prefetch={true}
+      onPointerDown={() => router.prefetch("/seating")}
       data-testid="seating-ticker-banner"
-      className="group relative mt-3 flex w-full cursor-pointer touch-manipulation select-none items-center overflow-hidden rounded-2xl border border-rose-500/30 bg-gradient-to-r from-rose-500/15 via-amber-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-150 hover:border-primary/50 hover:shadow-md active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="group relative mt-3 flex w-full cursor-pointer touch-manipulation select-none items-center overflow-hidden rounded-2xl border border-rose-500/30 bg-gradient-to-r from-rose-500/15 via-amber-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-150 hover:border-primary/50 hover:shadow-md active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [touch-action:pan-y]"
     >
       {/* TV Breaking News Tag */}
       <div className="z-10 flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-sm pointer-events-none">

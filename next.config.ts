@@ -13,10 +13,6 @@ const nextConfig: NextConfig = {
             key: "Cache-Control",
             value: "no-cache, no-store, must-revalidate",
           },
-          {
-            key: "Clear-Site-Data",
-            value: "\"cache\"",
-          },
         ],
       },
       {

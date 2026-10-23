@@ -34,8 +34,8 @@ export default function SeatingPage() {
   const { studentId: loggedInId } = useLocalStudent();
   const { data: me } = useGetStudent(loggedInId || 0);
 
-  // Active student whose courses we are viewing (defaults to logged-in student)
-  const [viewingStudentId, setViewingStudentId] = useState<number | null>(null);
+  // Active student whose courses we are viewing (defaults immediately to logged-in student)
+  const [viewingStudentId, setViewingStudentId] = useState<number | null>(() => loggedInId || null);
 
   // Search state
   const [searchQuery, setSearchQuery] = useState("");
@@ -64,10 +64,10 @@ export default function SeatingPage() {
 
   // Automatically initialize viewing student to logged-in user
   useEffect(() => {
-    if (me?.id && !viewingStudentId) {
-      setViewingStudentId(me.id);
+    if (loggedInId && !viewingStudentId) {
+      setViewingStudentId(loggedInId);
     }
-  }, [me?.id, viewingStudentId]);
+  }, [loggedInId, viewingStudentId]);
 
   // Debounce search query
   useEffect(() => {
@@ -102,9 +102,10 @@ export default function SeatingPage() {
     }
   );
 
-  // Load enrolled courses for the viewing student
-  const { data: studentData, isLoading: isLoadingStudentCourses } = useGetStudentCourses(viewingStudentId);
-  const viewingStudent = studentData?.student || (viewingStudentId === me?.id ? me : null);
+  // Load enrolled courses immediately without waiting for secondary render cycles
+  const effectiveViewingId = viewingStudentId || loggedInId || null;
+  const { data: studentData, isLoading: isLoadingStudentCourses } = useGetStudentCourses(effectiveViewingId);
+  const viewingStudent = studentData?.student || (effectiveViewingId === me?.id ? me : null);
   const enrolledCourses = studentData?.courses || [];
 
   // Background refresh seating charts from API for dynamic DB additions
@@ -178,7 +179,7 @@ export default function SeatingPage() {
     }
   };
 
-  const isViewingSelf = me?.id && viewingStudentId === me.id;
+  const isViewingSelf = Boolean(loggedInId && effectiveViewingId === loggedInId);
 
   return (
     <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 pb-32 pt-5">
