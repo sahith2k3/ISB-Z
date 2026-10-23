@@ -90,7 +90,7 @@ function DaySchedule({
                       </span>
                     ) : null}
                   </div>
-                  {!session.isExam && (
+                  {!session.isExam && ["G", "H", "I", "J", "K", "L"].includes((session.section || "").toUpperCase().trim()) && (
                     <button
                       type="button"
                       onClick={() => onOpenSeating?.(session)}
