@@ -321,6 +321,32 @@ export default function SeatingPage() {
             </div>
           </div>
 
+          {/* Hyderabad Campus Notice */}
+          {viewingStudent.campus === "hyderabad" && (
+            <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3.5 text-xs text-amber-900 dark:text-amber-200 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-1 min-w-0">
+                  <p className="font-bold flex items-center gap-1.5 text-amber-900 dark:text-amber-200">
+                    <span>ℹ️</span> Hyderabad Seatings Notice
+                  </p>
+                  <p className="text-[11px] leading-relaxed text-amber-800 dark:text-amber-300">
+                    Hyderabad seating layouts have not been released on notice boards yet. You can explore all 25 active Mohali classroom layouts right now.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCampus("mohali");
+                    setShowSectionBrowser(true);
+                  }}
+                  className="shrink-0 rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-2.5 py-1.5 text-[11px] font-bold shadow-sm transition-all"
+                >
+                  Browse Mohali
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Enrolled Courses List */}
           <section className="w-full min-w-0">
             <div className="mb-3 flex items-center justify-between">

@@ -109,7 +109,9 @@
   will-change: transform;
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
 
