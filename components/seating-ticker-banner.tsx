@@ -3,9 +3,19 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
+import { useLocalStudent } from "@/hooks/use-local-student";
+import { useGetStudent } from "@/lib/api-client";
 
 export function SeatingTickerBanner() {
   const router = useRouter();
+  const { studentId } = useLocalStudent();
+  const { data: me } = useGetStudent(studentId || 0);
+
+  // Strictly hide the Mohali seating announcement for Hyderabad students
+  if (me?.campus === "hyderabad") {
+    return null;
+  }
+
   const tickerText =
     "🚨 SEATINGS ARE NOW LIVE FOR MOHALI STUDENTS! 🪑 25 of 26 classroom layouts uploaded • Tap here to view your seat & layout • Updated for Term 5 •";
 
