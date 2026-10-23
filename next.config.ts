@@ -4,15 +4,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Server action & server external packages for Postgres
   serverExternalPackages: ["pg"],
-  async redirects() {
-    return [
-      {
-        source: "/seating",
-        destination: "/",
-        permanent: false,
-      },
-    ];
-  },
   async headers() {
     return [
       {
