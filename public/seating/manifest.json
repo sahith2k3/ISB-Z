@@ -1,10 +1,100 @@
 [
   {
-    "courseCode": "MSTC",
+    "courseCode": "ABTE",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "ABTE_Sec_G.jpg",
+    "url": "/seating/ABTE_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "ABTE",
     "section": "H",
     "campus": "mohali",
-    "filename": "MSTC_Sec_H.jpg",
-    "url": "/seating/MSTC_Sec_H.jpg",
+    "filename": "ABTE_Sec_H.jpg",
+    "url": "/seating/ABTE_Sec_H.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "BVFS",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "BVFS_Sec_G.jpg",
+    "url": "/seating/BVFS_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "CDMA2",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "CDMA2_Sec_G.jpg",
+    "url": "/seating/CDMA2_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "CDMA2",
+    "section": "H",
+    "campus": "mohali",
+    "filename": "CDMA2_Sec_H.jpg",
+    "url": "/seating/CDMA2_Sec_H.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "CDMA2",
+    "section": "I",
+    "campus": "mohali",
+    "filename": "CDMA2_Sec_I.jpg",
+    "url": "/seating/CDMA2_Sec_I.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "CDMA2",
+    "section": "J",
+    "campus": "mohali",
+    "filename": "CDMA2_Sec_J.jpg",
+    "url": "/seating/CDMA2_Sec_J.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "COBE",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "COBE_Sec_G.jpg",
+    "url": "/seating/COBE_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "COBE",
+    "section": "H",
+    "campus": "mohali",
+    "filename": "COBE_Sec_H.jpg",
+    "url": "/seating/COBE_Sec_H.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "COBE",
+    "section": "I",
+    "campus": "mohali",
+    "filename": "COBE_Sec_I.jpg",
+    "url": "/seating/COBE_Sec_I.jpg",
     "aspect": "4:3",
     "width": 2800,
     "height": 2100
@@ -20,11 +110,31 @@
     "height": 2100
   },
   {
-    "courseCode": "MSTC",
+    "courseCode": "ENVC",
     "section": "G",
     "campus": "mohali",
-    "filename": "MSTC_Sec_G.jpg",
-    "url": "/seating/MSTC_Sec_G.jpg",
+    "filename": "ENVC_Sec_G.jpg",
+    "url": "/seating/ENVC_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "LWPM",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "LWPM_Sec_G.jpg",
+    "url": "/seating/LWPM_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "LWPM",
+    "section": "H",
+    "campus": "mohali",
+    "filename": "LWPM_Sec_H.jpg",
+    "url": "/seating/LWPM_Sec_H.jpg",
     "aspect": "4:3",
     "width": 2800,
     "height": 2100
@@ -50,6 +160,36 @@
     "height": 2100
   },
   {
+    "courseCode": "MSTC",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "MSTC_Sec_G.jpg",
+    "url": "/seating/MSTC_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "MSTC",
+    "section": "H",
+    "campus": "mohali",
+    "filename": "MSTC_Sec_H.jpg",
+    "url": "/seating/MSTC_Sec_H.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
+    "courseCode": "MTCC",
+    "section": "G",
+    "campus": "mohali",
+    "filename": "MTCC_Sec_G.jpg",
+    "url": "/seating/MTCC_Sec_G.jpg",
+    "aspect": "4:3",
+    "width": 2800,
+    "height": 2100
+  },
+  {
     "courseCode": "NEGA1",
     "section": "G",
     "campus": "mohali",
@@ -60,21 +200,21 @@
     "height": 2100
   },
   {
-    "courseCode": "ABTE",
+    "courseCode": "NSDL",
     "section": "G",
     "campus": "mohali",
-    "filename": "ABTE_Sec_G.jpg",
-    "url": "/seating/ABTE_Sec_G.jpg",
+    "filename": "NSDL_Sec_G.jpg",
+    "url": "/seating/NSDL_Sec_G.jpg",
     "aspect": "4:3",
     "width": 2800,
     "height": 2100
   },
   {
-    "courseCode": "ABTE",
+    "courseCode": "NSDL",
     "section": "H",
     "campus": "mohali",
-    "filename": "ABTE_Sec_H.jpg",
-    "url": "/seating/ABTE_Sec_H.jpg",
+    "filename": "NSDL_Sec_H.jpg",
+    "url": "/seating/NSDL_Sec_H.jpg",
     "aspect": "4:3",
     "width": 2800,
     "height": 2100
@@ -105,66 +245,6 @@
     "campus": "mohali",
     "filename": "STAR_Sec_G.jpg",
     "url": "/seating/STAR_Sec_G.jpg",
-    "aspect": "4:3",
-    "width": 2800,
-    "height": 2100
-  },
-  {
-    "courseCode": "LWPM",
-    "section": "H",
-    "campus": "mohali",
-    "filename": "LWPM_Sec_H.jpg",
-    "url": "/seating/LWPM_Sec_H.jpg",
-    "aspect": "4:3",
-    "width": 2800,
-    "height": 2100
-  },
-  {
-    "courseCode": "LWPM",
-    "section": "G",
-    "campus": "mohali",
-    "filename": "LWPM_Sec_G.jpg",
-    "url": "/seating/LWPM_Sec_G.jpg",
-    "aspect": "4:3",
-    "width": 2800,
-    "height": 2100
-  },
-  {
-    "courseCode": "CDMA2",
-    "section": "I",
-    "campus": "mohali",
-    "filename": "CDMA2_Sec_I.jpg",
-    "url": "/seating/CDMA2_Sec_I.jpg",
-    "aspect": "4:3",
-    "width": 2800,
-    "height": 2100
-  },
-  {
-    "courseCode": "CDMA2",
-    "section": "J",
-    "campus": "mohali",
-    "filename": "CDMA2_Sec_J.jpg",
-    "url": "/seating/CDMA2_Sec_J.jpg",
-    "aspect": "4:3",
-    "width": 2800,
-    "height": 2100
-  },
-  {
-    "courseCode": "CDMA2",
-    "section": "H",
-    "campus": "mohali",
-    "filename": "CDMA2_Sec_H.jpg",
-    "url": "/seating/CDMA2_Sec_H.jpg",
-    "aspect": "4:3",
-    "width": 2800,
-    "height": 2100
-  },
-  {
-    "courseCode": "CDMA2",
-    "section": "G",
-    "campus": "mohali",
-    "filename": "CDMA2_Sec_G.jpg",
-    "url": "/seating/CDMA2_Sec_G.jpg",
     "aspect": "4:3",
     "width": 2800,
     "height": 2100
