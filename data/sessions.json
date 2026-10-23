@@ -90,15 +90,6 @@
     "room": "AS 3 LT Vikramashila"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-10-19",
-    "startTime": "10:15",
-    "endTime": "12:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "ECSG",
     "section": "A",
@@ -138,15 +129,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-10-19",
-    "startTime": "12:30",
-    "endTime": "14:30",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-10-19",
     "startTime": "12:30",
     "endTime": "14:30",
@@ -201,15 +183,6 @@
     "campus": "mohali",
     "courseCode": "NEGA1",
     "section": "G",
-    "date": "2026-10-19",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
     "date": "2026-10-19",
     "startTime": "14:45",
     "endTime": "16:45",
@@ -318,15 +291,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-10-20",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-10-20",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -586,15 +550,6 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
-    "date": "2026-10-23",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "LWPM",
     "section": "G",
     "date": "2026-10-23",
@@ -702,15 +657,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-10-23",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -795,15 +741,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-10-23",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-10-23",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -1026,15 +963,6 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
-    "date": "2026-10-24",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
@@ -1065,15 +993,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-10-26",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-10-26",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -1206,15 +1125,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-10-26",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -1299,15 +1209,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-10-26",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-10-26",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -1530,15 +1431,6 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
-    "date": "2026-10-27",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
@@ -1569,15 +1461,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-10-28",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-10-28",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -1710,15 +1593,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-10-28",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -1803,15 +1677,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-10-28",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-10-28",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -2028,15 +1893,6 @@
     "campus": "mohali",
     "courseCode": "NEGA1",
     "section": "G",
-    "date": "2026-10-29",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
     "date": "2026-10-29",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -2065,6 +1921,17 @@
     "rescheduledFrom": "2026-11-16 14:45"
   },
   {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-10-30",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Wed Nov 4",
+    "rescheduledFrom": "2026-11-04 19:15"
+  },
+  {
     "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
@@ -2095,15 +1962,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-11-02",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-11-02",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -2236,15 +2094,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-11-02",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -2329,15 +2178,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-11-02",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-11-02",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -2560,15 +2400,6 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
-    "date": "2026-11-03",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
@@ -2599,15 +2430,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-11-04",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-11-04",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -2740,15 +2562,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-11-04",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -2828,24 +2641,6 @@
     "startTime": "19:15",
     "endTime": "21:15",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "G",
-    "date": "2026-11-04",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
-    "date": "2026-11-04",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
   },
   {
     "campus": "hyderabad",
@@ -3058,15 +2853,6 @@
     "campus": "mohali",
     "courseCode": "NEGA1",
     "section": "G",
-    "date": "2026-11-05",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
     "date": "2026-11-05",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -3126,6 +2912,26 @@
   },
   {
     "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-06",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT",
+    "statusNote": "Combined Online Guest Lecture"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-06",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT",
+    "statusNote": "Combined Online Guest Lecture"
+  },
+  {
+    "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
     "date": "2026-11-09",
@@ -3155,15 +2961,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-11-09",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-11-09",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -3222,18 +3019,6 @@
     "startTime": "10:15",
     "endTime": "12:15",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "MSTC",
-    "section": "G",
-    "date": "2026-11-09",
-    "startTime": "10:15",
-    "endTime": "12:15",
-    "room": "AS 3 LT Vikramashila",
-    "isCancelled": true,
-    "rescheduledTo": "2026-11-06 10:15",
-    "statusNote": "Rescheduled to Fri Nov 6"
   },
   {
     "campus": "hyderabad",
@@ -3299,15 +3084,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-11-09",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -3342,18 +3118,6 @@
     "startTime": "17:00",
     "endTime": "19:00",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "MSTC",
-    "section": "H",
-    "date": "2026-11-09",
-    "startTime": "17:00",
-    "endTime": "19:00",
-    "room": "AS 3 LT Vikramashila",
-    "isCancelled": true,
-    "rescheduledTo": "2026-11-06 12:30",
-    "statusNote": "Rescheduled to Fri Nov 6"
   },
   {
     "campus": "hyderabad",
@@ -3395,15 +3159,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-11-09",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-11-09",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -3626,15 +3381,6 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
-    "date": "2026-11-10",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
@@ -3665,15 +3411,6 @@
     "campus": "mohali",
     "courseCode": "ENVC",
     "section": "G",
-    "date": "2026-11-11",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
     "date": "2026-11-11",
     "startTime": "08:00",
     "endTime": "10:00",
@@ -3732,18 +3469,6 @@
     "startTime": "10:15",
     "endTime": "12:15",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "MSTC",
-    "section": "G",
-    "date": "2026-11-11",
-    "startTime": "10:15",
-    "endTime": "12:15",
-    "room": "AS 3 LT Vikramashila",
-    "isCancelled": true,
-    "rescheduledTo": "2026-11-20 10:15",
-    "statusNote": "Rescheduled to Fri Nov 20"
   },
   {
     "campus": "hyderabad",
@@ -3809,15 +3534,6 @@
     "room": "AS 2 LT Pushpagiri"
   },
   {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
-    "date": "2026-11-11",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "CAMS",
     "section": "A",
@@ -3852,18 +3568,6 @@
     "startTime": "17:00",
     "endTime": "19:00",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "MSTC",
-    "section": "H",
-    "date": "2026-11-11",
-    "startTime": "17:00",
-    "endTime": "19:00",
-    "room": "AS 3 LT Vikramashila",
-    "isCancelled": true,
-    "rescheduledTo": "2026-11-20 12:30",
-    "statusNote": "Rescheduled to Fri Nov 20"
   },
   {
     "campus": "hyderabad",
@@ -3905,15 +3609,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-11-11",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-11-11",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -4136,13 +3831,14 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
+    "campus": "hyderabad",
     "courseCode": "NEGA1",
-    "section": "H",
-    "date": "2026-11-12",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
+    "section": "A",
+    "date": "2026-11-13",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
   },
   {
     "campus": "mohali",
@@ -4154,6 +3850,16 @@
     "room": "AS 1 LT Nalanda",
     "statusNote": "Rescheduled from Wed Nov 18",
     "rescheduledFrom": "2026-11-18 08:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-13",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
   },
   {
     "campus": "mohali",
@@ -4168,6 +3874,27 @@
   },
   {
     "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-13",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class (Starts at 2:30 PM IST)"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-11-13",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Wed Nov 18",
+    "rescheduledFrom": "2026-11-18 19:15"
+  },
+  {
+    "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
     "date": "2026-11-16",
@@ -4201,27 +3928,6 @@
     "startTime": "08:00",
     "endTime": "10:00",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
-    "date": "2026-11-16",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "LWPM",
-    "section": "G",
-    "date": "2026-11-16",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 1 LT Nalanda",
-    "isCancelled": true,
-    "rescheduledTo": "2026-10-30 10:15",
-    "statusNote": "Rescheduled to Fri Oct 30"
   },
   {
     "campus": "hyderabad",
@@ -4324,29 +4030,8 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "LWPM",
-    "section": "H",
-    "date": "2026-11-16",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 1 LT Nalanda",
-    "isCancelled": true,
-    "rescheduledTo": "2026-10-30 12:30",
-    "statusNote": "Rescheduled to Fri Oct 30"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "MKTS",
     "section": "G",
-    "date": "2026-11-16",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
     "date": "2026-11-16",
     "startTime": "14:45",
     "endTime": "16:45",
@@ -4437,15 +4122,6 @@
     "campus": "mohali",
     "courseCode": "PEVF",
     "section": "G",
-    "date": "2026-11-16",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
     "date": "2026-11-16",
     "startTime": "19:15",
     "endTime": "21:15",
@@ -4641,15 +4317,6 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
-    "date": "2026-11-17",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "BRMT",
     "section": "A",
@@ -4684,27 +4351,6 @@
     "startTime": "08:00",
     "endTime": "10:00",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "ENVC",
-    "section": "H",
-    "date": "2026-11-18",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "LWPM",
-    "section": "G",
-    "date": "2026-11-18",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 1 LT Nalanda",
-    "isCancelled": true,
-    "rescheduledTo": "2026-11-13 10:15",
-    "statusNote": "Rescheduled to Fri Nov 13"
   },
   {
     "campus": "hyderabad",
@@ -4807,29 +4453,8 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "LWPM",
-    "section": "H",
-    "date": "2026-11-18",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 1 LT Nalanda",
-    "isCancelled": true,
-    "rescheduledTo": "2026-11-13 12:30",
-    "statusNote": "Rescheduled to Fri Nov 13"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "MKTS",
     "section": "G",
-    "date": "2026-11-18",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "MKTS",
-    "section": "I",
     "date": "2026-11-18",
     "startTime": "14:45",
     "endTime": "16:45",
@@ -4915,24 +4540,6 @@
     "startTime": "19:15",
     "endTime": "21:15",
     "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "G",
-    "date": "2026-11-18",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "PEVF",
-    "section": "H",
-    "date": "2026-11-18",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 3 LT Vikramashila"
   },
   {
     "campus": "hyderabad",
@@ -5118,15 +4725,6 @@
     "campus": "mohali",
     "courseCode": "NEGA1",
     "section": "G",
-    "date": "2026-11-19",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "H",
     "date": "2026-11-19",
     "startTime": "19:15",
     "endTime": "21:15",
