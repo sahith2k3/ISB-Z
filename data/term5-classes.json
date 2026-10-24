@@ -11058,11 +11058,6 @@
           "email": "chandraraj_singh_pgp2027@isb.edu"
         },
         {
-          "id": 62619013,
-          "name": "Hippolyte Belpaire",
-          "email": "Hippolyte_Belpaire_x2027@isb.edu"
-        },
-        {
           "id": 62610845,
           "name": "Isshita Mehta",
           "email": "isshita_mehta_pgp2027@isb.edu"
@@ -11284,6 +11279,11 @@
           "id": 62610407,
           "name": "Harshita Goenka",
           "email": "harshita_goenka_pgp2027@isb.edu"
+        },
+        {
+          "id": 62619013,
+          "name": "Hippolyte Belpaire",
+          "email": "Hippolyte_Belpaire_x2027@isb.edu"
         },
         {
           "id": 62619015,
@@ -15186,7 +15186,7 @@
       },
       {
         "courseName": "Leading with Purpose and Meaning",
-        "section": "G",
+        "section": "H",
         "campus": "mohali"
       },
       {
