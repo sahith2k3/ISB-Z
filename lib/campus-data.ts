@@ -257,20 +257,14 @@ export function getStudentEnrollments(studentId: number): StudentEnrolledCourse[
 export function getSchedulerWorkingDates(count = 7): string[] {
   const { date: today } = nowInKolkata();
 
-  const fridayClassDates = new Set<string>();
+  const classDates = new Set<string>();
   const examDates = new Set<string>();
   for (const s of rawSessions) {
     if (!s.isCancelled) {
       if (s.isExam) {
         examDates.add(s.date);
       }
-      const weekday = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Kolkata",
-        weekday: "short",
-      }).format(new Date(`${s.date}T12:00:00+05:30`));
-      if (weekday === "Fri") {
-        fridayClassDates.add(s.date);
-      }
+      classDates.add(s.date);
     }
   }
 
@@ -295,7 +289,7 @@ export function getSchedulerWorkingDates(count = 7): string[] {
 
     if (["Mon", "Tue", "Wed", "Thu"].includes(weekday)) {
       result.push(dateStr);
-    } else if (weekday === "Fri" && fridayClassDates.has(dateStr)) {
+    } else if (classDates.has(dateStr)) {
       result.push(dateStr);
     } else if (examDates.has(dateStr)) {
       result.push(dateStr);

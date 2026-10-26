@@ -505,6 +505,21 @@ export default function SgPlannerPage() {
             <ShareButton source="sg_planner_header" />
           </header>
 
+          {/* Sunset Notice Banner */}
+          <div className="mb-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-3.5 text-xs text-amber-900 dark:text-amber-100">
+            <div className="flex items-start gap-2.5">
+              <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div className="min-w-0">
+                <p className="font-bold text-foreground">
+                  Notice: Page being retired this Wednesday
+                </p>
+                <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">
+                  The Study Group Finder function will be removed this Wednesday. Please connect with your study group members and finalize any groups before then!
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Tab Switcher: My Classes vs All Classes */}
           <div className="mb-5 flex rounded-2xl bg-secondary/80 p-1">
             <button

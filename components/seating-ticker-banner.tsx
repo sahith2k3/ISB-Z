@@ -3,38 +3,28 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChevronRight } from "lucide-react";
-import { useLocalStudent } from "@/hooks/use-local-student";
-import { useGetStudent } from "@/lib/api-client";
 
 export function SeatingTickerBanner() {
   const router = useRouter();
-  const { studentId } = useLocalStudent();
-  const { data: me } = useGetStudent(studentId || 0);
-
-  // Strictly hide the Mohali seating announcement for Hyderabad students
-  if (me?.campus === "hyderabad") {
-    return null;
-  }
 
   const tickerText =
-    "🚨 SEATINGS ARE NOW LIVE FOR MOHALI STUDENTS! 🪑 25 of 26 classroom layouts uploaded • Tap here to view your seat & layout • Updated for Term 5 •";
+    "📢 NOTICE: The Study Group Finder page will be removed this Wednesday! • Please finalize and save your study groups before Wednesday • Tap here to view Study Group Finder •";
 
   return (
     <Link
-      href="/seating"
+      href="/sg-planner"
       prefetch={true}
-      onPointerDown={() => router.prefetch("/seating")}
+      onPointerDown={() => router.prefetch("/sg-planner")}
       data-testid="seating-ticker-banner"
-      className="group relative mt-3 flex w-full cursor-pointer touch-manipulation select-none items-center overflow-hidden rounded-2xl border border-rose-500/30 bg-gradient-to-r from-rose-500/15 via-amber-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-150 hover:border-primary/50 hover:shadow-md active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [touch-action:pan-y]"
+      className="group relative mt-3 flex w-full cursor-pointer touch-manipulation select-none items-center overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-500/15 via-rose-500/10 to-primary/10 p-1.5 shadow-sm transition-all duration-150 hover:border-primary/50 hover:shadow-md active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [touch-action:pan-y]"
     >
       {/* TV Breaking News Tag */}
-      <div className="z-10 flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-sm pointer-events-none">
+      <div className="z-10 flex shrink-0 items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-sm pointer-events-none">
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
           <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
         </span>
-        <span className="hidden xs:inline">MOHALI</span>
-        <span>LIVE</span>
+        <span>NOTICE</span>
       </div>
 
       {/* Sliding TV-style horizontal marquee - pointer-events-none ensures touch lands on Link */}

@@ -257,8 +257,8 @@ export function HomeView() {
               </div>
             </Link>
 
-            {/* TV-style Sliding Ticker Banner (Mohali only) */}
-            {me.campus === "mohali" && <SeatingTickerBanner />}
+            {/* TV-style Sliding Ticker Banner */}
+            <SeatingTickerBanner />
           </div>
         )}
 

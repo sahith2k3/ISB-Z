@@ -1432,15 +1432,6 @@
   },
   {
     "campus": "hyderabad",
-    "courseCode": "BRMT",
-    "section": "A",
-    "date": "2026-10-28",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AC 2 LT"
-  },
-  {
-    "campus": "hyderabad",
     "courseCode": "ECSG",
     "section": "A",
     "date": "2026-10-28",
@@ -1684,15 +1675,6 @@
   },
   {
     "campus": "hyderabad",
-    "courseCode": "BRMT",
-    "section": "B",
-    "date": "2026-10-29",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AC 2 LT"
-  },
-  {
-    "campus": "hyderabad",
     "courseCode": "SWPM",
     "section": "A",
     "date": "2026-10-29",
@@ -1726,15 +1708,6 @@
     "startTime": "08:00",
     "endTime": "10:00",
     "room": "AS 1 LT Nalanda"
-  },
-  {
-    "campus": "hyderabad",
-    "courseCode": "BRMT",
-    "section": "C",
-    "date": "2026-10-29",
-    "startTime": "10:15",
-    "endTime": "12:15",
-    "room": "AC 2 LT"
   },
   {
     "campus": "hyderabad",
@@ -2915,9 +2888,9 @@
     "courseCode": "LSWS",
     "section": "A",
     "date": "2026-11-06",
-    "startTime": "17:00",
-    "endTime": "19:00",
-    "room": "AC 4 LT",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT",
     "statusNote": "Combined Online Guest Lecture"
   },
   {
@@ -2925,9 +2898,9 @@
     "courseCode": "LSWS",
     "section": "B",
     "date": "2026-11-06",
-    "startTime": "17:00",
-    "endTime": "19:00",
-    "room": "AC 4 LT",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT",
     "statusNote": "Combined Online Guest Lecture"
   },
   {
@@ -3892,6 +3865,69 @@
     "room": "AS 3 LT Vikramashila",
     "statusNote": "Rescheduled from Wed Nov 18",
     "rescheduledFrom": "2026-11-18 19:15"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-14",
+    "startTime": "12:00",
+    "endTime": "14:00",
+    "room": "MOEC Townhall",
+    "statusNote": "Combined Session at MOEC Townhall",
+    "rescheduledFrom": "2026-10-28 08:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-14",
+    "startTime": "12:00",
+    "endTime": "14:00",
+    "room": "MOEC Townhall",
+    "statusNote": "Combined Session at MOEC Townhall",
+    "rescheduledFrom": "2026-10-29 08:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-14",
+    "startTime": "12:00",
+    "endTime": "14:00",
+    "room": "MOEC Townhall",
+    "statusNote": "Combined Session at MOEC Townhall",
+    "rescheduledFrom": "2026-10-29 10:15"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-14",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "room": "Auditorium",
+    "statusNote": "COBE Guest Speaker Session (3 PM - 5 PM)"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-14",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "room": "Auditorium",
+    "statusNote": "COBE Guest Speaker Session (3 PM - 5 PM)"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-14",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "room": "Auditorium",
+    "statusNote": "COBE Guest Speaker Session (3 PM - 5 PM)"
   },
   {
     "campus": "hyderabad",
