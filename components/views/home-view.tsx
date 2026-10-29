@@ -18,13 +18,11 @@ import {
   X,
   ArrowUpRight,
   RefreshCw,
-  Armchair,
   UserPlus,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";
 import { ShareButton } from "@/components/share-button";
-import { SeatingTickerBanner } from "@/components/seating-ticker-banner";
 import seatingManifestData from "@/data/seating-manifest.json";
 
 export function HomeView() {
@@ -38,7 +36,6 @@ export function HomeView() {
   useEffect(() => {
     router.prefetch("/seating");
     router.prefetch("/scheduler");
-    router.prefetch("/sg-planner");
   }, [router]);
 
   // Pre-warm enrolled courses into React Query cache for instant seating view
@@ -139,18 +136,6 @@ export function HomeView() {
         </div>
         <div className="flex items-center gap-2">
           <ShareButton source="home_header" />
-          {me?.campus === "mohali" && (
-            <Link
-              href="/seating"
-              prefetch={true}
-              data-testid="button-seating"
-              aria-label="Seating charts"
-              title="Seating charts"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-card-border bg-card text-muted-foreground transition-all duration-150 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation active:scale-95"
-            >
-              <Armchair className="h-5 w-5" />
-            </Link>
-          )}
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
@@ -256,9 +241,6 @@ export function HomeView() {
                 <ArrowUpRight className="h-4 w-4 shrink-0 text-primary/40 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
               </div>
             </Link>
-
-            {/* TV-style Sliding Ticker Banner */}
-            <SeatingTickerBanner />
           </div>
         )}
 
