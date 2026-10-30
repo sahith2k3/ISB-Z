@@ -3805,6 +3805,26 @@
   },
   {
     "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-13",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 3 LT",
+    "statusNote": "Combined Session (AC 3LT)"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-13",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 3 LT",
+    "statusNote": "Combined Session (AC 3LT)"
+  },
+  {
+    "campus": "hyderabad",
     "courseCode": "NEGA1",
     "section": "A",
     "date": "2026-11-13",
@@ -4782,10 +4802,10 @@
     "courseCode": "MSTC",
     "section": "H",
     "date": "2026-11-20",
-    "startTime": "12:30",
-    "endTime": "14:30",
+    "startTime": "15:30",
+    "endTime": "17:30",
     "room": "AS 3 LT Vikramashila",
-    "statusNote": "Rescheduled from Wed Nov 11",
+    "statusNote": "Rescheduled to 3:30 PM - 5:30 PM (from Wed Nov 11)",
     "rescheduledFrom": "2026-11-11 17:00"
   }
 ]
