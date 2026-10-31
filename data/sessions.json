@@ -2379,7 +2379,8 @@
     "date": "2026-11-04",
     "startTime": "08:00",
     "endTime": "10:00",
-    "room": "AC 2 LT"
+    "room": "EC-MR-23 & MOEC",
+    "statusNote": "Venue: EC-MR-23 & MOEC"
   },
   {
     "campus": "hyderabad",
@@ -2622,7 +2623,8 @@
     "date": "2026-11-05",
     "startTime": "08:00",
     "endTime": "10:00",
-    "room": "AC 2 LT"
+    "room": "EC-MR-23 & MOEC",
+    "statusNote": "Venue: EC-MR-23 & MOEC"
   },
   {
     "campus": "hyderabad",
@@ -2667,7 +2669,8 @@
     "date": "2026-11-05",
     "startTime": "10:15",
     "endTime": "12:15",
-    "room": "AC 2 LT"
+    "room": "EC-MR-23 & MOEC",
+    "statusNote": "Venue: EC-MR-23 & MOEC"
   },
   {
     "campus": "hyderabad",
