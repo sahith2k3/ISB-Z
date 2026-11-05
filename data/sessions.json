@@ -2637,15 +2637,6 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "DTME1",
-    "section": "G",
-    "date": "2026-11-05",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "NSDL",
     "section": "G",
     "date": "2026-11-05",
@@ -2887,6 +2878,17 @@
     "statusNote": "Makeup Class"
   },
   {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-06",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda",
+    "statusNote": "Rescheduled from Thu Nov 19 19:15",
+    "rescheduledFrom": "2026-11-19 19:15"
+  },
+  {
     "campus": "hyderabad",
     "courseCode": "LSWS",
     "section": "A",
@@ -3157,15 +3159,6 @@
     "startTime": "08:00",
     "endTime": "10:00",
     "room": "AC 8 LT"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "DTME1",
-    "section": "G",
-    "date": "2026-11-10",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 3 LT Vikramashila"
   },
   {
     "campus": "mohali",
@@ -3607,15 +3600,6 @@
     "startTime": "08:00",
     "endTime": "10:00",
     "room": "AC 8 LT"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "DTME1",
-    "section": "G",
-    "date": "2026-11-12",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 3 LT Vikramashila"
   },
   {
     "campus": "mohali",
@@ -4226,15 +4210,6 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "DTME1",
-    "section": "G",
-    "date": "2026-11-17",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "NSDL",
     "section": "G",
     "date": "2026-11-17",
@@ -4640,15 +4615,6 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "DTME1",
-    "section": "G",
-    "date": "2026-11-19",
-    "startTime": "08:00",
-    "endTime": "10:00",
-    "room": "AS 3 LT Vikramashila"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "NSDL",
     "section": "G",
     "date": "2026-11-19",
@@ -4799,15 +4765,6 @@
     "startTime": "19:15",
     "endTime": "21:15",
     "room": "AC 4 LT"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "NEGA1",
-    "section": "G",
-    "date": "2026-11-19",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 1 LT Nalanda"
   },
   {
     "campus": "mohali",
