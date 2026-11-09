@@ -3907,26 +3907,6 @@
     "rescheduledFrom": "2026-10-29 10:15"
   },
   {
-    "campus": "hyderabad",
-    "courseCode": "GPMK",
-    "section": "A",
-    "date": "2026-11-14",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AC 4 LT",
-    "statusNote": "Tentative - TBC"
-  },
-  {
-    "campus": "hyderabad",
-    "courseCode": "GPMK",
-    "section": "B",
-    "date": "2026-11-14",
-    "startTime": "14:45",
-    "endTime": "16:45",
-    "room": "AC 4 LT",
-    "statusNote": "Tentative - TBC"
-  },
-  {
     "campus": "mohali",
     "courseCode": "COBE",
     "section": "G",
