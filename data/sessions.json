@@ -3880,8 +3880,8 @@
     "date": "2026-11-14",
     "startTime": "12:00",
     "endTime": "14:00",
-    "room": "MOEC Townhall",
-    "statusNote": "Combined Session at MOEC Townhall",
+    "room": "KHEMKA AUDITORIUM",
+    "statusNote": "Combined Session at Khemka Auditorium",
     "rescheduledFrom": "2026-10-28 08:00"
   },
   {
@@ -3891,8 +3891,8 @@
     "date": "2026-11-14",
     "startTime": "12:00",
     "endTime": "14:00",
-    "room": "MOEC Townhall",
-    "statusNote": "Combined Session at MOEC Townhall",
+    "room": "KHEMKA AUDITORIUM",
+    "statusNote": "Combined Session at Khemka Auditorium",
     "rescheduledFrom": "2026-10-29 08:00"
   },
   {
@@ -3902,8 +3902,8 @@
     "date": "2026-11-14",
     "startTime": "12:00",
     "endTime": "14:00",
-    "room": "MOEC Townhall",
-    "statusNote": "Combined Session at MOEC Townhall",
+    "room": "KHEMKA AUDITORIUM",
+    "statusNote": "Combined Session at Khemka Auditorium",
     "rescheduledFrom": "2026-10-29 10:15"
   },
   {
@@ -3943,7 +3943,8 @@
     "date": "2026-11-16",
     "startTime": "08:00",
     "endTime": "10:00",
-    "room": "AC 2 LT"
+    "room": "AC 3 LT",
+    "statusNote": "Venue: AC 3 LT"
   },
   {
     "campus": "hyderabad",
@@ -4459,15 +4460,6 @@
     "room": "AS 1 LT Nalanda"
   },
   {
-    "campus": "mohali",
-    "courseCode": "COBE",
-    "section": "G",
-    "date": "2026-11-18",
-    "startTime": "12:30",
-    "endTime": "14:30",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
     "campus": "hyderabad",
     "courseCode": "GSMT",
     "section": "A",
@@ -4523,15 +4515,6 @@
   },
   {
     "campus": "mohali",
-    "courseCode": "COBE",
-    "section": "H",
-    "date": "2026-11-18",
-    "startTime": "17:00",
-    "endTime": "19:00",
-    "room": "AS 2 LT Pushpagiri"
-  },
-  {
-    "campus": "mohali",
     "courseCode": "MSTC",
     "section": "H",
     "date": "2026-11-18",
@@ -4558,6 +4541,26 @@
     "room": "AC 8 LT"
   },
   {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT",
+    "statusNote": "STRI (A,B) Presentation"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT",
+    "statusNote": "STRI (A,B) Presentation"
+  },
+  {
     "campus": "mohali",
     "courseCode": "ABTE",
     "section": "H",
@@ -4565,15 +4568,6 @@
     "startTime": "19:15",
     "endTime": "21:15",
     "room": "AS 1 LT Nalanda"
-  },
-  {
-    "campus": "mohali",
-    "courseCode": "COBE",
-    "section": "I",
-    "date": "2026-11-18",
-    "startTime": "19:15",
-    "endTime": "21:15",
-    "room": "AS 2 LT Pushpagiri"
   },
   {
     "campus": "hyderabad",
