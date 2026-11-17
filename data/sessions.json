@@ -4241,7 +4241,8 @@
     "date": "2026-11-17",
     "startTime": "10:15",
     "endTime": "12:15",
-    "room": "AS 2 LT Pushpagiri"
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Venue: AS 3 LT Vikramashila"
   },
   {
     "campus": "hyderabad",
@@ -4259,7 +4260,8 @@
     "date": "2026-11-17",
     "startTime": "12:30",
     "endTime": "14:30",
-    "room": "AS 2 LT Pushpagiri"
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Venue: AS 3 LT Vikramashila"
   },
   {
     "campus": "mohali",
@@ -4295,7 +4297,8 @@
     "date": "2026-11-17",
     "startTime": "14:45",
     "endTime": "16:45",
-    "room": "AS 2 LT Pushpagiri"
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Venue: AS 3 LT Vikramashila"
   },
   {
     "campus": "mohali",
