@@ -3,9 +3,9 @@
 import { useState, useEffect, useCallback } from "react";
 import type { SamplingSession, SamplingVerdict, SamplingVerdictStatus } from "@/lib/types";
 
-const STORAGE_KEY_SAMPLED = "isbusy_sampling_planned_sessions";
-const STORAGE_KEY_CHOICES = "isbusy_sampling_attending_choices";
-const STORAGE_KEY_VERDICTS = "isbusy_sampling_course_verdicts";
+const STORAGE_KEY_SAMPLED = "isbusy_sampling_planned_sessions_t6";
+const STORAGE_KEY_CHOICES = "isbusy_sampling_attending_choices_t6";
+const STORAGE_KEY_VERDICTS = "isbusy_sampling_course_verdicts_t6";
 
 export function useSamplingPlan(studentId: number | null | undefined) {
   const [sampledIds, setSampledIds] = useState<string[]>([]);
@@ -120,10 +120,10 @@ export function downloadSamplingIcs(
   let icsContent = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//ISBusy//ISB Term 5 Sampling Planner//EN",
+    "PRODID:-//ISBusy//ISB Term 6 Sampling Planner//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
-    `X-WR-CALNAME:ISB Term 5 Sampling - ${studentName}`,
+    `X-WR-CALNAME:ISB Term 6 Sampling - ${studentName}`,
     "X-WR-TIMEZONE:Asia/Kolkata",
   ];
 
@@ -163,7 +163,7 @@ export function downloadSamplingIcs(
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = "ISB_Term5_Sampling_Schedule.ics";
+  link.download = "ISB_Term6_Sampling_Schedule.ics";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -180,13 +180,13 @@ export function generateShareableText(
 ): string {
   if (items.length === 0) return "No sampling sessions selected yet.";
 
-  const day1 = items.filter((i) => i.session.date === "2026-10-19");
-  const day2 = items.filter((i) => i.session.date === "2026-10-20");
+  const day1 = items.filter((i) => i.session.date === "2026-12-21");
+  const day2 = items.filter((i) => i.session.date === "2026-12-22");
 
-  let out = `🎓 *${studentName} Term 5 Sampling Schedule*\n`;
+  let out = `🎓 *${studentName} Term 6 Sampling Schedule*\n`;
 
   if (day1.length > 0) {
-    out += `\n📅 *Day 1 — Mon, Oct 19:*\n`;
+    out += `\n📅 *Day 1 — Mon, Dec 21:*\n`;
     for (const item of day1) {
       const badge = item.type === "sample" ? "🔍 [Sampling]" : "★ [Allotted]";
       out += `• ${item.session.startTime}-${item.session.endTime}: *${item.session.courseCode}* (Sec ${item.session.section}) @ ${item.session.room} ${badge}\n`;
@@ -194,7 +194,7 @@ export function generateShareableText(
   }
 
   if (day2.length > 0) {
-    out += `\n📅 *Day 2 — Tue, Oct 20:*\n`;
+    out += `\n📅 *Day 2 — Tue, Dec 22:*\n`;
     for (const item of day2) {
       const badge = item.type === "sample" ? "🔍 [Sampling]" : "★ [Allotted]";
       out += `• ${item.session.startTime}-${item.session.endTime}: *${item.session.courseCode}* (Sec ${item.session.section}) @ ${item.session.room} ${badge}\n`;

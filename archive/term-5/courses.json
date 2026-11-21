@@ -1,0 +1,334 @@
+[
+  {
+    "code": "BRMT",
+    "name": "Brand Management",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B",
+      "C"
+    ],
+    "venue": "AC 2 LT",
+    "faculty": "Arani Roy"
+  },
+  {
+    "code": "CAMS",
+    "name": "Creating Market Access: Managing Channel Strategy",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 2 LT",
+    "faculty": "Madhu Viswanathan"
+  },
+  {
+    "code": "ECSG",
+    "name": "Economics of Strategy",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A"
+    ],
+    "venue": "AC 8 LT",
+    "faculty": "Bruce Phelps"
+  },
+  {
+    "code": "FINB",
+    "name": "Financial Services for the Next Billion",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 2 LT",
+    "faculty": "Shilpa Aggarwal"
+  },
+  {
+    "code": "GPMK",
+    "name": "Growth and Performance Marketing",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 4 LT",
+    "faculty": "Madhu Viswanathan (Sessions 1-5) / Siddharth Prusty (Sessions 6-10)"
+  },
+  {
+    "code": "GSMT",
+    "name": "Global Strategic Management",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A"
+    ],
+    "venue": "AC 4 LT",
+    "faculty": "Seung Hoon Lee"
+  },
+  {
+    "code": "INVT",
+    "name": "Investments",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A"
+    ],
+    "venue": "AC 4 LT",
+    "faculty": "Anindo Sarkar"
+  },
+  {
+    "code": "LPFW",
+    "name": "Leading People through the Future of Work",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B",
+      "C"
+    ],
+    "venue": "AC 8 LT",
+    "faculty": "Chandrasekhar Sripada"
+  },
+  {
+    "code": "LSWS",
+    "name": "Launching Software Startups",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 2 LT",
+    "faculty": "K Ganesh"
+  },
+  {
+    "code": "MKSV",
+    "name": "Marketing Services",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 8 LT",
+    "faculty": "Piyush Kumar"
+  },
+  {
+    "code": "NEGA1",
+    "name": "Negotiation Analysis",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B",
+      "C"
+    ],
+    "venue": "AC 4 LT",
+    "faculty": "Leena Kinger Hans"
+  },
+  {
+    "code": "STRI",
+    "name": "Strategy Implementation",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 4 LT",
+    "faculty": "Anusha Sirigiri"
+  },
+  {
+    "code": "SWPM",
+    "name": "Software Product Management",
+    "category": "Elective",
+    "campus": "hyderabad",
+    "sections": [
+      "A",
+      "B"
+    ],
+    "venue": "AC 8 LT",
+    "faculty": "Chandrashekhar Vattikuti"
+  },
+  {
+    "code": "ABTE",
+    "name": "A/B Testing and Tech Product Experimentation",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Aruna Rajan"
+  },
+  {
+    "code": "BVFS",
+    "name": "Business Valuation Using Financial Statements",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Rishabh Aggarwal"
+  },
+  {
+    "code": "CDMA2",
+    "name": "Corporate Development: Mergers & Acquisitions",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H",
+      "I",
+      "J"
+    ],
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Siddharth Sharma"
+  },
+  {
+    "code": "COBE",
+    "name": "Consumer Behaviour",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H",
+      "I"
+    ],
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Poornima Vinoo"
+  },
+  {
+    "code": "DTME1",
+    "name": "Digital Transformation and Innovation in the Manufacturing Ecosystem",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 3 LT Vikramshila",
+    "faculty": "Chandan Chowdhury"
+  },
+  {
+    "code": "ENVC",
+    "name": "Entrepreneurship and Venture Capital",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Ramakrishna S Velamuri"
+  },
+  {
+    "code": "LWPM",
+    "name": "Leading with Purpose and Meaning",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Ramakrishna Nidumolu"
+  },
+  {
+    "code": "MKTS",
+    "name": "Marketing Strategy",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "S Arunachalam"
+  },
+  {
+    "code": "MSTC",
+    "name": "The Modern Strategy Consultant",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "venue": "AS 3 LT Vikramashila",
+    "faculty": "Himanshu Tambe"
+  },
+  {
+    "code": "MTCC",
+    "name": "Monetizing Tech: From Code to Cashflow",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Rajib Saha"
+  },
+  {
+    "code": "NEGA1",
+    "name": "Negotiation Analysis",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Ashneet Kaur"
+  },
+  {
+    "code": "NSDL",
+    "name": "New Product and Service Development and Launch",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "venue": "AS 2 LT Pushpagiri",
+    "faculty": "Siddharth S. Singh"
+  },
+  {
+    "code": "PEVF",
+    "name": "Private Equity and Venture Capital Financing",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 3 LT Vikramashila",
+    "faculty": "Jash Jain"
+  },
+  {
+    "code": "RTLG",
+    "name": "Retailing",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G",
+      "H"
+    ],
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Nanda Kumar"
+  },
+  {
+    "code": "STAR",
+    "name": "Strategic Trading and Research",
+    "category": "Elective",
+    "campus": "mohali",
+    "sections": [
+      "G"
+    ],
+    "venue": "AS 1 LT Nalanda",
+    "faculty": "Ramabhadran Thirumalai"
+  }
+]

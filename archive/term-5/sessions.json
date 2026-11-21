@@ -1,0 +1,4768 @@
+[
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "DTME1",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-10-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-10-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "B",
+    "date": "2026-10-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-10-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-10-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-10-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-10-19",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-10-19",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "H",
+    "date": "2026-10-19",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-10-20",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-10-20",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-10-20",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-10-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-10-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-10-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-10-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "H",
+    "date": "2026-10-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-10-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-10-20",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-10-20",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-10-20",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-10-20",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-10-20",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-10-20",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-10-20",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-10-20",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "I",
+    "date": "2026-10-20",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-10-20",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-10-20",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-10-20",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-10-20",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-10-20",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-10-20",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-10-20",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-10-20",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-10-20",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-10-23",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-10-23",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-10-23",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-10-23",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-10-23",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-10-23",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-10-23",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-10-23",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-10-23",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-10-23",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-10-23",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-10-23",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-10-23",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-10-24",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-10-24",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "DTME1",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-10-24",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-10-24",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-10-24",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-10-24",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-10-24",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-10-24",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-10-24",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-10-24",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-10-24",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-10-24",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-10-24",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-10-24",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-10-24",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-10-24",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-10-24",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-10-24",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-10-26",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-10-26",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-10-26",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-10-26",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-10-26",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-10-26",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-10-26",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-10-26",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-10-26",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-10-26",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-10-26",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-10-26",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-10-26",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-10-26",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-10-27",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-10-27",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "DTME1",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-10-27",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-10-27",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-10-27",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-10-27",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-10-27",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-10-27",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-10-27",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-10-27",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-10-27",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-10-27",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-10-27",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-10-27",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-10-27",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-10-27",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-10-27",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-10-27",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-10-28",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-10-28",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-10-28",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-10-28",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-10-28",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-10-28",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-10-28",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-10-28",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-10-28",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-10-28",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-10-28",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-10-28",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-10-28",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-10-28",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-10-29",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "DTME1",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-10-29",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-10-29",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-10-29",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-10-29",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-10-29",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-10-29",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-10-29",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-10-29",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-10-29",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-10-29",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-10-29",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-10-29",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-10-29",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-10-29",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-10-29",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-10-30",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda",
+    "statusNote": "Rescheduled from Mon Nov 16",
+    "rescheduledFrom": "2026-11-16 08:00"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-10-30",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda",
+    "statusNote": "Rescheduled from Mon Nov 16",
+    "rescheduledFrom": "2026-11-16 14:45"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-10-30",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Wed Nov 4",
+    "rescheduledFrom": "2026-11-04 19:15"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-02",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-11-02",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-02",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-11-02",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-11-02",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-11-02",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-11-02",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-02",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-11-02",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-02",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-11-02",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-11-02",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-02",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-11-02",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-03",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-11-03",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "DTME1",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-03",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-11-03",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-11-03",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-11-03",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-11-03",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-03",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-11-03",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-11-03",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-11-03",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-11-03",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-03",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-11-03",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-11-03",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-11-03",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-11-03",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-03",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "EC-MR-23 & MOEC",
+    "statusNote": "Venue: EC-MR-23 & MOEC"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-04",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-11-04",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-04",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-11-04",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-11-04",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-11-04",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-11-04",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-11-04",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-04",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-11-04",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-04",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-11-04",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-11-04",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-04",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-05",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "EC-MR-23 & MOEC",
+    "statusNote": "Venue: EC-MR-23 & MOEC"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-11-05",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-11-05",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-11-05",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-05",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "EC-MR-23 & MOEC",
+    "statusNote": "Venue: EC-MR-23 & MOEC"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-11-05",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-11-05",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-11-05",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-11-05",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-05",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-11-05",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-11-05",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-11-05",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-11-05",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-11-05",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-05",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-11-05",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-11-05",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-11-05",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-11-05",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-11-05",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-11-05",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-05",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-11-06",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-11-06",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Mon Nov 9",
+    "rescheduledFrom": "2026-11-09 10:15"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-06",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-11-06",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Mon Nov 9",
+    "rescheduledFrom": "2026-11-09 17:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-06",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-06",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda",
+    "statusNote": "Rescheduled from Thu Nov 19 19:15",
+    "rescheduledFrom": "2026-11-19 19:15"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-06",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT",
+    "statusNote": "Combined Online Guest Lecture"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-06",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT",
+    "statusNote": "Combined Online Guest Lecture"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-09",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-11-09",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-09",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-11-09",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-11-09",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-11-09",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-11-09",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-09",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-09",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-11-09",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-11-09",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-09",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-11-09",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-10",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-11-10",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-11-10",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-11-10",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-10",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-11-10",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-11-10",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-11-10",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-11-10",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-10",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-11-10",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-11-10",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-11-10",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-11-10",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-11-10",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-10",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-11-10",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-11-10",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-11-10",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-11-10",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-11-10",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-11-10",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-10",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-11",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-11-11",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-11",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-11-11",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-11-11",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-11-11",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-11-11",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-11",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-11",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-11-11",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-11-11",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-11",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-11-11",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-12",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-11-12",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-11-12",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-11-12",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-12",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-11-12",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-11-12",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-11-12",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-11-12",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-12",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-11-12",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-11-12",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-11-12",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-11-12",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-11-12",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-12",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-11-12",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-11-12",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-11-12",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-11-12",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-11-12",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-11-12",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-12",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-13",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 3 LT",
+    "statusNote": "Combined Session (AC 3LT)"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-13",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 3 LT",
+    "statusNote": "Combined Session (AC 3LT)"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "A",
+    "date": "2026-11-13",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "G",
+    "date": "2026-11-13",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda",
+    "statusNote": "Rescheduled from Wed Nov 18",
+    "rescheduledFrom": "2026-11-18 08:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "B",
+    "date": "2026-11-13",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "LWPM",
+    "section": "H",
+    "date": "2026-11-13",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda",
+    "statusNote": "Rescheduled from Wed Nov 18",
+    "rescheduledFrom": "2026-11-18 14:45"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "NEGA1",
+    "section": "C",
+    "date": "2026-11-13",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT",
+    "statusNote": "Makeup Class (Starts at 2:30 PM IST)"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-11-13",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Wed Nov 18",
+    "rescheduledFrom": "2026-11-18 19:15"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-14",
+    "startTime": "12:00",
+    "endTime": "14:00",
+    "room": "KHEMKA AUDITORIUM",
+    "statusNote": "Combined Session at Khemka Auditorium",
+    "rescheduledFrom": "2026-10-28 08:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-14",
+    "startTime": "12:00",
+    "endTime": "14:00",
+    "room": "KHEMKA AUDITORIUM",
+    "statusNote": "Combined Session at Khemka Auditorium",
+    "rescheduledFrom": "2026-10-29 08:00"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-14",
+    "startTime": "12:00",
+    "endTime": "14:00",
+    "room": "KHEMKA AUDITORIUM",
+    "statusNote": "Combined Session at Khemka Auditorium",
+    "rescheduledFrom": "2026-10-29 10:15"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-14",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "room": "Auditorium",
+    "statusNote": "COBE Guest Speaker Session (3 PM - 5 PM)"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-14",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "room": "Auditorium",
+    "statusNote": "COBE Guest Speaker Session (3 PM - 5 PM)"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-14",
+    "startTime": "15:00",
+    "endTime": "17:00",
+    "room": "Auditorium",
+    "statusNote": "COBE Guest Speaker Session (3 PM - 5 PM)"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 3 LT",
+    "statusNote": "Venue: AC 3 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-16",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-11-16",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-16",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-11-16",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-11-16",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-11-16",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "H",
+    "date": "2026-11-16",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-11-16",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-16",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-11-16",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-11-16",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "COBE",
+    "section": "I",
+    "date": "2026-11-16",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "PEVF",
+    "section": "G",
+    "date": "2026-11-16",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-17",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-11-17",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-11-17",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-11-17",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-17",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-11-17",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-11-17",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-11-17",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Venue: AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-11-17",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-11-17",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Venue: AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-11-17",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-11-17",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-11-17",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-11-17",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Venue: AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-11-17",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-11-17",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-11-17",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-11-17",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-11-17",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NEGA1",
+    "section": "G",
+    "date": "2026-11-17",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "ECSG",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ENVC",
+    "section": "G",
+    "date": "2026-11-18",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "G",
+    "date": "2026-11-18",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "H",
+    "date": "2026-11-18",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-11-18",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LSWS",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "H",
+    "date": "2026-11-18",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GSMT",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MKTS",
+    "section": "G",
+    "date": "2026-11-18",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "INVT",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "G",
+    "date": "2026-11-18",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-11-18",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 3 LT Vikramashila"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "CAMS",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "A",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT",
+    "statusNote": "STRI (A,B) Presentation"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "STRI",
+    "section": "B",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT",
+    "statusNote": "STRI (A,B) Presentation"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "ABTE",
+    "section": "H",
+    "date": "2026-11-18",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "B",
+    "date": "2026-11-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "A",
+    "date": "2026-11-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "G",
+    "date": "2026-11-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "STAR",
+    "section": "G",
+    "date": "2026-11-19",
+    "startTime": "08:00",
+    "endTime": "10:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "BRMT",
+    "section": "C",
+    "date": "2026-11-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "MKSV",
+    "section": "A",
+    "date": "2026-11-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "I",
+    "date": "2026-11-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "NSDL",
+    "section": "H",
+    "date": "2026-11-19",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "SWPM",
+    "section": "B",
+    "date": "2026-11-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "BVFS",
+    "section": "G",
+    "date": "2026-11-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "CDMA2",
+    "section": "J",
+    "date": "2026-11-19",
+    "startTime": "12:30",
+    "endTime": "14:30",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "A",
+    "date": "2026-11-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "LPFW",
+    "section": "C",
+    "date": "2026-11-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AC 8 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MTCC",
+    "section": "G",
+    "date": "2026-11-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 2 LT Pushpagiri"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "G",
+    "date": "2026-11-19",
+    "startTime": "14:45",
+    "endTime": "16:45",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "FINB",
+    "section": "B",
+    "date": "2026-11-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 2 LT"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "A",
+    "date": "2026-11-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "RTLG",
+    "section": "H",
+    "date": "2026-11-19",
+    "startTime": "17:00",
+    "endTime": "19:00",
+    "room": "AS 1 LT Nalanda"
+  },
+  {
+    "campus": "hyderabad",
+    "courseCode": "GPMK",
+    "section": "B",
+    "date": "2026-11-19",
+    "startTime": "19:15",
+    "endTime": "21:15",
+    "room": "AC 4 LT"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "G",
+    "date": "2026-11-20",
+    "startTime": "10:15",
+    "endTime": "12:15",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled from Wed Nov 11",
+    "rescheduledFrom": "2026-11-11 10:15"
+  },
+  {
+    "campus": "mohali",
+    "courseCode": "MSTC",
+    "section": "H",
+    "date": "2026-11-20",
+    "startTime": "15:30",
+    "endTime": "17:30",
+    "room": "AS 3 LT Vikramashila",
+    "statusNote": "Rescheduled to 3:30 PM - 5:30 PM (from Wed Nov 11)",
+    "rescheduledFrom": "2026-11-11 17:00"
+  }
+]

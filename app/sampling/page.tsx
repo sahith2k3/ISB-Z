@@ -49,8 +49,8 @@ import { BottomNav } from "@/components/bottom-nav";
 import { cn } from "@/lib/utils";
 
 const DATES = [
-  { id: "2026-10-19", label: "Day 1", dayName: "Mon, Oct 19" },
-  { id: "2026-10-20", label: "Day 2", dayName: "Tue, Oct 20" },
+  { id: "2026-12-21", label: "Day 1", dayName: "Mon, Dec 21" },
+  { id: "2026-12-22", label: "Day 2", dayName: "Tue, Dec 22" },
 ];
 
 const SLOTS = [
@@ -64,7 +64,7 @@ const SLOTS = [
 
 const ROOMS_BY_CAMPUS: Record<Campus, string[]> = {
   hyderabad: ["AC 2 LT", "AC 4 LT", "AC 8 LT"],
-  mohali: ["AS 1 LT Nalanda", "AS 2 LT Pushpagiri", "AS 3 LT Vikramashila"],
+  mohali: ["AS 1 LT Nalanda", "AS 2 LT Pushpagiri", "AS 3 LT Vikramashila", "AS 1 MLT"],
 };
 
 export default function SamplingPage() {
@@ -83,7 +83,7 @@ export default function SamplingPage() {
   }, [me?.campus]);
 
   // Active date & view mode
-  const [selectedDate, setSelectedDate] = useState<string>("2026-10-19");
+  const [selectedDate, setSelectedDate] = useState<string>("2026-12-21");
   const [activeView, setActiveView] = useState<"timeline" | "matrix" | "itinerary">("timeline");
 
   // Search & Filter
@@ -215,11 +215,11 @@ export default function SamplingPage() {
                   Sampling Planner
                 </h1>
                 <Badge variant="secondary" className="h-5 px-1.5 text-[10px] font-semibold text-primary">
-                  Term 5
+                  Term 6
                 </Badge>
               </div>
               <p className="mt-0.5 text-xs text-muted-foreground">
-                Audit any class • 19 & 20 Oct
+                Audit any class • 21 & 22 Dec
               </p>
             </div>
           </div>
@@ -395,7 +395,7 @@ export default function SamplingPage() {
         {isLoading && (
           <div className="mt-8 flex flex-col items-center justify-center py-12 text-center text-muted-foreground">
             <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-            <p className="mt-3 text-xs font-medium">Loading Term 5 sampling schedules...</p>
+            <p className="mt-3 text-xs font-medium">Loading Term 6 sampling schedules...</p>
           </div>
         )}
 
@@ -640,9 +640,9 @@ export default function SamplingPage() {
         {!isLoading && activeView === "matrix" && (
           <div className="mt-4">
             <div className="rounded-2xl border border-border/70 bg-card p-3 shadow-sm overflow-x-auto">
-              <div className="min-w-[420px]">
+              <div className={ROOMS_BY_CAMPUS[selectedCampus].length >= 4 ? "min-w-[540px]" : "min-w-[420px]"}>
                 {/* Table Header: Rooms */}
-                <div className="grid grid-cols-4 gap-2 border-b border-border/60 pb-2 text-center text-xs font-bold text-foreground">
+                <div className={cn("grid gap-2 border-b border-border/60 pb-2 text-center text-xs font-bold text-foreground", ROOMS_BY_CAMPUS[selectedCampus].length >= 4 ? "grid-cols-5" : "grid-cols-4")}>
                   <div className="text-left text-muted-foreground font-medium">Slot</div>
                   {ROOMS_BY_CAMPUS[selectedCampus].map((room) => (
                     <div key={room} className="rounded-lg bg-muted/60 py-1 px-1 truncate">
@@ -664,7 +664,7 @@ export default function SamplingPage() {
                     });
 
                     return (
-                      <div key={slot.id} className="grid grid-cols-4 gap-2 py-2.5 items-center">
+                      <div key={slot.id} className={cn("grid gap-2 py-2.5 items-center", ROOMS_BY_CAMPUS[selectedCampus].length >= 4 ? "grid-cols-5" : "grid-cols-4")}>
                         {/* Time slot column */}
                         <div className="text-left">
                           <span className="block font-bold text-xs text-foreground">
@@ -757,7 +757,7 @@ export default function SamplingPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-display text-sm font-bold">
-                    Your Term 5 Sampling Plan
+                    Your Term 6 Sampling Plan
                   </h3>
                   <p className="mt-0.5 text-xs text-muted-foreground">
                     {plannedItems.length} lectures planned across both days

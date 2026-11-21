@@ -52,6 +52,9 @@ const students = studentsJson as Student[];
 const enrollments = enrollmentsJson as Enrollment[];
 const rawSessions = sessionsJson as RawSession[];
 
+const courseByCampusAndCode = new Map<string, Course>(
+  courses.map((c) => [`${c.campus}|${c.code}`, c])
+);
 const courseByCode = new Map<string, Course>(courses.map((c) => [c.code, c]));
 const studentById = new Map<number, Student>(students.map((s) => [s.id, s]));
 
@@ -79,7 +82,7 @@ for (const e of enrollments) {
 }
 
 function toClassSession(s: RawSession): ClassSession {
-  const course = courseByCode.get(s.courseCode);
+  const course = courseByCampusAndCode.get(`${s.campus}|${s.courseCode}`) ?? courseByCode.get(s.courseCode);
   return {
     courseCode: s.courseCode,
     courseName: course?.name ?? s.courseCode,
@@ -235,15 +238,16 @@ export interface StudentEnrolledCourse {
 }
 
 export function getStudentEnrollments(studentId: number): StudentEnrolledCourse[] {
+  const student = studentById.get(studentId);
   const list = enrollmentsByStudent.get(studentId) ?? [];
   return list.map((e) => {
-    const c = courseByCode.get(e.courseCode);
+    const c = (student ? courseByCampusAndCode.get(`${student.campus}|${e.courseCode}`) : undefined) ?? courseByCode.get(e.courseCode);
     return {
       courseCode: e.courseCode,
       courseName: c?.name ?? e.courseCode,
       section: e.section,
       venue: c?.venue ?? "TBA",
-      campus: c?.campus ?? "mohali",
+      campus: c?.campus ?? student?.campus ?? "mohali",
       faculty: c?.faculty ?? "",
     };
   }).sort((a, b) => a.courseCode.localeCompare(b.courseCode));
@@ -316,7 +320,7 @@ export function getAllSamplingSessions(campus?: Campus): SamplingSession[] {
   return list
     .filter((s) => !campus || s.campus === campus)
     .map((s) => {
-      const course = courseByCode.get(s.courseCode);
+      const course = courseByCampusAndCode.get(`${s.campus}|${s.courseCode}`) ?? courseByCode.get(s.courseCode);
       const roster = rosterByCourseSection.get(`${s.courseCode}|${s.section}`) ?? [];
       return {
         id: `${s.date}_${s.courseCode}_${s.section}`,
@@ -328,7 +332,7 @@ export function getAllSamplingSessions(campus?: Campus): SamplingSession[] {
         startTime: s.startTime,
         endTime: s.endTime,
         room: s.room ?? course?.venue ?? "TBA",
-        venue: course?.venue ?? s.room ?? "TBA",
+        venue: s.room ?? course?.venue ?? "TBA",
         faculty: course?.faculty ?? "",
         enrolledCount: roster.length,
         enrolledStudentIds: roster,
