@@ -94,6 +94,39 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
         updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
         CONSTRAINT study_group_statuses_unique UNIQUE (student_id, course_name, section)
       );
+
+      CREATE TABLE IF NOT EXISTS student_details (
+        id INTEGER PRIMARY KEY,
+        name VARCHAR(128),
+        campus VARCHAR(32) NOT NULL,
+        dob VARCHAR(32) NOT NULL,
+        birth_day INTEGER,
+        birth_month INTEGER,
+        birth_date VARCHAR(8),
+        position_held TEXT,
+        company TEXT,
+        education TEXT,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+      );
+
+      CREATE TABLE IF NOT EXISTS students (
+        id INTEGER PRIMARY KEY,
+        name VARCHAR(128) NOT NULL,
+        email VARCHAR(128),
+        campus VARCHAR(32) NOT NULL,
+        section VARCHAR(32),
+        study_group VARCHAR(32),
+        dob VARCHAR(32),
+        birth_day INTEGER,
+        birth_month INTEGER,
+        birth_date VARCHAR(8),
+        position_held TEXT,
+        company TEXT,
+        education TEXT,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+      );
     `);
 
     // 2. Insert records

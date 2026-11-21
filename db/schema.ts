@@ -107,3 +107,52 @@ export const studyGroupStatusesTable = pgTable(
 
 export type StudyGroupStatus = typeof studyGroupStatusesTable.$inferSelect;
 export type InsertStudyGroupStatus = typeof studyGroupStatusesTable.$inferInsert;
+
+// Student details with DOBs and background info
+export const studentDetailsTable = pgTable("student_details", {
+  id: integer("id").primaryKey(),
+  name: varchar("name", { length: 128 }),
+  campus: varchar("campus", { length: 32 }).notNull(),
+  dob: varchar("dob", { length: 32 }).notNull(),
+  birthDay: integer("birth_day"),
+  birthMonth: integer("birth_month"),
+  birthDate: varchar("birth_date", { length: 8 }),
+  positionHeld: text("position_held"),
+  company: text("company"),
+  education: text("education"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type StudentDetail = typeof studentDetailsTable.$inferSelect;
+export type InsertStudentDetail = typeof studentDetailsTable.$inferInsert;
+
+// Students table with full profile and DOB metadata
+export const studentsTable = pgTable("students", {
+  id: integer("id").primaryKey(),
+  name: varchar("name", { length: 128 }).notNull(),
+  email: varchar("email", { length: 128 }),
+  campus: varchar("campus", { length: 32 }).notNull(),
+  section: varchar("section", { length: 32 }),
+  studyGroup: varchar("study_group", { length: 32 }),
+  dob: varchar("dob", { length: 32 }),
+  birthDay: integer("birth_day"),
+  birthMonth: integer("birth_month"),
+  birthDate: varchar("birth_date", { length: 8 }),
+  positionHeld: text("position_held"),
+  company: text("company"),
+  education: text("education"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type DbStudent = typeof studentsTable.$inferSelect;
+export type InsertDbStudent = typeof studentsTable.$inferInsert;

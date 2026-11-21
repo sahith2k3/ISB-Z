@@ -147,6 +147,10 @@ export function searchStudents(opts: {
       email: s.email,
       campus: s.campus,
       section: s.section,
+      dob: s.dob,
+      birthDay: s.birthDay,
+      birthMonth: s.birthMonth,
+      birthDate: s.birthDate,
     });
     if (results.length >= opts.limit) break;
   }
@@ -344,4 +348,39 @@ export function getAllSamplingSessions(campus?: Campus): SamplingSession[] {
       return a.room.localeCompare(b.room);
     });
 }
+
+export function getStudentDob(studentId: number): string | undefined {
+  return studentById.get(studentId)?.dob;
+}
+
+export function getStudentsWithBirthdayToday(): Student[] {
+  const { date: today } = nowInKolkata();
+  const monthDay = today.slice(5);
+  return students.filter((s) => s.birthDate === monthDay);
+}
+
+export function getUpcomingBirthdays(limit = 10): Array<Student & { daysUntil: number }> {
+  const { date: today } = nowInKolkata();
+  const [currentYear, currentMonth, currentDay] = today.split("-").map(Number);
+
+  const results: Array<Student & { daysUntil: number }> = [];
+  const todayDateObj = new Date(currentYear, currentMonth - 1, currentDay);
+
+  for (const s of students) {
+    if (!s.birthMonth || !s.birthDay) continue;
+
+    let birthdayThisYear = new Date(currentYear, s.birthMonth - 1, s.birthDay);
+    if (birthdayThisYear < todayDateObj) {
+      birthdayThisYear = new Date(currentYear + 1, s.birthMonth - 1, s.birthDay);
+    }
+
+    const diffTime = birthdayThisYear.getTime() - todayDateObj.getTime();
+    const daysUntil = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    results.push({ ...s, daysUntil });
+  }
+
+  results.sort((a, b) => a.daysUntil - b.daysUntil);
+  return results.slice(0, limit);
+}
+
 

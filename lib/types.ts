@@ -6,6 +6,10 @@ export interface StudentSummary {
   email: string;
   campus: Campus;
   section: string;
+  dob?: string;
+  birthDay?: number;
+  birthMonth?: number;
+  birthDate?: string;
 }
 
 export interface Student extends StudentSummary {
