@@ -174,26 +174,31 @@ export default function BirthdaysPage() {
                   </div>
                 </Link>
 
-                <div className="flex flex-col items-end gap-1.5 shrink-0">
+                <div className="flex items-center gap-2 shrink-0 pl-2">
                   {isToday ? (
-                    <Badge className="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-[10px] px-2 py-0.5 border-0 shadow-sm animate-pulse">
-                      Today! 🎂
-                    </Badge>
+                    <div className="flex items-center gap-1.5">
+                      <Badge className="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-[10px] px-2 py-0.5 border-0 shadow-sm animate-pulse">
+                        Today! 🎂
+                      </Badge>
+                      {!isMe && loggedInId && (
+                        <BirthdayWishButton
+                          recipientId={student.id}
+                          recipientName={student.name}
+                          senderId={loggedInId}
+                        />
+                      )}
+                    </div>
                   ) : (
-                    <span className="text-[11px] font-semibold text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-full">
-                      {student.daysUntil === 1
-                        ? "Tomorrow"
-                        : `in ${student.daysUntil} days`}
-                    </span>
-                  )}
-
-                  {!isMe && (
-                    <BirthdayWishButton
-                      targetStudentId={student.id}
-                      targetStudentName={student.name}
-                      senderStudentId={loggedInId || undefined}
-                      size="sm"
-                    />
+                    <div className="text-right">
+                      <p className="text-xs font-bold text-foreground">
+                        {formatDobForDisplay(student.dob)}
+                      </p>
+                      <span className="text-[10px] font-semibold text-pink-600 dark:text-pink-400">
+                        {student.daysUntil === 1
+                          ? "Tomorrow"
+                          : `in ${student.daysUntil} days`}
+                      </span>
+                    </div>
                   )}
                 </div>
               </div>
