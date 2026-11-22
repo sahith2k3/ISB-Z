@@ -480,6 +480,29 @@ export function useGetUpcomingBirthdays(
   });
 }
 
+export function useGetTodayBirthdays(
+  campus?: Campus,
+  options?: {
+    query?: {
+      enabled?: boolean;
+    };
+  }
+) {
+  return useQuery({
+    queryKey: ["todayBirthdays", campus],
+    queryFn: () => {
+      const sp = new URLSearchParams();
+      sp.set("type", "today");
+      if (campus) sp.set("campus", campus);
+      return fetchJson<{ type: string; count: number; students: StudentSummary[] }>(
+        `/api/birthdays?${sp.toString()}`
+      );
+    },
+    enabled: options?.query?.enabled !== undefined ? options.query.enabled : true,
+    staleTime: 60_000,
+  });
+}
+
 export function useSendBirthdayWish() {
   const queryClient = useQueryClient();
 

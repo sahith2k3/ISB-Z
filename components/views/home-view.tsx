@@ -4,7 +4,14 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLocalStudent } from "@/hooks/use-local-student";
-import { useListFriends, useListStudents, useGetStudent, useGetStudentStatus, useGetStudentCourses } from "@/lib/api-client";
+import {
+  useListFriends,
+  useListStudents,
+  useGetStudent,
+  useGetStudentStatus,
+  useGetStudentCourses,
+  useGetTodayBirthdays,
+} from "@/lib/api-client";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -82,6 +89,8 @@ export function HomeView() {
   const [showWishesModal, setShowWishesModal] = useState(false);
   const [showGreetingModal, setShowGreetingModal] = useState(false);
   const { data: myWishesData } = useGetMyBirthdayWishes(isMyBirthday ? (studentId || 0) : 0);
+  const { data: todayCampusBirthdays } = useGetTodayBirthdays(me?.campus);
+  const hasCampusBirthdayToday = (todayCampusBirthdays?.count ?? 0) > 0;
   const {
     data: friends,
     isLoading: friendsLoading,
@@ -157,11 +166,21 @@ export function HomeView() {
             type="button"
             onClick={() => setUpcomingBirthdaysOpen(true)}
             aria-label="Upcoming Birthdays"
-            title="Upcoming Cohort Birthdays 🎂"
+            title={hasCampusBirthdayToday ? "Campus Birthdays Today! 🎂" : "Upcoming Cohort Birthdays 🎂"}
             data-testid="button-upcoming-birthdays"
-            className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-pink-500/40 bg-gradient-to-tr from-pink-500/10 via-purple-500/10 to-amber-500/10 text-foreground transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-pink-500/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className={cn(
+              "group relative flex h-10 w-10 items-center justify-center rounded-full transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              hasCampusBirthdayToday
+                ? "border border-pink-500/40 bg-gradient-to-tr from-pink-500/10 via-purple-500/10 to-amber-500/10 text-foreground hover:-translate-y-0.5 hover:shadow-md hover:shadow-pink-500/20"
+                : "border border-card-border bg-card text-muted-foreground hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+            )}
           >
-            <span className="text-xl select-none transition-transform duration-200 group-hover:scale-110 animate-cake-bounce-timed">
+            <span
+              className={cn(
+                "text-xl select-none transition-transform duration-200 group-hover:scale-110",
+                hasCampusBirthdayToday && "animate-cake-bounce-timed"
+              )}
+            >
               🎂
             </span>
           </button>
