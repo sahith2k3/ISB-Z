@@ -229,6 +229,10 @@ export function toStudentSummary(s: Student): StudentSummary {
     email: s.email,
     campus: s.campus,
     section: s.section,
+    dob: s.dob,
+    birthDay: s.birthDay,
+    birthMonth: s.birthMonth,
+    birthDate: s.birthDate,
   };
 }
 

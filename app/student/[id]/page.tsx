@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useMemo, useEffect } from "react";
+import { use, useMemo, useEffect, useState } from "react";
 import Link from "next/link";
 import { useLocalStudent } from "@/hooks/use-local-student";
 import {
@@ -10,15 +10,21 @@ import {
   useAddFriend,
   useRemoveFriend,
   useLogProfileView,
+  useGetMyBirthdayWishes,
 } from "@/lib/api-client";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
-import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School } from "lucide-react";
+import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School, Gift, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { StudentSchedule } from "@/components/student-schedule";
 import { BottomNav } from "@/components/bottom-nav";
+import { isStudentBirthdayToday } from "@/lib/birthday";
+import { BirthdayName } from "@/components/birthday/birthday-name";
+import { BirthdayWishButton } from "@/components/birthday/birthday-wish-button";
+import { BirthdayWishesModal } from "@/components/birthday/birthday-wishes-modal";
+import { fireCelebratoryConfetti } from "@/lib/confetti";
 
 function formatDuration(totalMinutes: number): string {
   const hours = Math.floor(totalMinutes / 60);
@@ -48,6 +54,10 @@ export default function StudentProfilePage({
     () => friends?.some((f) => f.student.id === studentId),
     [friends, studentId],
   );
+
+  const isBirthday = isStudentBirthdayToday(student);
+  const [showWishesModal, setShowWishesModal] = useState(false);
+  const { data: myWishesData } = useGetMyBirthdayWishes(isMe && isBirthday ? studentId : 0);
 
   const addFriendMutation = useAddFriend();
   const removeFriendMutation = useRemoveFriend();
@@ -153,11 +163,19 @@ export default function StudentProfilePage({
 
       <main className="px-6 pb-32">
         {/* Profile Header */}
-        <div className="flex items-center gap-5 mb-8 mt-2">
-          <Avatar name={student.name} className="h-24 w-24 text-2xl" />
+        <div className="flex items-center gap-5 mb-6 mt-2">
+          <Avatar
+            name={student.name}
+            isBirthday={isBirthday}
+            className="h-24 w-24 text-2xl"
+          />
           <div>
             <h1 className="text-3xl font-display font-bold leading-tight mb-1">
-              {student.name}
+              <BirthdayName
+                name={student.name}
+                isBirthday={isBirthday}
+                className="text-3xl font-display font-bold"
+              />
             </h1>
             <p className="text-muted-foreground font-medium capitalize flex items-center gap-1.5">
               <MapPin className="h-4 w-4" /> {student.campus} • Sec {student.section}
@@ -169,6 +187,53 @@ export default function StudentProfilePage({
             )}
           </div>
         </div>
+
+        {/* Birthday Action / Banner */}
+        {isBirthday && (
+          <div className="mb-8">
+            {!isMe ? (
+              <BirthdayWishButton
+                recipientId={student.id}
+                recipientName={student.name}
+                senderId={meId}
+                variant="card"
+              />
+            ) : (
+              <div className="rounded-3xl border border-pink-500/30 bg-gradient-to-r from-pink-500/15 via-purple-500/10 to-amber-500/15 p-5 shadow-sm">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl select-none animate-bounce">🎂</span>
+                    <div>
+                      <h4 className="text-sm font-bold text-foreground">
+                        Today is your Birthday! 🥳
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        Your celebratory birthday theme is active across ISBusy today!
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => fireCelebratoryConfetti()}
+                    className="shrink-0 text-xs font-semibold bg-pink-500/20 text-pink-600 dark:text-pink-400 px-3 py-1.5 rounded-full hover:bg-pink-500/30 active:scale-95 transition-all"
+                  >
+                    🎉 Confetti
+                  </button>
+                </div>
+                <div className="flex items-center gap-2 pt-1">
+                  <Button
+                    size="sm"
+                    onClick={() => setShowWishesModal(true)}
+                    className="rounded-full font-semibold bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow hover:from-pink-600 hover:to-purple-700 active:scale-95 text-xs transition-all"
+                  >
+                    <Gift className="h-3.5 w-3.5 mr-1.5" />
+                    View Birthday Wishes ({myWishesData?.count ?? 0})
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Live Status Card */}
         {statusLoading ? (
@@ -244,6 +309,14 @@ export default function StudentProfilePage({
         ) : null}
 
         <StudentSchedule studentId={studentId} />
+
+        {isMe && isBirthday && (
+          <BirthdayWishesModal
+            studentId={studentId}
+            isOpen={showWishesModal}
+            onClose={() => setShowWishesModal(false)}
+          />
+        )}
       </main>
       <BottomNav />
     </div>

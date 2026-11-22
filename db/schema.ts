@@ -156,3 +156,22 @@ export const studentsTable = pgTable("students", {
 
 export type DbStudent = typeof studentsTable.$inferSelect;
 export type InsertDbStudent = typeof studentsTable.$inferInsert;
+
+// Birthday wishes sent between students
+export const birthdayWishesTable = pgTable(
+  "birthday_wishes",
+  {
+    id: serial("id").primaryKey(),
+    recipientId: integer("recipient_id").notNull(),
+    senderId: integer("sender_id").notNull(),
+    year: integer("year").notNull(),
+    message: text("message"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => [unique().on(table.recipientId, table.senderId, table.year)],
+);
+
+export type BirthdayWish = typeof birthdayWishesTable.$inferSelect;
+export type InsertBirthdayWish = typeof birthdayWishesTable.$inferInsert;

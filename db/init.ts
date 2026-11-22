@@ -127,6 +127,16 @@ export async function initDatabaseAndSeed(connectionString?: string): Promise<In
         created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
         updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
       );
+
+      CREATE TABLE IF NOT EXISTS birthday_wishes (
+        id SERIAL PRIMARY KEY,
+        recipient_id INTEGER NOT NULL,
+        sender_id INTEGER NOT NULL,
+        year INTEGER NOT NULL,
+        message TEXT,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+        CONSTRAINT birthday_wishes_unique_per_year UNIQUE (recipient_id, sender_id, year)
+      );
     `);
 
     // 2. Insert records

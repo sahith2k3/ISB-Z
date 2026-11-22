@@ -389,3 +389,73 @@ export function useGetExams(studentId?: number | null, campus?: Campus) {
   });
 }
 
+export interface BirthdayWishesResponse {
+  recipientId: number;
+  hasWished?: boolean;
+  count?: number;
+  wishes?: Array<{
+    id: number;
+    senderId: number;
+    senderName: string;
+    senderCampus: string;
+    message: string | null;
+    createdAt: string;
+  }>;
+}
+
+export function useGetBirthdayWishStatus(recipientId: number, viewerId?: number) {
+  return useQuery({
+    queryKey: ["birthdayWishStatus", recipientId, viewerId],
+    queryFn: () =>
+      fetchJson<BirthdayWishesResponse>(
+        `/api/students/${recipientId}/wishes${viewerId ? `?viewerId=${viewerId}` : ""}`
+      ),
+    enabled: !!recipientId,
+    staleTime: 30_000,
+  });
+}
+
+export function useGetMyBirthdayWishes(myId?: number) {
+  return useQuery({
+    queryKey: ["myBirthdayWishes", myId],
+    queryFn: () =>
+      fetchJson<BirthdayWishesResponse>(`/api/students/${myId}/wishes?viewerId=${myId}`),
+    enabled: !!myId,
+    staleTime: 30_000,
+  });
+}
+
+export function useSendBirthdayWish() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({
+      recipientId,
+      senderId,
+      message,
+    }: {
+      recipientId: number;
+      senderId: number;
+      message?: string;
+    }) => {
+      return fetchJson<{ success: boolean; newlyWished: boolean; message: string }>(
+        `/api/students/${recipientId}/wishes`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ senderId, message }),
+        }
+      );
+    },
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ["birthdayWishStatus", variables.recipientId, variables.senderId],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["myBirthdayWishes", variables.recipientId],
+      });
+    },
+  });
+}
+
+

@@ -43,6 +43,8 @@ import {
   generateShareableText,
 } from "@/hooks/use-sampling-plan";
 import { Avatar } from "@/components/ui/avatar";
+import { isStudentBirthdayToday } from "@/lib/birthday";
+import { BirthdayName } from "@/components/birthday/birthday-name";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { BottomNav } from "@/components/bottom-nav";
@@ -1013,9 +1015,16 @@ export default function SamplingPage() {
                           >
                             <Avatar
                               name={f.student.name}
+                              isBirthday={isStudentBirthdayToday(f.student)}
                               className="h-5 w-5 text-[10px]"
                             />
-                            <span className="font-medium text-foreground">{f.student.name}</span>
+                            <span className="font-medium text-foreground">
+                              <BirthdayName
+                                name={f.student.name}
+                                isBirthday={isStudentBirthdayToday(f.student)}
+                                showCake={false}
+                              />
+                            </span>
                           </div>
                         ))}
                       </div>

@@ -8,7 +8,7 @@ import { useListFriends, useListStudents, useGetStudent, useGetStudentStatus, us
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { formatTime } from "@/lib/utils";
+import { formatTime, cn } from "@/lib/utils";
 import {
   Search,
   MapPin,
@@ -21,11 +21,20 @@ import {
   UserPlus,
   Compass,
   ArrowRight,
+  Gift,
+  Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";
 import { ShareButton } from "@/components/share-button";
 import seatingManifestData from "@/data/seating-manifest.json";
+import { isStudentBirthdayToday } from "@/lib/birthday";
+import { BirthdayName } from "@/components/birthday/birthday-name";
+import { BirthdayWishButton } from "@/components/birthday/birthday-wish-button";
+import { BirthdayGreetingModal } from "@/components/birthday/birthday-greeting-modal";
+import { BirthdayWishesModal } from "@/components/birthday/birthday-wishes-modal";
+import { useGetMyBirthdayWishes } from "@/lib/api-client";
+import { fireCelebratoryConfetti } from "@/lib/confetti";
 
 export function HomeView() {
   const router = useRouter();
@@ -68,6 +77,10 @@ export function HomeView() {
 
   const { data: me } = useGetStudent(studentId!);
   const { data: myStatus } = useGetStudentStatus(studentId!);
+  const isMyBirthday = isStudentBirthdayToday(me);
+  const [showWishesModal, setShowWishesModal] = useState(false);
+  const [showGreetingModal, setShowGreetingModal] = useState(false);
+  const { data: myWishesData } = useGetMyBirthdayWishes(isMyBirthday ? (studentId || 0) : 0);
   const {
     data: friends,
     isLoading: friendsLoading,
@@ -173,12 +186,18 @@ export function HomeView() {
             <Link
               href="/schedule"
               data-testid="link-user-card"
-              className="group relative block overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-r from-primary/10 via-card to-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]"
+              className={cn(
+                "group relative block overflow-hidden rounded-2xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]",
+                isMyBirthday
+                  ? "birthday-card-glow border border-pink-500/40 bg-gradient-to-r from-pink-500/15 via-purple-500/10 to-amber-500/15 hover:border-pink-500/60"
+                  : "border border-primary/30 bg-gradient-to-r from-primary/10 via-card to-card hover:border-primary/50 hover:shadow-primary/5"
+              )}
             >
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <Avatar
                     name={me.name}
+                    isBirthday={isMyBirthday}
                     className="h-14 w-14 ring-2 ring-primary/30"
                   />
                   <div
@@ -191,7 +210,7 @@ export function HomeView() {
                   <div className="flex justify-between items-start mb-1">
                     <div className="flex items-center gap-2 truncate pr-2">
                       <h3 className="font-semibold text-foreground truncate">
-                        {me.name}
+                        <BirthdayName name={me.name} isBirthday={isMyBirthday} />
                       </h3>
                       <Badge variant="outline" className="text-[10px] shrink-0 border-primary/30 text-primary">
                         You
@@ -244,6 +263,41 @@ export function HomeView() {
                 <ArrowUpRight className="h-4 w-4 shrink-0 text-primary/40 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
               </div>
             </Link>
+
+            {/* Birthday Celebration Banner for Current User */}
+            {isMyBirthday && (
+              <div className="mt-3 rounded-2xl border border-pink-500/30 bg-gradient-to-r from-pink-500/15 via-purple-500/10 to-amber-500/15 p-3.5 flex items-center justify-between shadow-sm">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="text-2xl animate-bounce select-none">🎂</span>
+                  <div className="min-w-0">
+                    <h4 className="text-xs font-bold text-foreground truncate">
+                      Happy Birthday! 🥳
+                    </h4>
+                    <p className="text-[11px] text-muted-foreground truncate">
+                      Your celebratory theme is active today!
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setShowWishesModal(true)}
+                    className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:from-pink-600 hover:to-purple-700 active:scale-95 transition-all"
+                  >
+                    <Gift className="h-3.5 w-3.5" />
+                    <span>{myWishesData?.count ?? 0} Wishes</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fireCelebratoryConfetti()}
+                    title="Celebration confetti"
+                    className="h-8 w-8 flex items-center justify-center rounded-full bg-pink-500/20 text-pink-500 hover:bg-pink-500/30 active:scale-95 transition-all text-sm"
+                  >
+                    🎉
+                  </button>
+                </div>
+              </div>
+            )}
 
             {/* Term 6 Sampling Banner */}
             <Link
@@ -362,51 +416,71 @@ export function HomeView() {
         ) : (
           <div className="mt-2 space-y-3">
             <AnimatePresence>
-              {friends?.map((friend, i) => (
-                <motion.div
-                  key={friend.student.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    href={`/student/${friend.student.id}`}
-                    data-testid={`link-friend-${friend.student.id}`}
-                    className="group relative block overflow-hidden rounded-2xl border border-card-border bg-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]"
+              {friends?.map((friend, i) => {
+                const isFriendBday = isStudentBirthdayToday(friend.student);
+                return (
+                  <motion.div
+                    key={friend.student.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <Avatar
-                          name={friend.student.name}
-                          className="h-14 w-14"
-                        />
-                        <div
-                          className={`absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-card flex items-center justify-center ${
-                            friend.isInClass ? "bg-destructive" : "bg-free"
-                          }`}
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex justify-between items-start mb-1">
-                          <h3 className="font-semibold text-foreground truncate pr-2">
-                            {friend.student.name}
-                          </h3>
-                          {friend.isInClass ? (
-                            <Badge
-                              variant="destructive"
-                              className="shrink-0 text-[10px]"
-                            >
-                              In Class
-                            </Badge>
-                          ) : (
-                            <Badge
-                              variant="free"
-                              className="shrink-0 text-[10px]"
-                            >
-                              Free
-                            </Badge>
-                          )}
+                    <Link
+                      href={`/student/${friend.student.id}`}
+                      data-testid={`link-friend-${friend.student.id}`}
+                      className={cn(
+                        "group relative block overflow-hidden rounded-2xl border bg-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]",
+                        isFriendBday
+                          ? "border-pink-500/40 bg-gradient-to-r from-pink-500/5 via-card to-card hover:border-pink-500/65 shadow-pink-500/5"
+                          : "border-card-border hover:border-primary/45 hover:shadow-primary/5"
+                      )}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="relative">
+                          <Avatar
+                            name={friend.student.name}
+                            isBirthday={isFriendBday}
+                            className="h-14 w-14"
+                          />
+                          <div
+                            className={`absolute -bottom-1 -right-1 h-5 w-5 rounded-full border-2 border-card flex items-center justify-center ${
+                              friend.isInClass ? "bg-destructive" : "bg-free"
+                            }`}
+                          />
                         </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex justify-between items-start mb-1 gap-2">
+                            <h3 className="font-semibold text-foreground truncate pr-1">
+                              <BirthdayName
+                                name={friend.student.name}
+                                isBirthday={isFriendBday}
+                              />
+                            </h3>
+                            <div className="flex items-center gap-1.5 shrink-0">
+                              {isFriendBday && (
+                                <BirthdayWishButton
+                                  recipientId={friend.student.id}
+                                  recipientName={friend.student.name}
+                                  senderId={studentId}
+                                />
+                              )}
+                              {friend.isInClass ? (
+                                <Badge
+                                  variant="destructive"
+                                  className="shrink-0 text-[10px]"
+                                >
+                                  In Class
+                                </Badge>
+                              ) : (
+                                <Badge
+                                  variant="free"
+                                  className="shrink-0 text-[10px]"
+                                >
+                                  Free
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
 
                         {friend.isInClass && friend.currentSession ? (
                           <div className="text-sm text-muted-foreground flex flex-col gap-0.5">
@@ -439,7 +513,7 @@ export function HomeView() {
                     </div>
                   </Link>
                 </motion.div>
-              ))}
+              ); })}
             </AnimatePresence>
             <div className="pt-3 pb-1 space-y-3">
               {/* Add Friends Section */}
@@ -572,28 +646,54 @@ export function HomeView() {
                   <p>No one found.</p>
                 </div>
               ) : (
-                searchResults?.map((s) => (
-                  <Link
-                    key={s.id}
-                    href={`/student/${s.id}`}
-                    onClick={() => setSearchOpen(false)}
-                    data-testid={`link-search-result-${s.id}`}
-                    className="flex items-center gap-4 rounded-2xl border border-card-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]"
-                  >
-                    <Avatar name={s.name} className="h-12 w-12" />
-                    <div className="flex-1 overflow-hidden">
-                      <h3 className="font-semibold truncate">{s.name}</h3>
-                      <p className="text-sm text-muted-foreground truncate capitalize flex items-center gap-1">
-                        <MapPin className="h-3 w-3" /> {s.campus} • Sec {s.section}
-                      </p>
-                    </div>
-                  </Link>
-                ))
+                searchResults?.map((s) => {
+                  const isResultBday = isStudentBirthdayToday(s);
+                  return (
+                    <Link
+                      key={s.id}
+                      href={`/student/${s.id}`}
+                      onClick={() => setSearchOpen(false)}
+                      data-testid={`link-search-result-${s.id}`}
+                      className={cn(
+                        "flex items-center gap-4 rounded-2xl border bg-card p-4 transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-[0.98]",
+                        isResultBday
+                          ? "border-pink-500/40 bg-gradient-to-r from-pink-500/5 via-card to-card hover:border-pink-500/70"
+                          : "border-card-border hover:border-primary/40"
+                      )}
+                    >
+                      <Avatar name={s.name} isBirthday={isResultBday} className="h-12 w-12" />
+                      <div className="flex-1 overflow-hidden">
+                        <h3 className="font-semibold truncate">
+                          <BirthdayName name={s.name} isBirthday={isResultBday} />
+                        </h3>
+                        <p className="text-sm text-muted-foreground truncate capitalize flex items-center gap-1">
+                          <MapPin className="h-3 w-3" /> {s.campus} • Sec {s.section}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })
               )}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {me && isMyBirthday && (
+        <>
+          <BirthdayGreetingModal
+            studentId={me.id}
+            studentName={me.name}
+            isOpen={showGreetingModal ? true : undefined}
+            onClose={() => setShowGreetingModal(false)}
+          />
+          <BirthdayWishesModal
+            studentId={me.id}
+            isOpen={showWishesModal}
+            onClose={() => setShowWishesModal(false)}
+          />
+        </>
+      )}
 
       <BottomNav />
     </div>

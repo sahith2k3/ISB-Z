@@ -24,6 +24,8 @@ import {
 import { CAMPUS_SECTIONS, type SeatingChartInfo } from "@/lib/seating";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
+import { isStudentBirthdayToday } from "@/lib/birthday";
+import { BirthdayName } from "@/components/birthday/birthday-name";
 import { SeatingModal } from "@/components/seating-modal";
 import { ShareButton } from "@/components/share-button";
 import sessionsData from "@/data/sessions.json";
@@ -264,10 +266,17 @@ export default function SeatingPage() {
                   onClick={() => handleSelectStudent(student)}
                   className="flex w-full items-center gap-3 rounded-xl p-2 text-left transition-colors hover:bg-secondary/70"
                 >
-                  <Avatar name={student.name} className="h-8 w-8 text-xs shrink-0" />
+                  <Avatar
+                    name={student.name}
+                    isBirthday={isStudentBirthdayToday(student)}
+                    className="h-8 w-8 text-xs shrink-0"
+                  />
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-semibold text-foreground truncate">
-                      {student.name}
+                      <BirthdayName
+                        name={student.name}
+                        isBirthday={isStudentBirthdayToday(student)}
+                      />
                     </p>
                     <p className="text-[11px] text-muted-foreground truncate">
                       Section {student.section} · {student.campus === "mohali" ? "Mohali" : "Hyderabad"}
@@ -296,11 +305,18 @@ export default function SeatingPage() {
           <div className="rounded-2xl border border-card-border bg-card p-3.5 shadow-sm">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
-                <Avatar name={viewingStudent.name} className="h-10 w-10 text-sm shrink-0 ring-2 ring-primary/20" />
+                <Avatar
+                  name={viewingStudent.name}
+                  isBirthday={isStudentBirthdayToday(viewingStudent)}
+                  className="h-10 w-10 text-sm shrink-0 ring-2 ring-primary/20"
+                />
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
                     <h2 className="font-display font-bold text-sm text-foreground truncate">
-                      {viewingStudent.name}
+                      <BirthdayName
+                        name={viewingStudent.name}
+                        isBirthday={isStudentBirthdayToday(viewingStudent)}
+                      />
                     </h2>
                     {isViewingSelf && (
                       <Badge className="bg-primary/15 text-primary text-[10px] px-1.5 py-0 h-4 border-none">

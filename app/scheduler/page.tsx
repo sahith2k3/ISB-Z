@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Avatar } from "@/components/ui/avatar";
+import { isStudentBirthdayToday } from "@/lib/birthday";
+import { BirthdayName } from "@/components/birthday/birthday-name";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useLocalStudent } from "@/hooks/use-local-student";
@@ -317,8 +319,17 @@ export default function Scheduler() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="flex items-center gap-2 rounded-full bg-primary/10 py-1 pl-1 pr-2 text-xs font-semibold text-primary"
               >
-                <Avatar name={person.name} className="h-6 w-6 text-[10px]" />
-                <span className="max-w-[130px] truncate">{person.name}</span>
+                <Avatar
+                  name={person.name}
+                  isBirthday={isStudentBirthdayToday(person)}
+                  className="h-6 w-6 text-[10px]"
+                />
+                <BirthdayName
+                  name={person.name}
+                  isBirthday={isStudentBirthdayToday(person)}
+                  showCake={false}
+                  className="max-w-[130px] truncate"
+                />
                 <button
                   type="button"
                   onClick={() => removePerson(person.id)}
@@ -364,8 +375,16 @@ export default function Scheduler() {
                     onClick={() => addPerson(person)}
                     className="flex w-full items-center gap-3 rounded-2xl border border-card-border bg-background p-3 text-left transition-colors hover:border-primary/40 hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <Avatar name={person.name} className="h-9 w-9" />
-                    <span className="min-w-0 flex-1 truncate text-sm font-semibold">{person.name}</span>
+                    <Avatar
+                      name={person.name}
+                      isBirthday={isStudentBirthdayToday(person)}
+                      className="h-9 w-9"
+                    />
+                    <BirthdayName
+                      name={person.name}
+                      isBirthday={isStudentBirthdayToday(person)}
+                      className="min-w-0 flex-1 truncate text-sm font-semibold"
+                    />
                     <Plus className="h-4 w-4 shrink-0 text-primary" />
                   </button>
                 ))

@@ -8,6 +8,8 @@ import { Search, MapPin, CheckCircle2, ChevronLeft, Armchair } from "lucide-reac
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Avatar } from "@/components/ui/avatar";
+import { isStudentBirthdayToday } from "@/lib/birthday";
+import { BirthdayName } from "@/components/birthday/birthday-name";
 import type { Campus } from "@/lib/types";
 
 export function OnboardingView() {
@@ -158,11 +160,15 @@ export function OnboardingView() {
                     >
                       <Avatar
                         name={student.name}
+                        isBirthday={isStudentBirthdayToday(student)}
                         className="h-12 w-12 mr-4 bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                       />
                       <div className="flex-1 overflow-hidden">
                         <h3 className="font-semibold text-foreground truncate">
-                          {student.name}
+                          <BirthdayName
+                            name={student.name}
+                            isBirthday={isStudentBirthdayToday(student)}
+                          />
                         </h3>
                         <p className="text-sm text-muted-foreground truncate">
                           Sec {student.section} • {student.email}
