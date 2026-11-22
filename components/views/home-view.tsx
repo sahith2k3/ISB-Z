@@ -161,7 +161,7 @@ export function HomeView() {
             data-testid="button-upcoming-birthdays"
             className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-pink-500/40 bg-gradient-to-tr from-pink-500/10 via-purple-500/10 to-amber-500/10 text-foreground transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-pink-500/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <span className="text-xl select-none transition-transform duration-200 group-hover:scale-110 animate-bounce">
+            <span className="text-xl select-none transition-transform duration-200 group-hover:scale-110 animate-cake-bounce-timed">
               🎂
             </span>
           </button>

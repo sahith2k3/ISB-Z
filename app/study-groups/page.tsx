@@ -20,6 +20,7 @@ import {
 import { useLocalStudent } from "@/hooks/use-local-student";
 import {
   useGetStudent,
+  useListFriends,
   useGetSgPlannerSummary,
   useGetSgSectionRoster,
   useUpdateSgStatus,
@@ -79,9 +80,22 @@ const STATUS_CONFIG: Record<
   },
 };
 
+const STATUS_WEIGHT: Record<SGStatus, number> = {
+  available: 1,
+  unknown: 2,
+  dropping: 3,
+  unavailable: 4,
+};
+
 export default function StudyGroupsPage() {
   const { studentId: loggedInId } = useLocalStudent();
   const { data: me } = useGetStudent(loggedInId || 0);
+  const { data: friendsList } = useListFriends(loggedInId || 0);
+
+  const friendIdsSet = useMemo(() => {
+    if (!friendsList || !Array.isArray(friendsList)) return new Set<number>();
+    return new Set<number>(friendsList.map((f) => f.student.id));
+  }, [friendsList]);
 
   // Term selection: 6 by default, can switch to 5
   const [selectedTerm, setSelectedTerm] = useState<number>(6);
@@ -166,7 +180,11 @@ export default function StudyGroupsPage() {
     return list;
   }, [plannerData?.allCourses, selectedCampus, courseSearch]);
 
-  // Filtered and sorted students for the Section Roster view
+  // Filtered and sorted students for the Section Roster view:
+  // Sort priority:
+  // 1. You (if enrolled in section)
+  // 2. Friends first (sorted by availability status, then name)
+  // 3. Other classmates (sorted by availability status, then name)
   const filteredRosterStudents = useMemo(() => {
     if (!rosterData?.students) return [];
     let list = rosterData.students;
@@ -184,8 +202,26 @@ export default function StudyGroupsPage() {
       );
     }
 
-    return list;
-  }, [rosterData?.students, rosterFilter, rosterSearch]);
+    return [...list].sort((a, b) => {
+      // 1. You first
+      const isMeA = a.id === loggedInId ? 1 : 0;
+      const isMeB = b.id === loggedInId ? 1 : 0;
+      if (isMeA !== isMeB) return isMeB - isMeA;
+
+      // 2. Friends first
+      const isFriendA = friendIdsSet.has(a.id) ? 1 : 0;
+      const isFriendB = friendIdsSet.has(b.id) ? 1 : 0;
+      if (isFriendA !== isFriendB) return isFriendB - isFriendA;
+
+      // 3. Availability status priority (Available -> Unknown -> Unavailable)
+      const wA = STATUS_WEIGHT[a.status] ?? 2;
+      const wB = STATUS_WEIGHT[b.status] ?? 2;
+      if (wA !== wB) return wA - wB;
+
+      // 4. Alphabetical name
+      return a.name.localeCompare(b.name);
+    });
+  }, [rosterData?.students, rosterFilter, rosterSearch, loggedInId, friendIdsSet]);
 
   // Find if logged-in user is enrolled in currently open section
   const isUserInCurrentSection = useMemo(() => {
@@ -203,6 +239,12 @@ export default function StudyGroupsPage() {
     const found = rosterData.students.find((s) => s.id === loggedInId);
     return found?.status || "unknown";
   }, [isUserInCurrentSection, loggedInId, rosterData?.students]);
+
+  // Count how many friends from friends list are enrolled in this section
+  const friendsInRosterCount = useMemo(() => {
+    if (!rosterData?.students || friendIdsSet.size === 0) return 0;
+    return rosterData.students.filter((s) => friendIdsSet.has(s.id)).length;
+  }, [rosterData?.students, friendIdsSet]);
 
   return (
     <div className="min-h-[100dvh] w-full max-w-md mx-auto overflow-x-hidden overflow-y-auto bg-background px-4 sm:px-5 pb-32 pt-6">
@@ -245,9 +287,16 @@ export default function StudyGroupsPage() {
                   {rosterData?.campus || selectedSection.campus || ""} Campus
                 </span>
               </div>
-              <span className="text-xs font-semibold text-foreground shrink-0">
-                {rosterData?.counts.total ?? "..."} Students
-              </span>
+              <div className="flex items-center gap-2 shrink-0">
+                {friendsInRosterCount > 0 && (
+                  <Badge variant="secondary" className="text-[10px] font-semibold bg-primary/10 text-primary border border-primary/25">
+                    👥 {friendsInRosterCount} {friendsInRosterCount === 1 ? "friend" : "friends"}
+                  </Badge>
+                )}
+                <span className="text-xs font-semibold text-foreground shrink-0">
+                  {rosterData?.counts.total ?? "..."} Students
+                </span>
+              </div>
             </div>
 
             {/* If logged-in user is in this section: Interactive SG Status Card */}
@@ -407,6 +456,7 @@ export default function StudyGroupsPage() {
               {filteredRosterStudents.map((student) => {
                 const config = STATUS_CONFIG[student.status];
                 const isMe = student.id === loggedInId;
+                const isFriend = friendIdsSet.has(student.id);
                 const isBday = isStudentBirthdayToday(student);
 
                 return (
@@ -415,6 +465,8 @@ export default function StudyGroupsPage() {
                     className={`w-full overflow-hidden flex items-center justify-between gap-2.5 rounded-2xl border p-3 transition-all ${
                       isMe
                         ? "border-primary/40 bg-primary/5 shadow-sm"
+                        : isFriend
+                        ? "border-primary/25 bg-primary/[0.03] hover:border-primary/40 shadow-xs"
                         : "border-card-border bg-card hover:border-primary/30"
                     }`}
                   >
@@ -440,6 +492,11 @@ export default function StudyGroupsPage() {
                           {isMe && (
                             <Badge variant="outline" className="text-[9px] px-1 py-0 h-4 border-primary/40 text-primary shrink-0">
                               You
+                            </Badge>
+                          )}
+                          {!isMe && isFriend && (
+                            <Badge variant="outline" className="text-[9px] px-1.5 py-0 h-4 bg-primary/10 border-primary/30 text-primary shrink-0 font-medium">
+                              Friend
                             </Badge>
                           )}
                         </div>

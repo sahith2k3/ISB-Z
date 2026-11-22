@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Dialog,
@@ -12,7 +12,8 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useGetUpcomingBirthdays } from "@/lib/api-client";
+import { useGetUpcomingBirthdays, useGetStudent } from "@/lib/api-client";
+import { useLocalStudent } from "@/hooks/use-local-student";
 import { isStudentBirthdayToday, formatDobForDisplay } from "@/lib/birthday";
 import { BirthdayName } from "@/components/birthday/birthday-name";
 import { BirthdayWishButton } from "@/components/birthday/birthday-wish-button";
@@ -30,10 +31,26 @@ interface UpcomingBirthdaysModalProps {
 export function UpcomingBirthdaysModal({
   isOpen,
   onClose,
-  userCampus = "hyderabad",
+  userCampus,
   currentUserId,
 }: UpcomingBirthdaysModalProps) {
-  const [selectedCampus, setSelectedCampus] = useState<Campus>(userCampus);
+  const { studentId: localId } = useLocalStudent();
+  const effectiveId = currentUserId || localId;
+  const { data: me } = useGetStudent(effectiveId || 0);
+
+  const effectiveUserCampus: Campus = (
+    userCampus || me?.campus || "hyderabad"
+  ).toLowerCase() as Campus;
+
+  const [selectedCampus, setSelectedCampus] = useState<Campus>(effectiveUserCampus);
+
+  // When modal opens or user campus resolves, ensure the user's campus is selected by default
+  useEffect(() => {
+    const targetCampus = (userCampus || me?.campus || "hyderabad").toLowerCase() as Campus;
+    if (isOpen || userCampus || me?.campus) {
+      setSelectedCampus(targetCampus);
+    }
+  }, [userCampus, me?.campus, isOpen]);
 
   const { data, isLoading } = useGetUpcomingBirthdays(selectedCampus, 10, {
     query: {
@@ -49,7 +66,7 @@ export function UpcomingBirthdaysModal({
         <DialogHeader className="text-left space-y-1 pb-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-2xl animate-bounce select-none">🎂</span>
+              <span className="text-2xl animate-cake-bounce-timed select-none">🎂</span>
               <DialogTitle className="text-xl font-display font-bold">
                 Upcoming Birthdays
               </DialogTitle>
@@ -75,7 +92,7 @@ export function UpcomingBirthdaysModal({
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            Hyderabad {userCampus === "hyderabad" && "• You"}
+            Hyderabad {effectiveUserCampus === "hyderabad" && "• You"}
           </button>
           <button
             type="button"
@@ -87,7 +104,7 @@ export function UpcomingBirthdaysModal({
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            Mohali {userCampus === "mohali" && "• You"}
+            Mohali {effectiveUserCampus === "mohali" && "• You"}
           </button>
         </div>
 

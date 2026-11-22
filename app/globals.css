@@ -140,6 +140,35 @@
   }
 }
 
+@keyframes cake-bounce-slow-stop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  15% {
+    transform: translateY(-6px) scale(1.08);
+  }
+  30% {
+    transform: translateY(0) scale(1);
+  }
+  45% {
+    transform: translateY(-4px) scale(1.05);
+  }
+  60% {
+    transform: translateY(0) scale(1);
+  }
+  75% {
+    transform: translateY(-2px) scale(1.02);
+  }
+  90%, 100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-cake-bounce-timed {
+  display: inline-block;
+  animation: cake-bounce-slow-stop 4s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+}
+
 @keyframes birthday-hat-wiggle {
   0%, 100% {
     transform: rotate(12deg) scale(1);
