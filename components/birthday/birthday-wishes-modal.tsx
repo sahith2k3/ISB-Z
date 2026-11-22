@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Avatar } from "@/components/ui/avatar";
 import { useGetMyBirthdayWishes } from "@/lib/api-client";
-import { Heart, Lock, Sparkles, Cake, PartyPopper } from "lucide-react";
+import { Heart, Lock, Sparkles, PartyPopper } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface BirthdayWishesModalProps {

@@ -69,6 +69,7 @@ export async function GET(
         senderId: row.sender_id,
         senderName: sender?.name ?? `Student ${row.sender_id}`,
         senderCampus: sender?.campus ?? "hyderabad",
+        senderSection: sender?.section ?? "",
         message: row.message,
         createdAt: row.created_at,
       };

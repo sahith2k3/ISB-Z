@@ -398,29 +398,45 @@ export interface BirthdayWishesResponse {
     senderId: number;
     senderName: string;
     senderCampus: string;
+    senderSection: string;
     message: string | null;
     createdAt: string;
   }>;
 }
 
-export function useGetBirthdayWishStatus(recipientId: number, viewerId?: number) {
+export function useGetBirthdayWishStatus(
+  recipientId: number,
+  viewerId?: number,
+  options?: {
+    query?: {
+      enabled?: boolean;
+    };
+  }
+) {
   return useQuery({
     queryKey: ["birthdayWishStatus", recipientId, viewerId],
     queryFn: () =>
       fetchJson<BirthdayWishesResponse>(
         `/api/students/${recipientId}/wishes${viewerId ? `?viewerId=${viewerId}` : ""}`
       ),
-    enabled: !!recipientId,
+    enabled: options?.query?.enabled !== undefined ? options.query.enabled : !!recipientId,
     staleTime: 30_000,
   });
 }
 
-export function useGetMyBirthdayWishes(myId?: number) {
+export function useGetMyBirthdayWishes(
+  myId?: number,
+  options?: {
+    query?: {
+      enabled?: boolean;
+    };
+  }
+) {
   return useQuery({
     queryKey: ["myBirthdayWishes", myId],
     queryFn: () =>
       fetchJson<BirthdayWishesResponse>(`/api/students/${myId}/wishes?viewerId=${myId}`),
-    enabled: !!myId,
+    enabled: options?.query?.enabled !== undefined ? options.query.enabled : !!myId,
     staleTime: 30_000,
   });
 }

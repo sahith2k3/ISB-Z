@@ -22,7 +22,6 @@ import {
   Compass,
   ArrowRight,
   Gift,
-  Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BottomNav } from "@/components/bottom-nav";

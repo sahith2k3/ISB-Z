@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
-import { Sparkles, PartyPopper, Heart } from "lucide-react";
+import { Sparkles, PartyPopper } from "lucide-react";
 import { getTodayKolkataMMDD } from "@/lib/birthday";
 
 interface BirthdayGreetingModalProps {

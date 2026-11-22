@@ -16,7 +16,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatTime } from "@/lib/utils";
-import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School, Gift, Sparkles } from "lucide-react";
+import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School, Gift } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { StudentSchedule } from "@/components/student-schedule";
 import { BottomNav } from "@/components/bottom-nav";

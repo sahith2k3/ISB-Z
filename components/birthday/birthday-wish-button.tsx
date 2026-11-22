@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useGetBirthdayWishStatus, useSendBirthdayWish } from "@/lib/api-client";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
 import { useToast } from "@/hooks/use-toast";
-import { Heart, Sparkles, MessageCircle, Check } from "lucide-react";
+import { Sparkles, MessageCircle, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
