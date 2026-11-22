@@ -1,0 +1,197 @@
+import { NextRequest, NextResponse } from "next/server";
+import {
+  getEnrolledCoursesForStudent,
+  getAllCoursesForTerm,
+  getCourseSection,
+  sectionKey,
+  type SGStatus,
+} from "@/lib/study-group-data";
+import {
+  getSectionStatuses,
+  getStudentStatuses,
+  upsertStudyGroupStatus,
+  getAllStoredStatuses,
+} from "@/lib/sg-status-store";
+import type { Campus } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
+
+const STATUS_WEIGHT: Record<SGStatus, number> = {
+  available: 1,
+  unknown: 2,
+  dropping: 3,
+  unavailable: 4,
+};
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const courseName = searchParams.get("courseName");
+    const section = searchParams.get("section");
+    const studentIdParam = searchParams.get("studentId");
+    const campusParam = searchParams.get("campus") as Campus | null;
+    const term = parseInt(searchParams.get("term") || "6", 10);
+
+    // 1. If courseName and section are specified: return section roster with statuses
+    if (courseName && section) {
+      const sectionData = getCourseSection(courseName, section, term);
+      if (!sectionData) {
+        return NextResponse.json({ error: "Section not found" }, { status: 404 });
+      }
+
+      const statusMap = await getSectionStatuses(courseName, section);
+
+      const studentsWithStatus = sectionData.students.map((student) => {
+        const stored = statusMap.get(student.id);
+        let status: SGStatus = stored?.status || "unknown";
+        if (status === "dropping") status = "unknown";
+        return {
+          id: student.id,
+          name: student.name,
+          email: student.email,
+          status,
+          updatedAt: stored?.updatedAt,
+        };
+      });
+
+      // Strict Ordering: available -> unknown -> unavailable, then alphabetical
+      studentsWithStatus.sort((a, b) => {
+        const wA = STATUS_WEIGHT[a.status] ?? 2;
+        const wB = STATUS_WEIGHT[b.status] ?? 2;
+        if (wA !== wB) return wA - wB;
+        return a.name.localeCompare(b.name);
+      });
+
+      const counts = {
+        total: studentsWithStatus.length,
+        available: studentsWithStatus.filter((s) => s.status === "available").length,
+        unknown: studentsWithStatus.filter((s) => s.status === "unknown").length,
+        dropping: 0,
+        unavailable: studentsWithStatus.filter((s) => s.status === "unavailable").length,
+      };
+
+      return NextResponse.json({
+        term: sectionData.term,
+        courseName: sectionData.courseName,
+        section: sectionData.section,
+        campus: sectionData.campus,
+        counts,
+        students: studentsWithStatus,
+      });
+    }
+
+    // 2. If studentId is provided: return their enrolled courses with current statuses, plus all courses
+    let myEnrolledCourses: any[] = [];
+    let studentIdNum: number | null = null;
+
+    if (studentIdParam) {
+      studentIdNum = parseInt(studentIdParam, 10);
+      if (!isNaN(studentIdNum) && studentIdNum > 0) {
+        const enrollments = getEnrolledCoursesForStudent(studentIdNum, term);
+        const studentStatusMap = await getStudentStatuses(studentIdNum);
+
+        myEnrolledCourses = enrollments.map((e) => {
+          const sec = getCourseSection(e.courseName, e.section, e.term);
+          const key = sectionKey(e.courseName, e.section);
+          const statusInfo = studentStatusMap.get(key);
+          let myStatus: SGStatus = (statusInfo?.status || "unknown") as SGStatus;
+          if (myStatus === "dropping") myStatus = "unknown";
+          return {
+            term: e.term,
+            courseName: e.courseName,
+            section: e.section,
+            campus: e.campus,
+            studentCount: sec?.students.length || 0,
+            myStatus,
+            updatedAt: statusInfo?.updatedAt,
+          };
+        });
+      }
+    }
+
+    // 3. Return summary of all courses for the term (optionally filtered by campus)
+    const allCourses = getAllCoursesForTerm(term, campusParam || undefined);
+    const storedList = await getAllStoredStatuses();
+
+    // Map: sectionKey -> counts
+    const statusCountsMap = new Map<string, { available: number; dropping: number; unavailable: number }>();
+    for (const item of storedList) {
+      if (item.status === "dropping") continue;
+      const key = sectionKey(item.courseName, item.section);
+      const curr = statusCountsMap.get(key) || { available: 0, dropping: 0, unavailable: 0 };
+      if (item.status === "available") curr.available++;
+      else if (item.status === "unavailable") curr.unavailable++;
+      statusCountsMap.set(key, curr);
+    }
+
+    const coursesSummary = allCourses.map((c) => {
+      const key = sectionKey(c.courseName, c.section);
+      const counts = statusCountsMap.get(key) || { available: 0, dropping: 0, unavailable: 0 };
+      return {
+        term: c.term,
+        courseName: c.courseName,
+        section: c.section,
+        campus: c.campus,
+        studentCount: c.students.length,
+        statusCounts: counts,
+      };
+    });
+
+    return NextResponse.json({
+      term,
+      myEnrolledCourses,
+      allCourses: coursesSummary,
+    });
+  } catch (error: any) {
+    console.error("Error in SG planner API:", error);
+    return NextResponse.json(
+      { error: error?.message || "Failed to load SG planner data" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { studentId, courseName, section, campus, status } = body;
+
+    if (!studentId || typeof studentId !== "number") {
+      return NextResponse.json({ error: "studentId is required and must be a number" }, { status: 400 });
+    }
+    if (!courseName || !section) {
+      return NextResponse.json({ error: "courseName and section are required" }, { status: 400 });
+    }
+
+    const validStatuses: SGStatus[] = ["available", "unknown", "unavailable"];
+    if (!validStatuses.includes(status)) {
+      return NextResponse.json(
+        { error: `Invalid status. Must be one of: ${validStatuses.join(", ")}` },
+        { status: 400 }
+      );
+    }
+
+    const result = await upsertStudyGroupStatus({
+      studentId,
+      courseName: courseName.trim(),
+      section: section.trim(),
+      campus: campus || "hyderabad",
+      status,
+    });
+
+    return NextResponse.json({
+      success: true,
+      studentId,
+      courseName,
+      section,
+      status,
+      updatedAt: result.updatedAt,
+    });
+  } catch (error: any) {
+    console.error("Error updating SG status:", error);
+    return NextResponse.json(
+      { error: error?.message || "Failed to update study group status" },
+      { status: 500 }
+    );
+  }
+}

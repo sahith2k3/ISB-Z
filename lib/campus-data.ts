@@ -363,7 +363,7 @@ export function getStudentsWithBirthdayToday(): Student[] {
   return students.filter((s) => s.birthDate === monthDay);
 }
 
-export function getUpcomingBirthdays(limit = 10): Array<Student & { daysUntil: number }> {
+export function getUpcomingBirthdays(limit = 10, campus?: Campus): Array<Student & { daysUntil: number }> {
   const { date: today } = nowInKolkata();
   const [currentYear, currentMonth, currentDay] = today.split("-").map(Number);
 
@@ -371,6 +371,7 @@ export function getUpcomingBirthdays(limit = 10): Array<Student & { daysUntil: n
   const todayDateObj = new Date(currentYear, currentMonth - 1, currentDay);
 
   for (const s of students) {
+    if (campus && s.campus !== campus) continue;
     if (!s.birthMonth || !s.birthDay) continue;
 
     let birthdayThisYear = new Date(currentYear, s.birthMonth - 1, s.birthDay);

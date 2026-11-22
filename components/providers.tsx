@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { InstallPrompt } from "@/components/install-prompt";
 import { ServiceWorkerRegister } from "@/components/service-worker-register";
+import { BirthdayThemeSync } from "@/components/birthday/birthday-theme-sync";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -27,6 +28,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <ServiceWorkerRegister />
         <InstallPrompt />
         <Toaster />
+        <BirthdayThemeSync />
       </TooltipProvider>
     </QueryClientProvider>
   );

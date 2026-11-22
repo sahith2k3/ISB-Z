@@ -8,7 +8,7 @@ import { useListFriends, useListStudents, useGetStudent, useGetStudentStatus, us
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { formatTime, cn } from "@/lib/utils";
+import { formatTime, cn, getFreeStatusMessage } from "@/lib/utils";
 import {
   Search,
   MapPin,
@@ -32,6 +32,7 @@ import { BirthdayName } from "@/components/birthday/birthday-name";
 import { BirthdayWishButton } from "@/components/birthday/birthday-wish-button";
 import { BirthdayGreetingModal } from "@/components/birthday/birthday-greeting-modal";
 import { BirthdayWishesModal } from "@/components/birthday/birthday-wishes-modal";
+import { UpcomingBirthdaysModal } from "@/components/birthday/upcoming-birthdays-modal";
 import { useGetMyBirthdayWishes } from "@/lib/api-client";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
 
@@ -39,13 +40,14 @@ export function HomeView() {
   const router = useRouter();
   const { studentId, logout } = useLocalStudent();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [upcomingBirthdaysOpen, setUpcomingBirthdaysOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
   // Pre-fetch primary navigation targets so PWA page transitions are instant
   useEffect(() => {
     router.prefetch("/sampling");
-    router.prefetch("/seating");
+    router.prefetch("/study-groups");
     router.prefetch("/scheduler");
   }, [router]);
 
@@ -153,6 +155,18 @@ export function HomeView() {
           <ShareButton source="home_header" />
           <button
             type="button"
+            onClick={() => setUpcomingBirthdaysOpen(true)}
+            aria-label="Upcoming Birthdays"
+            title="Upcoming Cohort Birthdays 🎂"
+            data-testid="button-upcoming-birthdays"
+            className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-pink-500/40 bg-gradient-to-tr from-pink-500/10 via-purple-500/10 to-amber-500/10 text-foreground transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-pink-500/20 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <span className="text-xl select-none transition-transform duration-200 group-hover:scale-110 animate-bounce">
+              🎂
+            </span>
+          </button>
+          <button
+            type="button"
             onClick={() => setSearchOpen(true)}
             aria-label="Search students"
             data-testid="button-open-search"
@@ -254,7 +268,7 @@ export function HomeView() {
                   ) : (
                     <div className="text-sm text-muted-foreground flex items-center gap-1">
                       <span className="text-free opacity-90 font-medium">
-                        Free for the rest of the day
+                        {getFreeStatusMessage()}
                       </span>
                     </div>
                   )}
@@ -503,7 +517,7 @@ export function HomeView() {
                         ) : (
                           <div className="text-sm text-muted-foreground flex items-center gap-1">
                             <span className="text-free opacity-80">
-                              Free for the rest of the day
+                              {getFreeStatusMessage()}
                             </span>
                           </div>
                         )}
@@ -693,6 +707,13 @@ export function HomeView() {
           />
         </>
       )}
+
+      <UpcomingBirthdaysModal
+        isOpen={upcomingBirthdaysOpen}
+        onClose={() => setUpcomingBirthdaysOpen(false)}
+        userCampus={me?.campus}
+        currentUserId={studentId || undefined}
+      />
 
       <BottomNav />
     </div>

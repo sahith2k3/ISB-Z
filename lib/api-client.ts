@@ -316,27 +316,37 @@ export interface SgSectionRosterData {
   students: SgRosterStudent[];
 }
 
-export function useGetSgPlannerSummary(studentId: number | null | undefined, campus?: Campus | null) {
+export function useGetSgPlannerSummary(
+  studentId: number | null | undefined,
+  campus?: Campus | null,
+  term = 6
+) {
   return useQuery({
-    queryKey: ["sgPlannerSummary", studentId, campus],
+    queryKey: ["sgPlannerSummary", studentId, campus, term],
     queryFn: () => {
       const sp = new URLSearchParams();
       if (studentId) sp.set("studentId", studentId.toString());
       if (campus) sp.set("campus", campus);
+      sp.set("term", term.toString());
       return fetchJson<SgPlannerData>(`/api/sg-planner?${sp.toString()}`);
     },
     refetchInterval: 30 * 1000,
   });
 }
 
-export function useGetSgSectionRoster(courseName: string | null, section: string | null) {
+export function useGetSgSectionRoster(
+  courseName: string | null,
+  section: string | null,
+  term = 6
+) {
   return useQuery({
-    queryKey: ["sgSectionRoster", courseName, section],
+    queryKey: ["sgSectionRoster", courseName, section, term],
     queryFn: () => {
       if (!courseName || !section) return null;
       const sp = new URLSearchParams({
         courseName,
         section,
+        term: term.toString(),
       });
       return fetchJson<SgSectionRosterData>(`/api/sg-planner?${sp.toString()}`);
     },
@@ -438,6 +448,35 @@ export function useGetMyBirthdayWishes(
       fetchJson<BirthdayWishesResponse>(`/api/students/${myId}/wishes?viewerId=${myId}`),
     enabled: options?.query?.enabled !== undefined ? options.query.enabled : !!myId,
     staleTime: 30_000,
+  });
+}
+
+export interface UpcomingBirthdayStudent extends StudentSummary {
+  daysUntil: number;
+}
+
+export function useGetUpcomingBirthdays(
+  campus?: Campus,
+  limit = 10,
+  options?: {
+    query?: {
+      enabled?: boolean;
+    };
+  }
+) {
+  return useQuery({
+    queryKey: ["upcomingBirthdays", campus, limit],
+    queryFn: () => {
+      const sp = new URLSearchParams();
+      sp.set("type", "upcoming");
+      sp.set("limit", String(limit));
+      if (campus) sp.set("campus", campus);
+      return fetchJson<{ type: string; count: number; students: UpcomingBirthdayStudent[] }>(
+        `/api/birthdays?${sp.toString()}`
+      );
+    },
+    enabled: options?.query?.enabled !== undefined ? options.query.enabled : true,
+    staleTime: 60_000,
   });
 }
 

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useGetBirthdayWishStatus, useSendBirthdayWish } from "@/lib/api-client";
 import { fireCelebratoryConfetti } from "@/lib/confetti";
 import { useToast } from "@/hooks/use-toast";
-import { Sparkles, MessageCircle, Check } from "lucide-react";
+import { Sparkles, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -69,15 +69,10 @@ export function BirthdayWishButton({
       console.error(err);
       toast({
         variant: "destructive",
-        description: "Could not record wish right now, but you can still wish on WhatsApp!",
+        description: "Could not record wish right now. Please try again!",
       });
     }
   };
-
-  const firstName = recipientName.split(" ")[0];
-  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
-    `Happy Birthday ${firstName}! 🎂🎉 Wishing you an incredible year ahead! — via ISBusy`
-  )}`;
 
   if (variant === "card") {
     return (
@@ -99,7 +94,7 @@ export function BirthdayWishButton({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2">
           <Button
             size="sm"
             onClick={handleSendWish}
@@ -121,16 +116,6 @@ export function BirthdayWishButton({
               </>
             )}
           </Button>
-
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold rounded-full border border-border/80 bg-background/80 px-3 py-1.5 text-muted-foreground transition-all hover:bg-card hover:text-foreground active:scale-95"
-          >
-            <MessageCircle className="h-3.5 w-3.5 text-emerald-500" /> WhatsApp
-          </a>
         </div>
       </div>
     );

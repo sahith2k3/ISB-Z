@@ -1,6 +1,6 @@
 "use client";
 
-import { Home, Compass, Sparkles, Armchair } from "lucide-react";
+import { Home, Compass, Sparkles, Users } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,7 @@ const items = [
   { href: "/", label: "Home", icon: Home },
   { href: "/sampling", label: "Sampling", icon: Compass },
   { href: "/scheduler", label: "Scheduler", icon: Sparkles },
-  { href: "/seating", label: "Seating", icon: Armchair },
+  { href: "/study-groups", label: "Study Groups", icon: Users },
 ];
 
 export function BottomNav() {

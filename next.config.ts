@@ -72,7 +72,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/sg-planner",
-        destination: "/",
+        destination: "/study-groups",
+        permanent: false,
+      },
+      {
+        source: "/seating",
+        destination: "/study-groups",
         permanent: false,
       },
     ];

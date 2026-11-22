@@ -15,7 +15,7 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { formatTime } from "@/lib/utils";
+import { formatTime, getFreeStatusMessage, cn } from "@/lib/utils";
 import { ChevronLeft, MapPin, Users, UserPlus, UserMinus, Clock, School, Gift } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { StudentSchedule } from "@/components/student-schedule";
@@ -132,7 +132,7 @@ export default function StudentProfilePage({
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-background overflow-y-auto">
+    <div className={cn("flex flex-col h-[100dvh] bg-background overflow-y-auto", isBirthday && "birthday-celebration-bg")}>
       <header className="px-6 py-6 flex items-center justify-between sticky top-0 bg-background/80 backdrop-blur z-10">
         <Link
           href="/"
@@ -301,7 +301,7 @@ export default function StudentProfilePage({
             ) : (
               <div>
                 <p className="text-lg font-medium opacity-90">
-                  Done with classes for the day!
+                  {getFreeStatusMessage()}
                 </p>
               </div>
             )}

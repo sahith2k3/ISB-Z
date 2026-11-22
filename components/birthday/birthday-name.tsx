@@ -25,12 +25,12 @@ export function BirthdayName({
   return (
     <span
       className={cn(
-        "birthday-name-rainbow inline-flex items-center gap-1.5 font-bold tracking-tight",
+        "inline-flex items-center gap-1.5 tracking-tight",
         className
       )}
       title={`${name}'s Birthday Today! 🎂`}
     >
-      <span className="truncate">{name}</span>
+      <span className="birthday-name-rainbow font-bold truncate">{name}</span>
       {showCake && (
         <span
           className={cn(
